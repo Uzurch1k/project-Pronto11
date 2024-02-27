@@ -1,0 +1,85 @@
+/*---------------------------- Section 5 mentors ----------------------------*/
+.mentors {
+  padding-top: 80px;
+}
+
+.mentors-header {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: -0.023em;
+  margin-bottom: 40px;
+}
+
+.mentors-header-color {
+  color: #bea69e;
+}
+
+.mentors-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.mentors-team-member {
+  text-align: center;
+}
+
+.mentor-name {
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.mentors-ammount {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+}
+
+.mentor-photo {
+  margin-bottom: 16px;
+}
+
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .mentors {
+    padding-top: 100px;
+  }
+
+  .mentors-header {
+    font-size: 48px;
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+    margin-bottom: 50px;
+  }
+
+  .mentors-team {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 93px 100px;
+  }
+
+  .mentor-name {
+    font-size: 28px;
+    line-height: 1.14;
+  }
+
+  .mentors-ammount {
+    font-size: 14px;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
+  }
+}
+
+/*---------------------------- Adaptive desktop ----------------------------*/
+@media screen and (min-width: 1280px) {
+  .mentors {
+    padding-top: 150px;
+  }
+}

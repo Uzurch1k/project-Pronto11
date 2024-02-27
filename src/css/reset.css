@@ -1,0 +1,157 @@
+/*----------------------------Null----------------------------*/
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*----------------------------Other----------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  font-family: 'DM Sans', sans-serif;
+  color: #fff;
+  background-color: #121212;
+}
+
+/*---------------------------- Adaptive mobile ----------------------------*/
+.container {
+  max-width: 375px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.wrap {
+  background-image: url(/img/header-hero/header-hero-mob-1.png);
+  background-position: center;
+  background-size: contain;
+  background-attachment: fixed;
+}
+
+@media screen and (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .wrap {
+    background-image: url(/img/header-hero/header-hero-mob-2.png);
+  }
+}
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding: 0 32px;
+  }
+
+  .wrap {
+    background-image: url(/img/header-hero/header-hero-tablet-1.png);
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .wrap {
+      background-image: url(/img/header-hero/header-hero-tablet-2.png);
+    }
+  }
+}
+
+/*---------------------------- Adaptive desktop (1280px)----------------------------*/
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding: 0 100px;
+  }
+
+  .wrap {
+    background-image: url(/img/header-hero/header-hero-dec1280-1.png);
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .wrap {
+      background-image: url(/img/header-hero/header-hero-dec1280-2.png);
+    }
+  }
+}
+
+/*---------------------------- Adaptive desktop (1440px)----------------------------*/
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+
+  .wrap {
+    background-image: url(/img/header-hero/header-hero-dec1440-1.png);
+  }
+
+  @media screen and (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .wrap {
+      background-image: url(/img/header-hero/header-hero-dec1440-2.png);
+    }
+  }
+}
+
+/*----------------------------General class----------------------------*/
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

@@ -1,0 +1,86 @@
+/*---------------------------- Section 2 advertisement ----------------------------*/
+.advertisement {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px 0;
+}
+
+.advertisement-marquee {
+  overflow: hidden;
+  background-color: inherit;
+}
+
+.advertisement-title {
+  color: #bea69e;
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0;
+  min-width: 100%;
+  white-space: nowrap;
+
+  animation-name: marqueeLine;
+  animation-duration: 6s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.advertisement-title span {
+  color: #fff;
+}
+
+@keyframes marqueeLine {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(-150%);
+  }
+}
+
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .advertisement {
+    padding: 24px 0;
+  }
+
+  .advertisement-title {
+    font-size: 40px;
+    line-height: 1.25;
+  }
+
+  .advertisement-title {
+    animation-duration: 7s;
+  }
+  @keyframes marqueeLine {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+/*---------------------------- Adaptive desktop ----------------------------*/
+@media screen and (min-width: 1280px) {
+  .advertisement-title {
+    font-size: 59px;
+    line-height: 1.08;
+  }
+
+  .advertisement-title {
+    animation-duration: 9s;
+  }
+}
+
+/*---------------------------- Adaptive desktop (1440px)----------------------------*/
+@media screen and (min-width: 1440px) {
+  .advertisement-title {
+    animation-duration: 10s;
+  }
+}

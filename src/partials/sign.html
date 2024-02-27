@@ -1,0 +1,91 @@
+<section class="sign" id="sign">
+  <div class="container">
+    <div class="sign-wrap">
+      <h2 class="sign-title">Sign <span>Up</span></h2>
+      <p class="sign-desc">
+        Please use the form below to contact us. Enter your name, email, and
+        message and we'll get back to you shortly.
+      </p>
+      <form class="sign-form">
+        <div class="sign-input-wrap">
+          <label class="sign-label" for="name">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              pattern="[A-Za-z\s-]+"
+              title="Username must be two words separated by space."
+              placeholder="Enter your name"
+              required
+            />
+          </label>
+          <label class="sign-label" for="email">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              placeholder="Enter your email"
+              required
+            />
+          </label>
+          <label class="sign-label" for="coment">
+            <textarea
+              name="coment"
+              id="coment"
+              placeholder="Message"
+            ></textarea>
+          </label>
+        </div>
+
+        <button type="submit" class="sign-button">Send</button>
+        <p class="sign-policy-text">
+          By clicking on “Send” button, you agree to our
+          <a href="#" class="sign-link">Privacy Policy</a>, <br />and allow
+          Promodo to use this information for marketing purposes.
+        </p>
+      </form>
+    </div>
+    <div class="sign-img">
+      <div class="lens-img-wrap">
+        <picture>
+          <source
+            srcset="
+              ./img/sign/lens1440-1x.png 1x,
+              ./img/sign/lens1440-2x.png 2x
+            "
+            media="(min-width: 1440px)"
+          />
+          <source
+            srcset="
+              ./img/sign/lens1280-1x.png 1x,
+              ./img/sign/lens1280-2x.png 2x
+            "
+            media="(min-width: 1280px)"
+          />
+          <img src="./img/sign/lens1280-1x.png" alt="photographer" />
+        </picture>
+      </div>
+
+      <div class="camera-img-wrap">
+        <picture>
+          <source
+            srcset="
+              ./img/sign/camera1440-1x.png 1x,
+              ./img/sign/camera1440-2x.png 2x
+            "
+            media="(min-width: 1440px)"
+          />
+          <source
+            srcset="
+              ./img/sign/camera1280-1x.png 1x,
+              ./img/sign/camera1280-2x.png 2x
+            "
+            media="(min-width: 1280px)"
+          />
+          <img src="./img/sign/camera1280-1x.png" alt="photographer" />
+        </picture>
+      </div>
+    </div>
+  </div>
+</section>

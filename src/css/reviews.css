@@ -1,0 +1,138 @@
+/*---------------------------- Section 7 reviews ----------------------------*/
+.reviews {
+  padding: 80px 0;
+}
+
+.reviews-header {
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -1.92px;
+  margin-bottom: 40px;
+}
+
+.reviews-student-name {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.reviews-menu-list {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  width: 100%;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: #121212;
+}
+
+.reviews-student {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.28px;
+}
+
+.reviews-foto-name {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.reviews-foto {
+  border-radius: 50%;
+}
+
+.reviews-name-and-student {
+}
+
+.reviews-icons {
+  display: flex;
+  gap: 4px;
+  margin: 0px 0px 20px 66px;
+}
+
+.reviews-icons-star {
+  fill: #bea69e;
+}
+.reviews-icons-star-white {
+  fill: #bea69e;
+  opacity: 0.2;
+}
+
+.reviews-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.32px;
+}
+
+.two {
+  display: none;
+}
+
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .reviews {
+    padding: 100px 0;
+  }
+
+  .reviews-header {
+    margin-bottom: 50px;
+  }
+  .reviews-menu {
+    padding: 0 32px;
+  }
+
+  .reviews-foto-name {
+    display: flex;
+    margin: 0;
+  }
+
+  .reviews-foto-and-stars {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+/*---------------------------- Adaptive desktop ----------------------------*/
+@media screen and (min-width: 1280px) {
+  .reviews {
+    padding: 150px 0;
+  }
+
+  .reviews-foto-name {
+    display: flex;
+  }
+
+  .reviews-menu-list:hover {
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 16px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .reviews-header {
+    margin-bottom: 50px;
+  }
+  .reviews-menu {
+    padding: 0;
+  }
+  .two {
+    display: block;
+  }
+
+  .reviews-name-and-student {
+  }
+
+  .reviews-menu {
+    display: flex;
+    gap: 20px;
+  }
+  .reviews-menu-list {
+    width: calc((100% - 20px) / 2);
+  }
+}
