@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/focus-frame/",
+    "build": "vite build --base=/project-Pronto11/",
     "preview": "vite preview"
   },
   "devDependencies": {
