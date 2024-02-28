@@ -16,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",
+    "swiper": "^11.0.7",
+    "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   }
