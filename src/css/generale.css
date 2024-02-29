@@ -28,17 +28,28 @@ body::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
 
+/*---------------------------- Other class ----------------------------*/
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page {
+}
+.sidebar {
+}
+.home {
+}
+.shopping {
+}
+
 /*---------------------------- Adaptive mobile (320px) ----------------------------*/
 
 .container {
   max-width: 375px;
   padding: 0 20px;
   margin: 0 auto;
-}
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/

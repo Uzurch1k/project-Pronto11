@@ -1,0 +1,91 @@
+.header-toggle {
+}
+.toggle-container {
+  position: relative;
+  border-radius: 3.125em;
+  width: 3.25em;
+  height: 1.875em;
+}
+.toggle-checkbox {
+  appearance: none;
+  position: absolute;
+  z-index: 1;
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.toggle-track {
+  position: relative;
+  border-radius: inherit;
+  padding: 0.25em;
+  width: 100%;
+  height: 100%;
+  background-color: #aeaeae;
+  transition: background-color 0.4s linear;
+}
+.toggle-container > .toggle-checkbox:checked + .toggle-track {
+  background-color: #4ccf59;
+}
+
+.toggle-thumb {
+  position: relative;
+  border-radius: 0.6875em;
+  transform-origin: left;
+  width: 1.375em;
+  height: 1.375em;
+  background-color: #fff;
+}
+.toggle-checkbox + .toggle-track > .toggle-thumb {
+  animation-name: grow-out, bounce-out;
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(0.75, 0, 1, 1),
+    cubic-bezier(0, 0, 0.3, 1.5);
+  animation-delay: 0s, 0.2s;
+  animation-fill-mode: forwards;
+}
+.toggle-checkbox:checked + .toggle-track > .toggle-thumb {
+  animation-name: grow-in, bounce-in;
+}
+
+@keyframes grow-in {
+  0% {
+    border-radius: 0.6875em;
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    border-radius: 0.4448529412em / 0.9453125em;
+    transform: translateX(0.5em) scale(1.5454545455, 0.7272727273);
+  }
+}
+@keyframes bounce-in {
+  0% {
+    border-radius: 0.4448529412em / 0.9453125em;
+    transform: translateX(0.5em) scale(1.5454545455, 0.7272727273);
+  }
+  100% {
+    border-radius: 0.6875em;
+    transform: translateX(100%) scale(1);
+  }
+}
+@keyframes grow-out {
+  0% {
+    border-radius: 0.6875em;
+    transform: translateX(100%) scale(1);
+  }
+  100% {
+    border-radius: 0.4448529412em / 0.9453125em;
+    transform: translateX(0.125em) scale(1.5454545455, 0.7272727273);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    border-radius: 0.4448529412em / 0.9453125em;
+    transform: translateX(0.125em) scale(1.5454545455, 0.7272727273);
+  }
+  100% {
+    border-radius: 0.6875em;
+    transform: translateX(0) scale(1);
+  }
+}

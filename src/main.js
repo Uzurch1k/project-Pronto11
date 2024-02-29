@@ -2,7 +2,6 @@
 
 // import { etchApi } from './js/fetch-api';
 // import { localStorage } from './js/local-storage';
-// import { renderingBooks } from './js/rendering-books';
 
 // import { header } from './js/header';
 // import { authorization } from './js/authorization';
@@ -11,7 +10,12 @@
 // import { support } from './js/support';
 
 // import { books } from './js/books';
+// import { renderingBooks } from './js/rendering-books';
+
 // import { shopping } from './js/shopping';
+// import { renderingBooks } from './js/rendering-shopping';
 // import { popup } from './js/popup';
+
+import { toggle } from './js/feature';
 
 // ==============================================================
