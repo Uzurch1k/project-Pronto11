@@ -3,6 +3,7 @@
     color: #fff;
 }
 
+
 .header-conteiner{
     border: 1.50px solid #111;
     border-radius: 0 0 8px 8px;
@@ -112,7 +113,14 @@ display: block;
     display: flex;
     justify-content: center;
     align-items: center;
+   
+}
+
+.hidden{
     display: none;
+}
+.active{
+    display: block;
 }
 
 .header-esc-svg{
@@ -123,6 +131,7 @@ display: block;
 }
 
 .header-menu {
+    display: block;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -188,8 +197,9 @@ left: 120px;
         height: 72px;
 }
 
-
-
+.header-menu{
+    display: none;
+}
 .header-btn-burgher{
     display: none;
 }
