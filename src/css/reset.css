@@ -4,6 +4,9 @@ a:visited,
 a:hover {
   text-decoration: none;
 }
+a {
+  color: inherit;
+}
 
 body,
 h1,

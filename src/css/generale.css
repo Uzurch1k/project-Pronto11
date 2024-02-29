@@ -3,7 +3,7 @@
 .theme-light {
   --main-bg-color: #fff;
   --main-color: #111;
-  --submain-color: #202024;
+  --submain-color: #b4afaf;
   --violet-color: #4f2ee8;
   --yellow-color: #eac645;
   --header-bg-color: #fff;
@@ -11,7 +11,9 @@
 .theme-dark {
   --main-bg-color: #202024;
   --main-color: #fff;
-  --submain-color: #fff;
+  --submain-color: #b4afaf;
+  --violet-color: #4f2ee8;
+  --yellow-color: #eac645;
   --header-bg-color: #111;
 }
 
@@ -37,28 +39,33 @@ body::-webkit-scrollbar-thumb {
   border-radius: 2px;
 }
 
-/*---------------------------- Other class ----------------------------*/
-
-.wrapper {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.page {
-}
-.sidebar {
-}
-.home {
-}
-.shopping {
-}
-
 /*---------------------------- Adaptive mobile (320px) ----------------------------*/
 
 .container {
   max-width: 375px;
   padding: 0 20px;
   margin: 0 auto;
+}
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.home {
+}
+.shopping {
 }
 
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/
@@ -68,6 +75,16 @@ body::-webkit-scrollbar-thumb {
     max-width: 768px;
     padding: 0 32px;
   }
+  .page {
+    gap: 98px;
+    padding-bottom: 100px;
+  }
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
 }
 
 /*---------------------------- Adaptive desktop (1440px) ----------------------------*/
@@ -76,5 +93,18 @@ body::-webkit-scrollbar-thumb {
   .container {
     max-width: 1440px;
     padding: 0 24px;
+  }
+  .page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .sidebar {
+    width: 356px;
+  }
+  .home {
+  }
+  .shopping {
   }
 }
