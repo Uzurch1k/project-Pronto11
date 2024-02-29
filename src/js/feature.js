@@ -1,9 +1,25 @@
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+// ==========================================================
 
-const detectToggleOnce = e => {
-  e.target.classList.add('toggled-once');
-};
+const toggleBtn = document.querySelector('.toggle-checkbox');
 
-export const toggle =  checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('click', detectToggleOnce, { once: true });
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('theme') === 'theme-dark') {
+    setTheme('theme-dark');
+    toggleBtn.checked = true;
+  }
 });
+
+function setTheme(themeName) {
+  localStorage.setItem('theme', themeName);
+  document.documentElement.className = themeName;
+}
+
+export const toggle = toggleBtn.addEventListener('click', () => {
+  if (localStorage.getItem('theme') === 'theme-dark') {
+    setTheme('theme-light');
+  } else {
+    setTheme('theme-dark');
+  }
+});
+
+// ==========================================================

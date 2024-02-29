@@ -1,12 +1,21 @@
-/*---------------------------- Other ----------------------------*/
+/*---------------------------- Variables root----------------------------*/
 
-:root {
+.theme-light {
   --main-bg-color: #fff;
   --main-color: #111;
   --submain-color: #202024;
   --violet-color: #4f2ee8;
   --yellow-color: #eac645;
+  --header-bg-color: #fff;
 }
+.theme-dark {
+  --main-bg-color: #202024;
+  --main-color: #fff;
+  --submain-color: #fff;
+  --header-bg-color: #111;
+}
+
+/*---------------------------- Other ----------------------------*/
 
 html,
 body {
