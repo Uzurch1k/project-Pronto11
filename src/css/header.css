@@ -203,6 +203,9 @@ left: 120px;
 .header-btn-burgher{
     display: none;
 }
+.header-btn-esc{
+    display: none;
+}
 
 .header-btn-submit{
     display: block;
@@ -269,7 +272,7 @@ font-family: "DM Sans", sans-serif;
 @media screen and (min-width: 1440px) {
     .header-conteiner{
         width: 1440px;
-            height: 72px;
+        height: 72px;
     }
     .header-btn-home{
         margin-left: 70px;
