@@ -49,38 +49,7 @@ font-family: "DM Sans", sans-serif;
 .header-logo:hover{
     color: #111;
 }
-input[type="checkbox"]{
-    position: relative;
-    width: 40px;
-    height: 20px;
-    -webkit-appearance: none;
-    outline: none;
-    background: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
-    border-radius: 20px;
-    transition: .5s;
-    box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
-    margin-left: auto;
-}
-input:checked[type="checkbox"]{
- background: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
-box-shadow: inset 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-input[type="checkbox"]::before{
-    content: '';
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    border-radius: 20px;
-    top: 2px;
-    left: 0;
-    background-color: aliceblue;
-    transition: 250ms;
-    transform: scale(1.1);
 
-}
-input:checked[type="checkbox"]::before{
-    left: 22px;
-}
 .header-btn-burgher{
     display: block;
     border: none;
