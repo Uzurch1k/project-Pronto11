@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
  .swiper {
     border-radius: 16px;
         width: 335px;
@@ -57,3 +58,30 @@ fill: var(--main-bg-color);
     cursor: pointer;
     border-radius: 50%;
 }
+=======
+.swiper {
+border-radius: 16px;
+width: 335px;
+height: 460px;
+box-shadow: 0 10px 10px 0 rgba(245, 245, 247, 0.1);
+    background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, rgb(79, 46, 232) 18.02733987569809%, rgb(255, 255, 255) 100%);
+
+}
+.swiper-wrapper {
+width: 149px;
+height: 292px;
+
+
+
+.swiper-slide {
+
+
+}
+}
+  
+img.charity-logo {
+      filter: brightness(0) invert(1);
+      cursor: pointer;
+  }
+
+>>>>>>> Stashed changes

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
@@ -30,3 +31,30 @@ const swiper = new Swiper('.swiper', {
 //   },
 
 });
+=======
+
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
+
+const swiper = new Swiper('.swiper', {
+
+  direction: 'vertical',
+    loop: true,
+    speed: 400,
+    spaceBetween: 0,
+  centeredSlides: true,
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+});
+
+export function openCharitySite(url) {
+        window.open(url, '_blank');
+    }
+>>>>>>> Stashed changes
