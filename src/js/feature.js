@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setTheme(themeName) {
   localStorage.setItem('theme', themeName);
-  document.documentElement.className = themeName;
+  const root = document.documentElement;
+  root.setAttribute('data-theme', themeName);
 }
 
 export const toggle = toggleBtn.addEventListener('click', () => {

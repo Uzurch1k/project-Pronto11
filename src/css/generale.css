@@ -1,20 +1,30 @@
 /*---------------------------- Variables root----------------------------*/
 
-.theme-light {
+:root[data-theme='theme-light'] {
   --main-bg-color: #fff;
   --main-color: #111;
   --submain-color: #b4afaf;
-  --violet-color: #4f2ee8;
-  --yellow-color: #eac645;
+
+  --header-icon-color: #111;
   --header-bg-color: #fff;
+  --shop-bg-color: #fff;
+
+  --categor-color: rgba(17, 17, 17, 0.6);
+  --categor-color-hover: #4f2ee8;
+  --categor-scrol: #e0e0e0;
 }
-.theme-dark {
+:root[data-theme='theme-dark'] {
   --main-bg-color: #202024;
   --main-color: #fff;
   --submain-color: #b4afaf;
-  --violet-color: #4f2ee8;
-  --yellow-color: #eac645;
+
+  --header-icon-color: #fff;
   --header-bg-color: #111;
+  --shop-bg-color: #111;
+
+  --categor-color: rgba(255, 255, 255, 0.6);
+  --categor-color-hover: #eac645;
+  --categor-scrol: rgba(17, 17, 17, 0.6);
 }
 
 /*---------------------------- Other ----------------------------*/
@@ -80,6 +90,7 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 100px;
   }
   .sidebar {
+    width: 100%;
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -98,10 +109,13 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 0;
+    gap: 40px;
   }
   .sidebar {
     width: 356px;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 86px;
   }
   .home {
   }
