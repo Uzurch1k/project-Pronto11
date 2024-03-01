@@ -1,4 +1,3 @@
-
 .shopping-title {
   margin-bottom: 40px;
 }
@@ -64,7 +63,46 @@
 .tui-pagination {
   max-width: 323px;
   margin: 20px 0 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-align: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid black;
+}
+
+.custom-class-first {
+  margin-right: 5px;
+  background-color: #111111;
+}
+
+.custom-class-prev {
+  margin-right: 5px;
+  background-color: #111111;
+}
+
+.custom-class-next {
+    /* margin-right: 5px;
+  background-color: #111111; */
+}
+
+.custom-class-last {
+    margin-right: 5px;
+  background-color: #111111;
+}
+
+.tui-is-selected {
+}
+
+.tui-is-disabled {
+}
+
+.tui-ico-ellip {
 }
