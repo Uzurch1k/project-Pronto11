@@ -217,7 +217,7 @@ left: 120px;
     align-items: center;
     gap: 16px;
     margin-left: 50px;
-    
+    display: none;         /*open nav*/
 }
 
 
