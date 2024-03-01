@@ -1,10 +1,7 @@
-
 .shopping-title {
   margin-bottom: 40px;
 }
 
-.shopping-title span {
-}
 .shopping-list {
   display: flex;
   flex-direction: column;
@@ -30,6 +27,7 @@
 }
 .shopping-author {
 }
+
 .shop-buttons-amazon {
   position: absolute;
   bottom: 30px;
@@ -38,17 +36,13 @@
   gap: 20px;
   align-items: center;
 }
-.empty-page {
-}
-.text-shopping {
-}
+
 .shopping-trash {
   position: absolute;
   top: 30px;
   right: 24px;
 }
-.trash-icon {
-}
+
 
 .shopping-photo {
   height: 161px;
@@ -70,5 +64,3 @@
   margin: 20px 0 40px;
 }
 
-.tui-page-btn {
-}
