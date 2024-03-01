@@ -1,6 +1,6 @@
 /*---------------------------- Variables root----------------------------*/
 
-.theme-light {
+:root[data-theme='theme-light'] {
   --main-bg-color: #fff;
   --main-color: #111;
   --submain-color: #b4afaf;
@@ -13,7 +13,7 @@
   --categor-color-hover: #4f2ee8;
   --categor-scrol: #e0e0e0;
 }
-.theme-dark {
+:root[data-theme='theme-dark'] {
   --main-bg-color: #202024;
   --main-color: #fff;
   --submain-color: #b4afaf;
