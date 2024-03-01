@@ -15,3 +15,4 @@ modalBtnClose.addEventListener('click', function () {
     modal.classList.toggle('hidden');
     modalBtnClose.classList.toggle('active');
 });
+
