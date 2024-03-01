@@ -12,7 +12,7 @@ import { fetchGeneral, fetchCategories, fetchCategory } from './js/fetch-api';
 // import { books } from './js/books';
 // import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
-import * as checkCode  from './js/shopping';
+// import { shopping } from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
 // import { popup } from './js/popup';
 
