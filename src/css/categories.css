@@ -1,67 +1,59 @@
 .categories {
-    /* border: 1px solid red; */
-    text-align: left;
 }
 
-
 .categories-menu {
-    display: flex;
-    flex-direction: column;
-    row-gap: 28px;
-    width: 100%;
-    height: 228px;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 28px;
+  width: 100%;
+  height: 228px;
+  overflow-y: auto;
 }
 
 .categories-list {
-    line-height: 1.33333;
-    letter-spacing: -0.02em;
-    color: var(--categor-color);
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: var(--categor-color);
 }
 
 .categories-nav {
-    line-height: 1.33333;
-    letter-spacing: -0.02em;
-    color: var(--categor-color);
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: var(--categor-color);
 }
 
 .categories-nav:hover {
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--categor-color-hover);
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--categor-color-hover);
 }
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(  --main-bg-color);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var( --categor-scrol);
-  }
-  
+
+.categories-menu::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+}
+.categories-menu::-webkit-scrollbar-thumb {
+  background-color: var(--categor-scrol);
+  border-radius: 12px;
+}
+
 /*---------------------------- Adaptive tablet ----------------------------*/
-
 @media screen and (min-width: 768px) {
-    .categories-menu {
-        row-gap: 32px;
-        width: 337px;
-        height: 472px;
-    }
+  .categories-menu {
+    row-gap: 32px;
+    width: 337px;
+    height: 472px;
+  }
 
-    .categories-nav {
-        font-size: 18px;
-    }
+  .categories-nav {
+    font-size: 18px;
+  }
 }
-
-
 
 /*---------------------------- Adaptive desktop ----------------------------*/
 @media screen and (min-width: 1440px) {
-    .categories-menu {
-        width: 100%;
-        height: 472px;
-    }
+  .categories-menu {
+    width: 100%;
+    height: 472px;
+  }
 }
