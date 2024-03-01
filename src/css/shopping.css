@@ -1,0 +1,60 @@
+.shopping-title {
+  margin-bottom: 40px;
+}
+
+.shopping-title span {
+}
+.shopping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.shopping-item {
+  background-color: var(--header-bg-color);
+  display: flex;
+  width: 100%;
+  height: 213px;
+  position: relative;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  padding: 30px 24px;
+}
+.shopping-content {
+}
+.shopping-subtitle {
+}
+.genre {
+}
+.book-desc {
+}
+.shopping-author {
+}
+.shop-buttons-amazon {
+  position: absolute;
+  bottom: 30px;
+  right: 24px;
+}
+.empty-page {
+}
+.text-shopping {
+}
+.shopping-trash {
+  position: absolute;
+  top: 30px;
+  right: 24px;
+}
+.trash-icon {
+}
+
+.shopping-photo {
+  height: 165px;
+  width: 116px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.shopping-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
