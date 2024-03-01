@@ -1,8 +1,12 @@
 .shopping-title {
+    font-size: 48px;
   margin-bottom: 40px;
 }
 
 .shopping-title span {
+
+color: #4f2ee8;
+
 }
 .shopping-list {
   display: flex;
@@ -21,13 +25,29 @@
 }
 .shopping-content {
 }
-.shopping-subtitle {
+.shopping-subtitle {   
+    font-weight: 700;
 }
 .genre {
+    color: #B4AFAF;
+    font-size: 12px;
+    font-weight: 400;
 }
 .book-desc {
+   
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: -0.04em;
+    text-align: left;
+    color: black;
+    
+    
 }
 .shopping-author {
+    color: #B4AFAF;
+    font-size: 12px;
+    font-weight: 400;
 }
 .shop-buttons-amazon {
   position: absolute;
@@ -38,8 +58,22 @@
   align-items: center;
 }
 .empty-page {
+    width: 349px;
+    position: static;
+    top: 304px;
+    left: 735px;
+    padding: 20px;
+
+    
 }
 .text-shopping {
+    width: 349px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #00000099;
+
 }
 .shopping-trash {
   position: absolute;
