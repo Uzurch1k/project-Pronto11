@@ -5,7 +5,7 @@
 // ==============================================================
 
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 
 export const pagesContainer = document.querySelector('#pagination-wrapper');
 
@@ -31,7 +31,5 @@ const instance = new Pagination(pagesContainer, {
       '</a>',
   },
 });
-
-
 
 // ==============================================================

@@ -12,7 +12,7 @@
 // import { books } from './js/books';
 // import { renderingBooks } from './js/rendering-books';
 
-import * as checkCode  from './js/shopping';
+// import { shopping } from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
 // import { popup } from './js/popup';
 

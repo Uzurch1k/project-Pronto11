@@ -1,1 +1,10 @@
 /* Styles for page numbers */
+
+.tui-pagination {
+    max-width: 323px;
+    margin: 20px 0 40px;
+}
+
+.tui-page-btn {
+
+}
