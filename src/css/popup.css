@@ -30,11 +30,6 @@
   border-radius: 20px;
 }
 
-html.theme-dark .popup-window {
-  border-color: #ffffff;
-  background-color: #202024;
-}
-
 .popup-close-btn {
   padding: 0;
   position: absolute;
@@ -50,15 +45,6 @@ html.theme-dark .popup-window {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html.theme-dark .popup-close-btn {
-  background-color: #202024;
-  fill: #ffffff;
-}
-
-html.theme-dark .popup-close-btn:hover {
-  fill: #4f2ee8;
-}
-
 .popup-close-btn:hover {
   fill: #4f2ee8;
 }
@@ -71,11 +57,15 @@ html.theme-dark .popup-close-btn:hover {
   gap: 24px;
 }
 
-.popup-book-image {
-  object-fit: contain;
-  align-items: stretch;
+.popup-wrap-img {
   width: 287px;
-  margin-bottom: 14px;
+  height: 408px;
+}
+
+.popup-book-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .popup-book-content {
@@ -90,10 +80,6 @@ html.theme-dark .popup-close-btn:hover {
   letter-spacing: -0.04em;
   color: #111111;
   margin-bottom: 8px;
-}
-
-html.theme-dark .popup-book-title {
-  color: #ffffff;
 }
 
 .popup-book-author {
@@ -115,10 +101,6 @@ html.theme-dark .popup-book-title {
   margin-bottom: 14px;
 }
 
-html.theme-dark .popup-book-review {
-  color: #ffffff;
-}
-
 .popup-shopping-links {
   display: flex;
   justify-content: flex-start;
@@ -135,26 +117,6 @@ html.theme-dark .popup-book-review {
 .popup-shopping-links-icon:hover,
 .popup-shopping-links-icon:focus {
   filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
-  transition-duration: 250ms;
-}
-
-html.theme-dark .amazon.popup-shopping-links-icon {
-  color: #ffffff;
-}
-
-html.theme-dark .amazon.popup-shopping-links-icon:hover,
-html.theme-dark .amazon.popup-shopping-links-icon:hover {
-  filter: brightness(0) invert(1) drop-shadow(0px 3px 3px #ffffff85);
-  transition-duration: 250ms;
-}
-
-html.theme-dark .book.popup-shopping-links-icon {
-  color: #ffffff;
-}
-
-html.theme-dark .book.popup-shopping-links-icon:hover,
-html.theme-dark .book.popup-shopping-links-icon:hover {
-  filter: brightness(0) invert(1) drop-shadow(0px 3px 3px #ffffff85);
   transition-duration: 250ms;
 }
 
@@ -186,15 +148,6 @@ html.theme-dark .book.popup-shopping-links-icon:hover {
   background-color: white;
 }
 
-html.theme-dark .popup-book-btn-add-to-shopinglist {
-  color: #ffffff;
-  background-color: #202024;
-}
-
-html.theme-dark .popup-book-btn-add-to-shopinglist:hover {
-  background-color: #4f2ee8;
-}
-
 .popup-book-btn-add-to-shopinglist:hover {
   color: #fff;
   background-color: #4f2ee8;
@@ -209,13 +162,6 @@ html.theme-dark .popup-book-btn-add-to-shopinglist:hover {
   color: #111;
 }
 
-html.dark .popup-book-btn-add-to-shopinglist.disabled:hover {
-  background-color: transparent;
-  opacity: 0.5;
-  cursor: not-allowed;
-  color: #fff;
-}
-
 .under-btn-text {
   width: 242px;
   margin-top: 8px;
@@ -226,10 +172,6 @@ html.dark .popup-book-btn-add-to-shopinglist.disabled:hover {
   line-height: 12px;
   text-align: center;
   letter-spacing: -0.04em;
-}
-
-html.theme-dark .under-btn-text {
-  color: rgba(255, 255, 255, 0.5);
 }
 
 .is-active {
@@ -264,8 +206,9 @@ html.theme-dark .under-btn-text {
     display: flex;
   }
 
-  .popup-book-image {
+  .popup-wrap-img {
     width: 192px;
+    height: 281px;
   }
 
   .popup-book-title {
