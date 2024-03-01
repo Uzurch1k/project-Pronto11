@@ -1,14 +1,11 @@
 
 
 .categories{
-    padding: 0;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     text-align: left;
 }
 
 .categories-title {
-    font-family: "DM Sans", sans-serif;
-    font-weight: 700;
     font-size: 18px;
     line-height: 1.33333;
     letter-spacing: -0.02em;
