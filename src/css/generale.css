@@ -42,11 +42,10 @@ body {
 body::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;
-  background-color: var(--main-bg-color);
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #e0e0e0d5;
-  border-radius: 2px;
+  background-color: var(--categor-scrol);
+  border-radius: 12px;
 }
 
 /*---------------------------- Adaptive mobile (320px) ----------------------------*/
