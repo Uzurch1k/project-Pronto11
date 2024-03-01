@@ -2,23 +2,88 @@
   <div class="container">
     <div class="header-body">
       <nav class="header-navigation">
-        <a class="header-logo" href="/index.html">Bookshelf</a>
+        <a class="header-logo" href="./index.html">
+          <svg width="24" height="24" class="header-logo-item">
+            <use href="./img/icons.svg#icon-logo"></use>
+          </svg>
+          Bookshelf
+        </a>
         <ul class="header-nav-list">
           <li class="header-nav-item">
-            <a class="header-home" href="/index.html">Home</a>
+            <a class="header-home" href="./index.html">Home</a>
           </li>
           <li class="header-nav-item">
-            <a class="header-shopping" href="/shopping.html">Shopping list</a>
+            <a class="header-shopping" href="./shopping.html">
+              Shopping list
+              <svg width="20" height="20" class="header-shop-svg">
+                <use href="./img/icons.svg#icon-header-shopp"></use>
+              </svg>
+            </a>
           </li>
         </ul>
       </nav>
-      <div class="header-toggle">
-        <div class="toggle-container">
-          <input class="toggle-checkbox" type="checkbox" />
-          <div class="toggle-track">
-            <div class="toggle-thumb"></div>
-          </div>
+
+      <div class="toggle-container">
+        <input class="toggle-checkbox" type="checkbox" />
+        <div class="toggle-track">
+          <div class="toggle-thumb"></div>
         </div>
+      </div>
+
+      <button type="submit" class="header-btn-submit">
+        Sing up
+        <svg width="20" height="20" class="header-sing-svg">
+          <use href="./img/icons.svg#icon-header-vector-log-left"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="header-btn-burgher">
+        <svg width="28" height="28" class="header-burgher-svg">
+          <use href="./img/icons.svg#icon-header-burger"></use>
+        </svg>
+      </button>
+      <button type="button" class="hidden header-btn-esc">
+        <svg width="28" height="28" class="header-esc-svg">
+          <use href="./img/icons.svg#icon-header-close"></use>
+        </svg>
+      </button>
+
+      <div class="header-menu">
+        <button type="submit" class="header-btn-submit-modal">
+          Sing up
+          <svg width="20" height="20" class="header-sing-svg">
+            <use href="./img/icons.svg#icon-header-vector-log-left"></use>
+          </svg>
+        </button>
+
+        <ul class="header-nav-list-modal">
+          <li class="header-nav-item-modal">
+            <a class="header-home-modal" href="./index.html">Home</a>
+          </li>
+          <li class="header-nav-item-modal">
+            <a class="header-shopping-modal" href="./shopping.html">
+              Shopping list
+              <svg width="20" height="20" class="header-shop-svg">
+                <use href="./img/icons.svg#icon-header-shopp"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+
+        <picture>
+          <source
+            srcset="
+              ./img/header/gallery-phon-1.png 1x,
+              ./img/header/gallery-phon-2.png 2x
+            "
+            media="(min-width:320px)"
+          />
+          <img
+            src="./img/header/gallery-phon-1.png"
+            alt="book"
+            class="header-img"
+          />
+        </picture>
       </div>
     </div>
   </div>

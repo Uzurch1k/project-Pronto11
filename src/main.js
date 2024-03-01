@@ -1,6 +1,6 @@
 // ==============================================================
 
-// import { etchApi } from './js/fetch-api';
+import { fetchGeneral, fetchCategories, fetchCategory } from './js/fetch-api';
 // import { localStorage } from './js/local-storage';
 
 // import { header } from './js/header';
@@ -10,7 +10,7 @@
 // import { support } from './js/support';
 
 // import { books } from './js/books';
-// import { renderingBooks } from './js/rendering-books';
+// import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
 import * as checkCode  from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';

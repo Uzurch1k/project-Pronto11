@@ -1,0 +1,64 @@
+
+
+.categories{
+    padding: 0;
+    border: 1px solid red;
+    text-align: left;
+}
+
+.categories-title {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.33333;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: #4f2ee8; 
+    padding-bottom: 32px;
+}
+
+.categories-menu{
+   display: flex;
+   flex-direction: column;
+   row-gap: 32px;
+/* 
+   height: 250px;
+   overflow-y: scroll; */
+
+}
+
+.categories-list {
+font-family: "DM Sans", sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 1.33333;
+letter-spacing: -0.02em;
+color: rgba(17, 17, 17, 0.6);
+}
+
+/* .categories-nav:hover{
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #4f2ee8; 
+} */
+
+/*---------------------------- Adaptive tablet ----------------------------*/
+
+@media screen and (min-width: 768px) {
+    .categories {
+    
+    }
+
+}
+
+
+
+/*---------------------------- Adaptive desktop ----------------------------*/
+@media screen and (min-width: 1280px) {
+    .categories  {
+       
+    }  
+    
+  
+}
