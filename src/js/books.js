@@ -28,24 +28,34 @@ displayCategories();
 
 // ==============================================================
 catsContainer.addEventListener('click', e => {
-    e.preventDefault;
+    e.preventDefault();
 
     const target = e.target;
 
     if(target.tagName === 'A') {
         const catName = target.dataset.catname;
+
+        catsContainer.querySelector('.active').classList.remove('active');
+        target.classList.add('active');
         
-        displayCategory(catName);
+        if(catName) {
+            displayCategory(catName);
+        } else {
+            displayTop();
+        }
     }
 });
 
 booksContainer.addEventListener('click', e => {
-    e.preventDefault;
+    e.preventDefault();
 
     const target = e.target;
 
     if(target.classList.contains('books-btn')) {
         const catName = target.dataset.catname;
+
+        catsContainer.querySelector('.active').classList.remove('active');
+        catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
         
         displayCategory(catName);
     }

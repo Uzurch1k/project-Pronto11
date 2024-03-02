@@ -17,9 +17,9 @@ export const renderTop = (data) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-    console.log(data);
+    // console.log(data);
     return  `<li class="categories-list">
-    <a href="#" data-catname="" class="categories-nav">All categories</a>
+    <a href="#" data-catname="" class="categories-nav active">All categories</a>
   </li>
   <li class="categories-list">
     <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
