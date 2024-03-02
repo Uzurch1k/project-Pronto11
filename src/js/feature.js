@@ -23,4 +23,25 @@ export const toggle = toggleBtn.addEventListener('click', () => {
   }
 });
 
-// ==========================================================
+// ===============================================================
+
+// const scrollToTopBtn = document.querySelector('.scroll-up');
+
+// window.addEventListener('scroll', () => {
+//   if (window.scrollY > 120) {
+//     scrollToTopBtn.classList.add('show');
+//   } else {
+//     scrollToTopBtn.classList.remove('show');
+//   }
+// });
+
+// export const scroll = () => {
+//   window.scrollTo({
+//     top: 0,
+//     behavior: 'smooth',
+//   });
+// };
+
+// scrollToTopBtn.addEventListener('click', scroll);
+
+// ===============================================================
