@@ -4,13 +4,13 @@ import { renderTop, renderCategories, renderCategory } from './rendering-books';
 const BASEURL = 'https://books-backend.p.goit.global';
 
 //Fatch for top books
-export const fetchGeneral = async () => {
+export const fetchGeneral = async (booksPerRow) => {
     const endpoint = '/books/top-books/'
     const fetchUrl = BASEURL+endpoint;
 
     try {
         const response = await axios.get(fetchUrl);
-        return renderTop(response.data);
+        return renderTop(response.data, booksPerRow);
     } catch(error) {
         console.log(error);
     }
