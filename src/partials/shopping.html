@@ -7,15 +7,17 @@
       </div>
 
       <div class="shopping-content">
-        <p class="shopping-subtitle">I WILL FIND YOU</p>
-        <p class="genre">Hardcover fiction</p>
-        <p class="book-desc">
-          David Burroughs was once a devoted father to his three-year-old son
-          Matthew, living a dream life just a short drive away from the
-          working-class suburb where he and his wife, Cheryl, first fell in
-          love--until one fateful night when David woke suddenly to discover
-          Matthew had been murdered while David was asleep just down the hall.
-        </p>
+        <div>
+          <p class="shopping-subtitle">I WILL FIND YOU</p>
+          <p class="genre">Hardcover fiction</p>
+          <p class="book-desc">
+            David Burroughs was once a devoted father to his three-year-old son
+            Matthew, living a dream life just a short drive away from the
+            working-class suburb where he and his wife, Cheryl, first fell in
+            love--until one fateful night when David woke suddenly to discover
+            Matthew had been murdered while David was asleep just down the hall.
+          </p>
+        </div>
         <p class="shopping-author">Harlan Coben</p>
       </div>
       <button type="button" class="shopping-trash">
@@ -24,11 +26,49 @@
         </svg>
       </button>
 
-      <div class="shop-buttons-amazon">
-        <a href="#" target="_blank" class="">
+      <div class="shop-buttons">
+        <a href="#" target="_blank" class="shop-amazon">
           <img src="./img/shopping/amazon.png" alt="Logo of shop" width="62" />
         </a>
-        <a href="#" target="_blank" class="">
+        <a href="#" target="_blank" class="shop-apple">
+          <img
+            src="./img/shopping/book-apple.png"
+            alt="Logo of shop"
+            width="33"
+          />
+        </a>
+      </div>
+    </li>
+    <li class="shopping-item">
+      <div class="shopping-photo">
+        <img src="./img/shopping/books-des-1.png" alt="assdas" />
+      </div>
+
+      <div class="shopping-content">
+        <div>
+          <p class="shopping-subtitle">I WILL FIND YOU</p>
+          <p class="genre">Hardcover fiction</p>
+          <p class="book-desc">
+            David Burroughs was once a devoted father to his three-year-old son
+            Matthew, living a dream life just a short drive away from the
+            working-class suburb where he and his wife, Cheryl, first fell in
+            love--until one fateful night when David woke suddenly to discover
+            Matthew had been murdered while David was asleep just down the hall.
+          </p>
+        </div>
+        <p class="shopping-author">Harlan Coben</p>
+      </div>
+      <button type="button" class="shopping-trash">
+        <svg width="18" height="18" class="trash-icon">
+          <use href="./img/icons.svg#icon-shopp-trash"></use>
+        </svg>
+      </button>
+
+      <div class="shop-buttons">
+        <a href="#" target="_blank" class="shop-amazon">
+          <img src="./img/shopping/amazon.png" alt="Logo of shop" width="62" />
+        </a>
+        <a href="#" target="_blank" class="shop-apple">
           <img
             src="./img/shopping/book-apple.png"
             alt="Logo of shop"
@@ -43,7 +83,24 @@
     <p class="text-shopping">
       This page is empty, add some books and proceed to order.
     </p>
-    <img src="./img/shopping/books-des-1.png" alt="books" />
+
+    <picture>
+      <source
+        srcset="
+          ./img/shopping/books-des-1.png 1x,
+          ./img/shopping/books-des-2.png 2x
+        "
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="
+          ./img/shopping/books-phon-1.png 1x,
+          ./img/shopping/books-phon-2.png 2x
+        "
+        media="(min-width:320px)"
+      />
+      <img src="./img/shopping/books-phon-1.png" alt="books" />
+    </picture>
   </div>
 
   <div id="pagination-wrapper" class="tui-pagination"></div>
