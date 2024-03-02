@@ -5,7 +5,7 @@ export const renderTop = (data) => {;
         const books = renderOneBook(el.books)
         return `<div class="books-category-container">
         <h3 class="books-category-title">${catName}</h3>
-        <ul class="books-list">${books}</ul>
+        <ul class="books-list top-mode">${books}</ul>
         <div class="books-btn-container">
           <button data-catname="${catName}" type="button" class="books-btn">see more</button>
         </div>
@@ -17,9 +17,9 @@ export const renderTop = (data) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-    console.log(data);
+    // console.log(data);
     return  `<li class="categories-list">
-    <a href="#" data-catname="" class="categories-nav">All categories</a>
+    <a href="#" data-catname="" class="categories-nav active">All categories</a>
   </li>
   <li class="categories-list">
     <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
