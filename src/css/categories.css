@@ -25,7 +25,7 @@
 .categories-nav:hover {
   color: var(--categor-color-hover);
 }
-.categories-nav:active {
+.categories-nav.active {
   font-weight: 500;
   text-transform: uppercase;
 }
