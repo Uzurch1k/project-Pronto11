@@ -12,6 +12,8 @@
   --categor-color: rgba(17, 17, 17, 0.6);
   --categor-color-hover: #4f2ee8;
   --categor-scrol: #e0e0e0;
+
+  --icon-amazon: grayscale(100%);
 }
 
 :root[data-theme='theme-dark'] {
@@ -26,4 +28,6 @@
   --categor-color: rgba(255, 255, 255, 0.6);
   --categor-color-hover: #eac645;
   --categor-scrol: rgba(17, 17, 17, 0.6);
+
+  --icon-amazon: grayscale(100%) invert(100%);
 }

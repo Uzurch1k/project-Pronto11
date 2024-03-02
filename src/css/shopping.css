@@ -41,9 +41,12 @@
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.04em;
-  height: 55px;
+  max-width: 195px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  /* text-overflow: ellipsis; */
+  text-overflow: ellipsis;
 }
 .shopping-author {
   color: #b4afaf;
@@ -63,7 +66,7 @@
 .shop-amazon {
   flex-shrink: 0;
   width: 32px;
-  mix-blend-mode: luminosity;
+  filter: var(--icon-amazon);
 }
 .shop-apple {
   flex-shrink: 0;
@@ -154,10 +157,16 @@
   .empty-page {
     padding-top: 140px;
   }
+  .book-desc {
+    max-width: 510px;
+  }
 }
 
 /*---------------------------- Adaptive desktop ----------------------------*/
 @media screen and (min-width: 1440px) {
+  .book-desc {
+    max-width: 100%;
+  }
 }
 
 /* Styles for page numbers */
