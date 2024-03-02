@@ -226,19 +226,21 @@ left: 120px;
 
 
 .header-home{
-        font-family: "DM Sans", sans-serif;
-            font-weight: 700;
-            font-size: 14px;
-            line-height: 1.28571;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-            color: #111;
-            border-radius: 36px;
-                padding: 8px 16px;
-                width: 72px;
-                height: 34px;
-                background: #eac645;
+     font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: #111;
+    border-radius: 36px;
+        padding: 8px 16px;
+        width: 72px;
+        height: 34px;
+        background: #eac645;
+    
 }
+
 
 
 .header-shopping{
