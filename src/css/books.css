@@ -43,7 +43,6 @@
   margin-bottom: 8px;
   flex-shrink: 0;
   overflow: hidden;
-  cursor: pointer;
 }
 
 .books-wrapper {
@@ -198,5 +197,6 @@
   .books-overlay {
     visibility: visible;
     height: 70px;
+    cursor: pointer;
   }
 }
