@@ -17,58 +17,15 @@ export const renderTop = (data, booksPerRow) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-    // console.log(data);
-    return  `<li class="categories-list">
-    <a href="#" data-catname="" class="categories-nav active">All categories</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Combined Print & E-book Nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback trade fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Advice, how-to & Miscellaneous</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Children’s middle grade hardcover</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Children’s middle grade hardcover</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Combined Print & E-book Nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback trade fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Advice, how-to & Miscellaneous</a>
-  </li>`;
+  const categoriesItems = data.map(el => {
+    return `<li class="categories-list">
+      <a href="#" data-catname="${el.list_name}" class="categories-nav">${el.list_name}</a>
+    </li>`;
+  }).join('');
+
+  return `<li class="categories-list">
+  <a href="#" data-catname="" class="categories-nav active">All categories</a>
+  </li>${categoriesItems}`;
 }
 
 //Render category books

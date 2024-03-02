@@ -28,6 +28,7 @@
 .categories-nav.active {
   font-weight: 500;
   text-transform: uppercase;
+  color: var(--categor-color-hover);
 }
 
 .categories-menu::-webkit-scrollbar {
