@@ -1,7 +1,7 @@
 import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
 
 
-//Books container
+//Containers
 const booksContainer = document.querySelector('.books-container');
 const catsContainer = document.querySelector('.categories-menu');
 
@@ -14,7 +14,6 @@ export async function displayTop() {
      wrapLastWord();
 };
 
-displayTop();
 
 // ==============================================================
 //Function for display categories
@@ -24,43 +23,8 @@ export async function displayCategories() {
     catsContainer.innerHTML = renderedCats;
 };
 
-displayCategories();
 
 // ==============================================================
-catsContainer.addEventListener('click', e => {
-    e.preventDefault();
-
-    const target = e.target;
-
-    if(target.tagName === 'A') {
-        const catName = target.dataset.catname;
-
-        catsContainer.querySelector('.active').classList.remove('active');
-        target.classList.add('active');
-        
-        if(catName) {
-            displayCategory(catName);
-        } else {
-            displayTop();
-        }
-    }
-});
-
-booksContainer.addEventListener('click', e => {
-    e.preventDefault();
-
-    const target = e.target;
-
-    if(target.classList.contains('books-btn')) {
-        const catName = target.dataset.catname;
-
-        catsContainer.querySelector('.active').classList.remove('active');
-        catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
-        
-        displayCategory(catName);
-    }
-});
-
 //Function for display category books
 export async function displayCategory(catName) {
     const renderedCat = await fetchCategory(catName);
@@ -70,9 +34,6 @@ export async function displayCategory(catName) {
 }
 
 // ==============================================================
-
-
-
 //Function for wrapp last title word
 function wrapLastWord() {
     const title = document.querySelector('.books-title');
@@ -82,4 +43,45 @@ function wrapLastWord() {
     const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span>${lastWord}</span>` : lastWord);
 
     title.innerHTML = updatedContent;
+}
+
+
+// ==============================================================
+if(booksContainer) {
+    displayTop();
+    displayCategories();
+
+    catsContainer.addEventListener('click', e => {
+        e.preventDefault();
+    
+        const target = e.target;
+    
+        if(target.tagName === 'A') {
+            const catName = target.dataset.catname;
+    
+            catsContainer.querySelector('.active').classList.remove('active');
+            target.classList.add('active');
+            
+            if(catName) {
+                displayCategory(catName);
+            } else {
+                displayTop();
+            }
+        }
+    });
+    
+    booksContainer.addEventListener('click', e => {
+        e.preventDefault();
+    
+        const target = e.target;
+    
+        if(target.classList.contains('books-btn')) {
+            const catName = target.dataset.catname;
+    
+            catsContainer.querySelector('.active').classList.remove('active');
+            catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
+            
+            displayCategory(catName);
+        }
+    });
 }
