@@ -1,0 +1,33 @@
+/*---------------------------- Variables root----------------------------*/
+
+:root[data-theme='theme-light'] {
+  --main-bg-color: #fff;
+  --main-color: #111;
+  --submain-color: #b4afaf;
+
+  --header-icon-color: #111;
+  --header-bg-color: #fff;
+  --shop-bg-color: #fff;
+
+  --categor-color: rgba(17, 17, 17, 0.6);
+  --categor-color-hover: #4f2ee8;
+  --categor-scrol: #e0e0e0;
+
+  --icon-amazon: grayscale(100%);
+}
+
+:root[data-theme='theme-dark'] {
+  --main-bg-color: #202024;
+  --main-color: #fff;
+  --submain-color: #b4afaf;
+
+  --header-icon-color: #fff;
+  --header-bg-color: #111;
+  --shop-bg-color: #111;
+
+  --categor-color: rgba(255, 255, 255, 0.6);
+  --categor-color-hover: #eac645;
+  --categor-scrol: rgba(17, 17, 17, 0.6);
+
+  --icon-amazon: grayscale(100%) invert(100%);
+}
