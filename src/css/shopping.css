@@ -8,6 +8,7 @@
 .shopping-title span {
   color: #4f2ee8;
 }
+
 .shopping-list {
   display: flex;
   flex-direction: column;
@@ -54,7 +55,7 @@
   font-weight: 400;
 }
 
-.shop-buttons {
+.shop-buttons-amazon {
   position: absolute;
   width: 56px;
   bottom: 12px;
@@ -63,6 +64,7 @@
   align-items: end;
   justify-content: space-between;
 }
+
 .shop-amazon {
   flex-shrink: 0;
   width: 32px;
@@ -90,6 +92,7 @@
   text-align: center;
   color: var(--categor-color);
 }
+
 .shopping-trash {
   position: absolute;
   top: 12px;
@@ -174,7 +177,4 @@
 .tui-pagination {
   max-width: 323px;
   margin: 20px 0 40px;
-}
-
-.tui-page-btn {
 }

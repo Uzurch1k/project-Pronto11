@@ -3,7 +3,7 @@
 // import { fetchGeneral, fetchCategories, fetchCategory } from './js/fetch-api';
 // import { localStorage } from './js/local-storage';
 
-// import { header } from './js/header';
+import  './js/header';
 // import { authorization } from './js/authorization';
 
 // import { categories } from './js/categories';

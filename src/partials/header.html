@@ -1,8 +1,8 @@
 <section class="header">
   <div class="container">
-    <div class="header-body">
+    <div class="header-conteiner">
       <nav class="header-navigation">
-        <a class="header-logo" href="./index.html">
+        <a href="../index.html" class="header-logo">
           <svg width="24" height="24" class="header-logo-item">
             <use href="./img/icons.svg#icon-logo"></use>
           </svg>
@@ -47,44 +47,42 @@
           <use href="./img/icons.svg#icon-header-close"></use>
         </svg>
       </button>
+    </div>
+    <div class="header-menu">
+      <button type="submit" class="header-btn-submit-modal">
+        Sing up
+        <svg width="20" height="20" class="header-sing-svg">
+          <use href="./img/icons.svg#icon-header-vector-log-left"></use>
+        </svg>
+      </button>
 
-      <div class="header-menu">
-        <button type="submit" class="header-btn-submit-modal">
-          Sing up
-          <svg width="20" height="20" class="header-sing-svg">
-            <use href="./img/icons.svg#icon-header-vector-log-left"></use>
-          </svg>
-        </button>
-
-        <ul class="header-nav-list-modal">
-          <li class="header-nav-item-modal">
-            <a class="header-home-modal" href="./index.html">Home</a>
-          </li>
-          <li class="header-nav-item-modal">
-            <a class="header-shopping-modal" href="./shopping.html">
-              Shopping list
-              <svg width="20" height="20" class="header-shop-svg">
-                <use href="./img/icons.svg#icon-header-shopp"></use>
-              </svg>
-            </a>
-          </li>
-        </ul>
-
-        <picture>
-          <source
-            srcset="
-              ./img/header/gallery-phon-1.png 1x,
-              ./img/header/gallery-phon-2.png 2x
-            "
-            media="(min-width:320px)"
-          />
-          <img
-            src="./img/header/gallery-phon-1.png"
-            alt="book"
-            class="header-img"
-          />
-        </picture>
-      </div>
+      <ul class="header-nav-list-modal">
+        <li class="header-nav-item-modal">
+          <a class="header-home-modal" href="./index.html">Home</a>
+        </li>
+        <li class="header-nav-item-modal">
+          <a class="header-shopping-modal" href="./shopping.html">
+            Shopping list
+            <svg width="20" height="20" class="header-shop-svg-modal">
+              <use href="./img/icons.svg#icon-header-shopp"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <picture>
+        <source
+          srcset="
+            ./img/header/gallery-phon-1.png 1x,
+            ./img/header/gallery-phon-2.png 2x
+          "
+          media="(min-width:320px)"
+        />
+        <img
+          src="./img/header/gallery-phon-1.png"
+          alt="book"
+          class="header-img"
+        />
+      </picture>
     </div>
   </div>
 </section>
