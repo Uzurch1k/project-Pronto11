@@ -1,11 +1,11 @@
 //Render top books
-export const renderTop = (data) => {;
+export const renderTop = (data, booksPerRow) => {;
     const categoriesTop = data.map(el => {
         const catName = el.list_name;
-        const books = renderOneBook(el.books)
+        const books = renderOneBook(el.books.slice(0, booksPerRow))
         return `<div class="books-category-container">
         <h3 class="books-category-title">${catName}</h3>
-        <ul class="books-list top-mode">${books}</ul>
+        <ul class="books-list">${books}</ul>
         <div class="books-btn-container">
           <button data-catname="${catName}" type="button" class="books-btn">see more</button>
         </div>

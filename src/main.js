@@ -9,7 +9,7 @@
 // import { categories } from './js/categories';
 // import { support } from './js/support';
 
-import { displayTop, displayCategories, displayCategory } from './js/books';
+import * as books from './js/books';
 // import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
 // import { shopping } from './js/shopping';
