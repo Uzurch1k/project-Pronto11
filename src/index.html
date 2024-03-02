@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="theme-light">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -17,50 +17,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@1,9..40,100..1000&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
-  <body>
+  <body data-page="home">
     <div class="wrapper">
-      <!--   -->
+      <!-- ViktoriiaYakaba -->
       <load src="partials/header.html" />
-      <load src="partials/burger.html" />
 
-      <!--   -->
+      <!--  -->
       <load src="partials/authorization.html" />
 
       <main>
-        <div class="page">
-          <div class="sidebar">
-            <!--   -->
-            <load src="partials/categories.html" />
+        <div class="container">
+          <div class="page">
+            <div class="sidebar">
+              <!-- Maribelaya, DmytrivDev, DianaKiriienko -->
+              <load src="partials/categories.html" />
 
-            <!--   -->
-            <load src="partials/support.html" />
+              <!-- Svitlana923 -->
+              <load src="partials/support.html" />
+            </div>
+
+            <div class="home">
+              <!-- Maribelaya, DmytrivDev, DianaKiriienko -->
+              <load src="partials/books.html" />
+
+              <!-- AnnaHryshaieva -->
+              <load src="partials/popup.html" />
+            </div>
           </div>
 
-          <div class="home">
-            <!--   -->
-            <!--   -->
-            <load src="partials/books.html" />
-
-            <!--   -->
-            <load src="partials/popup.html" />
-          </div>
+          <!-- <button class="scroll-up">S</button> -->
         </div>
       </main>
     </div>
 
-    <script type="module" src="/js/header.js"></script>
-    <script type="module" src="/js/authorization.js"></script>
-    <script type="module" src="/js/categories.js"></script>
-    <script type="module" src="/js/support.js"></script>
-    <script type="module" src="/js/books.js"></script>
-    <script type="module" src="/js/popup.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

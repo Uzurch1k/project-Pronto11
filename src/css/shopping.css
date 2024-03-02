@@ -1,0 +1,180 @@
+.shopping-title {
+  font-size: 48px;
+  margin-bottom: 40px;
+  line-height: 1.08333;
+  letter-spacing: -0.04em;
+}
+
+.shopping-title span {
+  color: #4f2ee8;
+}
+.shopping-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.shopping-item {
+  background-color: var(--header-bg-color);
+  display: flex;
+  gap: 14px;
+  height: 170px;
+  position: relative;
+  border: 2px solid rgba(79, 46, 232, 0.4);
+  border-radius: 16px;
+  padding: 12px;
+}
+.shopping-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.shopping-subtitle {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.genre {
+  color: #b4afaf;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.book-desc {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.04em;
+  max-width: 195px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.shopping-author {
+  color: #b4afaf;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.shop-buttons {
+  position: absolute;
+  width: 56px;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.shop-amazon {
+  flex-shrink: 0;
+  width: 32px;
+  filter: var(--icon-amazon);
+}
+.shop-apple {
+  flex-shrink: 0;
+  width: 16px;
+  mix-blend-mode: luminosity;
+}
+
+.empty-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+}
+.text-shopping {
+  margin-bottom: 20px;
+  width: 244px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: var(--categor-color);
+}
+.shopping-trash {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #4f2ee8;
+}
+.trash-icon {
+  stroke: #fff;
+}
+
+.shopping-photo {
+  height: 100%;
+  width: 100px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.shopping-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .shopping-item {
+    height: 213px;
+    padding: 22px;
+  }
+  .shopping-photo {
+    width: 116px;
+  }
+  .shop-buttons {
+    width: 92px;
+    bottom: 22px;
+    right: 22px;
+    align-items: center;
+  }
+  .shop-amazon {
+    flex-shrink: 0;
+    width: 48px;
+  }
+  .shop-apple {
+    flex-shrink: 0;
+    width: 28px;
+  }
+  .shopping-trash {
+    top: 22px;
+    right: 22px;
+  }
+  .genre {
+    margin-bottom: 14px;
+  }
+  .text-shopping {
+    font-size: 18px;
+    width: 349px;
+  }
+  .empty-page {
+    padding-top: 140px;
+  }
+  .book-desc {
+    max-width: 510px;
+  }
+}
+
+/*---------------------------- Adaptive desktop ----------------------------*/
+@media screen and (min-width: 1440px) {
+  .book-desc {
+    max-width: 100%;
+  }
+}
+
+/* Styles for page numbers */
+
+.tui-pagination {
+  max-width: 323px;
+  margin: 20px 0 40px;
+}
+
+.tui-page-btn {
+}

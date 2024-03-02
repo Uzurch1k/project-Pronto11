@@ -5,19 +5,18 @@ body {
   height: 100%;
   scroll-behavior: smooth;
   font-family: 'DM Sans', sans-serif;
-  background-color: #fff;
-  color: #111;
+  background-color: var(--main-bg-color);
+  color: var(--main-color);
   overflow-y: auto;
   overflow-x: hidden;
 }
 body::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 10px;
-  background-color: #fff;
 }
 body::-webkit-scrollbar-thumb {
-  background-color: #e0e0e0;
-  border-radius: 2px;
+  background-color: var(--categor-scrol);
+  border-radius: 12px;
 }
 
 /*---------------------------- Adaptive mobile (320px) ----------------------------*/
@@ -31,6 +30,29 @@ body::-webkit-scrollbar-thumb {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+}
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.home {
+  width: 100%;
+}
+.shopping {
+  width: 100%;
+}
+
+[data-page='shopping'] .sidebar {
+  display: none;
 }
 
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/
@@ -40,6 +62,17 @@ body::-webkit-scrollbar-thumb {
     max-width: 768px;
     padding: 0 32px;
   }
+  .page {
+    gap: 98px;
+    padding-bottom: 100px;
+  }
+  .sidebar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
 }
 
 /*---------------------------- Adaptive desktop (1440px) ----------------------------*/
@@ -48,5 +81,30 @@ body::-webkit-scrollbar-thumb {
   .container {
     max-width: 1440px;
     padding: 0 24px;
+  }
+  .page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .sidebar {
+    width: 356px;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: 86px;
+  }
+  .home {
+  }
+  .shopping {
+  }
+
+  [data-page='shopping'] .sidebar {
+    display: block;
+  }
+
+  [data-page='shopping'] .categories {
+    display: none;
   }
 }
