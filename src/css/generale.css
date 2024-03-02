@@ -91,6 +91,7 @@ body::-webkit-scrollbar-thumb {
   .sidebar {
     width: 356px;
     flex-direction: column;
+    justify-content: flex-start;
     flex-shrink: 0;
     gap: 86px;
   }
