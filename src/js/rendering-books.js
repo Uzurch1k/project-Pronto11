@@ -44,24 +44,21 @@ export const renderCategory = (data, categoryName) => {
 //Render one book
 function renderOneBook(books) {
     const booksRendered = books.map(el => {
-        const id = el._id;
-        const image = el.book_image;
-        const title = el.title;
-        const authoe = el.author;
+        const {_id, book_image, title, author} = el;
         return `<li class="books-item">
         <div class="books-wrapper">
           <img
             class="books-img"
-            src="${image}"
-            alt="${image}"
+            src="${book_image}"
+            alt="${title}"
           />
-          <a href="#" data-id="${id}" class="books-overlay">
+          <a href="#" data-id="${_id}" class="books-overlay">
             <p class="books-overlay-text">QUICK VIEW</p>
           </a>
         </div>
         <div class="books-info">
           <p class="books-info-title">${title}</p>
-          <p class="books-info-author">${authoe}</p>
+          <p class="books-info-author">${author}</p>
         </div>
       </li>`;
     }).join('');
