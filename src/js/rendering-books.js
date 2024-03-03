@@ -53,7 +53,7 @@ function renderOneBook(books) {
             alt="${title}"
           />
           <a href="#" data-id="${_id}" class="books-overlay">
-            <p class="books-overlay-text">QUICK VIEW</p>
+            QUICK VIEW
           </a>
         </div>
         <div class="books-info">
