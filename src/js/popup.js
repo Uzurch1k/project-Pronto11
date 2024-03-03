@@ -1,22 +1,4 @@
-// ==============================================================
-// повертає дані однієї книги по id
-// ==============================================================
-
-import axios from 'axios';
-
-const BASEURL = 'https://books-backend.p.goit.global';
-
-export const fetchBookById = async id => {
-  const endpoint = `/books/${id}`;
-  const fetchUrl = BASEURL + endpoint;
-
-  try {
-    const response = await axios.get(fetchUrl);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+import { fetchBookById } from './fetch-api';
 
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
