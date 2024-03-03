@@ -5,15 +5,24 @@
 // ==============================================================
 
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
 import '../css/shopping.css';
 
 export const pagesContainer = document.querySelector('#pagination-wrapper');
 
+function getVisiblePagesNumber() {
+  if (matchMedia('(min-width: 768px)').matches) {
+    return 3;
+  }
+
+  return 2;
+}
+
+const visiblePageNumber = getVisiblePagesNumber();
+
 const options = {
   totalItems: 10,
   itemsPerPage: 3,
-  visiblePages: 2,
+  visiblePages: visiblePageNumber,
   centerAlign: false,
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
@@ -35,7 +44,5 @@ const options = {
 };
 
 const instance = new Pagination(pagesContainer, options);
-
-console.log(instance);
 
 // ==============================================================

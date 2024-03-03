@@ -12,7 +12,7 @@
 import { displayTop, displayCategories, displayCategory } from './js/books';
 // import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
-import * as pagesCode from './js/shopping';
+import * as shopping from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
 // import { popup } from './js/popup';
 

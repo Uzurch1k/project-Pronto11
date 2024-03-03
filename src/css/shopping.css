@@ -181,7 +181,7 @@
 .tui-pagination {
   display: flex;
   max-width: 323px;
-  margin: 20px 0 40px;
+  margin: 20px auto 40px;
   justify-content: center;
 }
 
@@ -190,7 +190,7 @@
   align-items: center;
   width: 38px;
   height: 38px;
-  border: 1px solid #000000;
+  border: 1px solid #111111;
   cursor: pointer;
   justify-content: center;
   border-radius: 50%;
@@ -203,7 +203,7 @@
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
   color: #fff;
-  background: #000000;
+  background: #111111;
 }
 
 .tui-pagination .tui-prev {
@@ -216,8 +216,8 @@
 
 .tui-first {
   margin-right: 5px;
+  background: url(../img/shopping/vectors/vector-left2.png);
   background-color: #111111;
-  background-image: url(../img/shopping/vectors/vector-left2.png);
 }
 
 .tui-prev {
@@ -238,7 +238,8 @@
 }
 
 .tui-last,
-.tui-last-child {
+.tui-last-child,
+.tui-next-is-ellip {
   margin-right: 0;
 }
 
@@ -250,11 +251,6 @@
   background-position: center;
 }
 
-.tui-is-disabled {
-  background-color: gray;
-  border: none;
-}
-
 .tui-ico-ellip {
   font-family: DM Sans;
   font-size: 20px;
@@ -262,6 +258,39 @@
   line-height: 1.1;
 }
 
-.tui-next-is-ellip {
-  margin-right: 0;
+/*---------------------------- Adaptive tablet ----------------------------*/
+@media screen and (min-width: 768px) {
+  .tui-pagination {
+    max-width: 446px;
+    margin: 40px auto 40px;
+  }
+
+  .tui-page-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tui-page-btn:not(.tui-last-child, .tui-last) {
+    margin-right: 10px;
+  }
+
+  .tui-pagination .tui-prev {
+    margin-right: 24px;
+  }
+
+  .tui-pagination .tui-next {
+    margin-left: 24px;
+  }
+
+  .tui-first {
+    margin-right: 8px;
+  }
+
+  .tui-prev {
+    margin-right: 5px;
+  }
+
+  .tui-next {
+    margin-right: 8px;
+  }
 }
