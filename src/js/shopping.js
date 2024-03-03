@@ -43,6 +43,13 @@ const options = {
   },
 };
 
-const instance = new Pagination(pagesContainer, options);
+function checkIsThereElementOnPage() {
+  if (pagesContainer === null) {
+    return;
+  }
 
+  const instance = new Pagination(pagesContainer, options);
+}
+
+checkIsThereElementOnPage();
 // ==============================================================
