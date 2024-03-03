@@ -60,12 +60,8 @@
   object-fit: cover;
 }
 
-.books-item:hover .books-overlay {
-  transform: translateY(0%);
-}
-
 .books-overlay {
-  visibility: hidden;
+  opacity: 0;
   background-color: #eac645;
   height: 100%;
   display: flex;
@@ -73,7 +69,7 @@
   justify-content: center;
   position: absolute;
   width: 100%;
-  transform: translateY(100%);
+  transform: translateY(0%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   bottom: 0;
   left: 0;
@@ -194,9 +190,14 @@
     width: 180px;
   }
 
+  .books-item:hover .books-overlay {
+    transform: translateY(0%);
+  }
+
   .books-overlay {
-    visibility: visible;
+    opacity: 100%;
     height: 70px;
     cursor: pointer;
+    transform: translateY(100%);
   }
 }
