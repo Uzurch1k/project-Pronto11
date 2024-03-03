@@ -35,13 +35,11 @@ export const toggle = toggleBtn.addEventListener('click', () => {
 //   }
 // });
 
-// export const scroll = () => {
+// scrollToTopBtn.addEventListener('click', () => {
 //   window.scrollTo({
 //     top: 0,
 //     behavior: 'smooth',
 //   });
-// };
-
-// scrollToTopBtn.addEventListener('click', scroll);
+// });
 
 // ===============================================================

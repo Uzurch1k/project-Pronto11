@@ -8,7 +8,9 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
-export async function displayTop() {
+async function displayTop() {
+    addingLoader();
+
      const windowWidth = window.innerWidth;
      const booksPerRow = booksPerRowFunc(windowWidth);
      const renderedTop = await fetchGeneral(booksPerRow);
@@ -20,7 +22,7 @@ export async function displayTop() {
 
 // ==============================================================
 //Function for display categories
-export async function displayCategories() {
+async function displayCategories() {
     const renderedCats = await fetchCategories();
 
     catsContainer.innerHTML = renderedCats;
@@ -29,7 +31,9 @@ export async function displayCategories() {
 
 // ==============================================================
 //Function for display category books
-export async function displayCategory(catName) {
+async function displayCategory(catName) {
+    addingLoader();
+
     const renderedCat = await fetchCategory(catName);
 
      booksContainer.innerHTML = renderedCat;
@@ -77,6 +81,8 @@ async function changeTopDisplay() {
         const booksPerRow = booksPerRowFunc(windowWidth);
 
         if(ctrlBreikpoint !== booksPerRow) {
+            addingLoader();
+            
             ctrlBreikpoint = booksPerRow;
             const renderedTop = await fetchGeneral(booksPerRow);
 
@@ -129,4 +135,10 @@ if(booksContainer) {
 
 
     window.addEventListener("resize", changeTopDisplay);
+}
+
+
+//Loader function
+function addingLoader() {
+    booksContainer.innerHTML = '<li class="loader-container"><span class="loader"></span></li>';
 }
