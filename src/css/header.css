@@ -212,10 +212,15 @@ body.lock {
     align-items: center;
     width: 72px;
     height: 34px;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header-home.active {
     background-color: #eac645;
     font-weight: 700;
+    color: #111;
+  }
+  .header-home:hover {
+    background-color: #eac645;
     color: #111;
   }
   .header-shopping {
@@ -232,17 +237,26 @@ body.lock {
     justify-content: center;
     align-items: center;
     gap: 4px;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header-shopping.active {
     background-color: #eac645;
     font-weight: 700;
     color: #111;
   }
-  .header-shopping.active .header-shop-svg {
-    fill: #111;
+  .header-shopping:hover {
+    background-color: #eac645;
+    color: #111;
   }
   .header-shop-svg {
     fill: var(--header-icon-color);
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .header-shopping.active .header-shop-svg {
+    fill: #111;
+  }
+  .header-shopping:hover .header-shop-svg {
+    fill: #111;
   }
 
   .header-btn-submit {
