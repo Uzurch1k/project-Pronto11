@@ -78,4 +78,4 @@ import{S as E,a as p,P as M}from"./vendor-b0d3e993.js";(function(){const t=docum
       </div>
     
     `}const C=document.querySelector(".toggle-checkbox");document.addEventListener("DOMContentLoaded",()=>{localStorage.getItem("theme")==="theme-dark"&&(g("theme-dark"),C.checked=!0)});function g(e){localStorage.setItem("theme",e),document.documentElement.setAttribute("data-theme",e)}C.addEventListener("click",()=>{localStorage.getItem("theme")==="theme-dark"?g("theme-light"):g("theme-dark")});
-//# sourceMappingURL=main-4839619d.js.map
+//# sourceMappingURL=main-e497ea68.js.map
