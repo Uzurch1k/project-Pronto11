@@ -40,14 +40,12 @@
 .books-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
-  flex-shrink: 0;
   overflow: hidden;
 }
 
 .books-wrapper {
   margin-bottom: 14px;
-  width: 335px;
+  width: 100%;
   height: 485px;
   border-radius: 8px;
   overflow: hidden;
@@ -114,6 +112,7 @@
 .books-btn-container {
   display: flex;
   justify-content: flex-end;
+  margin-top: 8px;
 }
 
 .books-btn {
