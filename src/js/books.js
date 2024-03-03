@@ -43,7 +43,7 @@ function wrapLastWord() {
     const textContent = title.textContent.split(" ");
     const lastWord = textContent.pop();
 
-    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span>${lastWord}</span>` : lastWord);
+    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span  class="books-title-color">${lastWord}</span>` : lastWord);
 
     title.innerHTML = updatedContent;
 }
