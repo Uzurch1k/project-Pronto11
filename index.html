@@ -23,9 +23,9 @@
 
     
     <script type="module" crossorigin src="/project-Pronto11/assets/vendor-93e8fa5a.js"></script>
-    <script type="module" crossorigin src="/project-Pronto11/assets/main-a98d9243.js"></script>
+    <script type="module" crossorigin src="/project-Pronto11/assets/main-fbe6db50.js"></script>
     <link rel="stylesheet" href="/project-Pronto11/assets/vendor-b51df72b.css">
-    <link rel="stylesheet" href="/project-Pronto11/assets/main-6e29b360.css">
+    <link rel="stylesheet" href="/project-Pronto11/assets/main-71bcd3d2.css">
   </head>
 
   <body data-page="home">
@@ -33,11 +33,11 @@
       <!-- ViktoriiaYakaba -->
       <section class="header">
   <div class="container">
-    <div class="header-body">
+    <div class="header-conteiner">
       <nav class="header-navigation">
-        <a class="header-logo" href="./index.html">
+        <a href="./index.html" class="header-logo">
           <svg width="24" height="24" class="header-logo-item">
-            <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-logo"></use>
+            <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-logo"></use>
           </svg>
           Bookshelf
         </a>
@@ -49,43 +49,49 @@
             <a class="header-shopping" href="./shopping.html">
               Shopping list
               <svg width="20" height="20" class="header-shop-svg">
-                <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-shopp"></use>
+                <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-shopp"></use>
               </svg>
             </a>
           </li>
         </ul>
       </nav>
 
-      <div class="toggle-container">
-        <input class="toggle-checkbox" type="checkbox" />
-        <div class="toggle-track">
-          <div class="toggle-thumb"></div>
+      <div class="header-feature">
+        <div class="toggle-container">
+          <input class="toggle-checkbox" type="checkbox" />
+          <div class="toggle-track">
+            <div class="toggle-thumb">
+              <div></div>
+            </div>
+          </div>
         </div>
+
+        <button type="submit" class="header-btn-submit">
+          Sing up
+          <svg width="20" height="20" class="header-sing-svg">
+            <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-vector-log-left"></use>
+          </svg>
+        </button>
+
+        <button type="button" class="header-btn-burgher">
+          <svg width="28" height="28" class="header-burgher-svg">
+            <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-burger"></use>
+          </svg>
+          <svg width="28" height="28" class="header-esc-svg">
+            <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-close"></use>
+          </svg>
+        </button>
       </div>
+    </div>
+  </div>
 
-      <button type="submit" class="header-btn-submit">
-        Sing up
-        <svg width="20" height="20" class="header-sing-svg">
-          <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-vector-log-left"></use>
-        </svg>
-      </button>
-
-      <button type="button" class="header-btn-burgher">
-        <svg width="28" height="28" class="header-burgher-svg">
-          <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-burger"></use>
-        </svg>
-      </button>
-      <button type="button" class="hidden header-btn-esc">
-        <svg width="28" height="28" class="header-esc-svg">
-          <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-close"></use>
-        </svg>
-      </button>
-
-      <div class="header-menu">
+  <div class="header-menu">
+    <div class="container">
+      <div class="header-menu-content">
         <button type="submit" class="header-btn-submit-modal">
           Sing up
           <svg width="20" height="20" class="header-sing-svg">
-            <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-vector-log-left"></use>
+            <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-vector-log-left"></use>
           </svg>
         </button>
 
@@ -96,26 +102,26 @@
           <li class="header-nav-item-modal">
             <a class="header-shopping-modal" href="./shopping.html">
               Shopping list
-              <svg width="20" height="20" class="header-shop-svg">
-                <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-shopp"></use>
+              <svg width="20" height="20" class="header-shop-svg-modal">
+                <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-shopp"></use>
               </svg>
             </a>
           </li>
         </ul>
-
-        <picture>
-          <source
-            srcset="/project-Pronto11/assets/gallery-phon-1-bfd3172f.png 1x, /project-Pronto11/assets/gallery-phon-2-919a9b58.png 2x"
-            media="(min-width:320px)"
-          />
-          <img
-            src="/project-Pronto11/assets/gallery-phon-1-bfd3172f.png"
-            alt="book"
-            class="header-img"
-          />
-        </picture>
       </div>
     </div>
+
+    <picture>
+      <source
+        srcset="/project-Pronto11/assets/gallery-phon-1-bfd3172f.png 1x, /project-Pronto11/assets/gallery-phon-2-919a9b58.png 2x"
+        media="(min-width:320px)"
+      />
+      <img
+        src="/project-Pronto11/assets/gallery-phon-1-bfd3172f.png"
+        alt="book"
+        class="header-img"
+      />
+    </picture>
   </div>
 </section>
 
@@ -191,7 +197,7 @@
     <div class="support-header-wrapper">
       <h3 class="support-header">Support Ukraine</h3>
       <svg class="supp-icon" width="20" height="32">
-        <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-supp-ukraine"></use>
+        <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-supp-ukraine"></use>
       </svg>
     </div>
     <div class="swiper">
@@ -305,7 +311,7 @@
     </div>
     <button type="button" class="swiper-button" coursor>
       <svg class="swiper-button-icon" width="20" height="20">
-        <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-supp-vector-down"></use>
+        <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-supp-vector-down"></use>
       </svg>
     </button>
   </div>
@@ -420,7 +426,7 @@
   <div class="popup-window">
     <button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="/project-Pronto11/assets/icons-38dc1018.svg#icon-header-close"></use>
+        <use href="/project-Pronto11/assets/icons-093b653a.svg#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
