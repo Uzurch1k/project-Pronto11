@@ -14,7 +14,7 @@ import * as books from './js/books';
 
 // import { shopping } from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
-// import { popup } from './js/popup';
+import { popup } from './js/popup';
 
 import { toggle } from './js/feature';
 
