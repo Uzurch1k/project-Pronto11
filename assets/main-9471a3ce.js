@@ -78,4 +78,4 @@ import{S as C,a as p}from"./vendor-93e8fa5a.js";(function(){const o=document.cre
       </div>
     
     `}const S=document.querySelector(".toggle-checkbox");document.addEventListener("DOMContentLoaded",()=>{localStorage.getItem("theme")==="theme-dark"&&(m("theme-dark"),S.checked=!0)});function m(e){localStorage.setItem("theme",e),document.documentElement.setAttribute("data-theme",e)}S.addEventListener("click",()=>{localStorage.getItem("theme")==="theme-dark"?m("theme-light"):m("theme-dark")});
-//# sourceMappingURL=main-70711f02.js.map
+//# sourceMappingURL=main-9471a3ce.js.map
