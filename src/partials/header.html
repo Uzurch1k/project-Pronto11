@@ -2,7 +2,7 @@
   <div class="container">
     <div class="header-conteiner">
       <nav class="header-navigation">
-        <a href="../index.html" class="header-logo">
+        <a href="./index.html" class="header-logo">
           <svg width="24" height="24" class="header-logo-item">
             <use href="./img/icons.svg#icon-logo"></use>
           </svg>
@@ -23,66 +23,72 @@
         </ul>
       </nav>
 
-      <div class="toggle-container">
-        <input class="toggle-checkbox" type="checkbox" />
-        <div class="toggle-track">
-          <div class="toggle-thumb"></div>
+      <div class="header-feature">
+        <div class="toggle-container">
+          <input class="toggle-checkbox" type="checkbox" />
+          <div class="toggle-track">
+            <div class="toggle-thumb"></div>
+          </div>
         </div>
+
+        <button type="submit" class="header-btn-submit">
+          Sing up
+          <svg width="20" height="20" class="header-sing-svg">
+            <use href="./img/icons.svg#icon-header-vector-log-left"></use>
+          </svg>
+        </button>
+
+        <button type="button" class="header-btn-burgher">
+          <svg width="28" height="28" class="header-burgher-svg">
+            <use href="./img/icons.svg#icon-header-burger"></use>
+          </svg>
+          <svg width="28" height="28" class="header-esc-svg">
+            <use href="./img/icons.svg#icon-header-close"></use>
+          </svg>
+        </button>
       </div>
-
-      <button type="submit" class="header-btn-submit">
-        Sing up
-        <svg width="20" height="20" class="header-sing-svg">
-          <use href="./img/icons.svg#icon-header-vector-log-left"></use>
-        </svg>
-      </button>
-
-      <button type="button" class="header-btn-burgher">
-        <svg width="28" height="28" class="header-burgher-svg">
-          <use href="./img/icons.svg#icon-header-burger"></use>
-        </svg>
-      </button>
-      <button type="button" class="header-btn-esc hidden">
-        <svg width="28" height="28" class="header-esc-svg">
-          <use href="./img/icons.svg#icon-header-close"></use>
-        </svg>
-      </button>
     </div>
-    <div class="header-menu">
-      <button type="submit" class="header-btn-submit-modal">
-        Sing up
-        <svg width="20" height="20" class="header-sing-svg">
-          <use href="./img/icons.svg#icon-header-vector-log-left"></use>
-        </svg>
-      </button>
+  </div>
 
-      <ul class="header-nav-list-modal">
-        <li class="header-nav-item-modal">
-          <a class="header-home-modal" href="./index.html">Home</a>
-        </li>
-        <li class="header-nav-item-modal">
-          <a class="header-shopping-modal" href="./shopping.html">
-            Shopping list
-            <svg width="20" height="20" class="header-shop-svg-modal">
-              <use href="./img/icons.svg#icon-header-shopp"></use>
-            </svg>
-          </a>
-        </li>
-      </ul>
-      <picture>
-        <source
-          srcset="
-            ./img/header/gallery-phon-1.png 1x,
-            ./img/header/gallery-phon-2.png 2x
-          "
-          media="(min-width:320px)"
-        />
-        <img
-          src="./img/header/gallery-phon-1.png"
-          alt="book"
-          class="header-img"
-        />
-      </picture>
+  <div class="header-menu">
+    <div class="container">
+      <div class="header-menu-content">
+        <button type="submit" class="header-btn-submit-modal">
+          Sing up
+          <svg width="20" height="20" class="header-sing-svg">
+            <use href="./img/icons.svg#icon-header-vector-log-left"></use>
+          </svg>
+        </button>
+
+        <ul class="header-nav-list-modal">
+          <li class="header-nav-item-modal">
+            <a class="header-home-modal" href="./index.html">Home</a>
+          </li>
+          <li class="header-nav-item-modal">
+            <a class="header-shopping-modal" href="./shopping.html">
+              Shopping list
+              <svg width="20" height="20" class="header-shop-svg-modal">
+                <use href="./img/icons.svg#icon-header-shopp"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <picture>
+      <source
+        srcset="
+          ./img/header/gallery-phon-1.png 1x,
+          ./img/header/gallery-phon-2.png 2x
+        "
+        media="(min-width:320px)"
+      />
+      <img
+        src="./img/header/gallery-phon-1.png"
+        alt="book"
+        class="header-img"
+      />
+    </picture>
   </div>
 </section>

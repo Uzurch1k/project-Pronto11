@@ -1,18 +1,34 @@
-const modalBtnOpen= document.querySelector(".header-btn-burgher")
-const modalBtnClose = document.querySelector('.header-btn-esc');
-const modal = document.querySelector('.header-menu');
+// ==============================================================
 
+const refs = {
+  body: document.querySelector('body'),
+  burger: document.querySelector('.header-btn-burgher'),
+  headerNav: document.querySelector('.header-menu'),
+  headerLink: document.querySelectorAll('.header-nav-item-modal'),
+};
 
-modalBtnOpen.addEventListener('click', function () {
-    modalBtnOpen.classList.toggle('hidden');
-    modal.classList.toggle('active');
-    modal.classList.toggle('hidden');
-    modalBtnClose.classList.toggle('active');
+// ========================= Bugrer =========================
+
+function handleHeaderLinkClick() {
+  refs.burger.classList.toggle('active');
+  refs.headerNav.classList.toggle('active');
+  refs.body.classList.toggle('lock');
+}
+
+refs.burger.addEventListener('click', handleHeaderLinkClick);
+
+refs.headerLink.forEach(headerLink => {
+  headerLink.addEventListener('click', handleHeaderLinkClick);
 });
 
-modalBtnClose.addEventListener('click', function () {
-    modalBtnOpen.classList.toggle('hidden');
-    modal.classList.toggle('active');
-    modal.classList.toggle('hidden');
-    modalBtnClose.classList.toggle('active');
+const mediaQueryList = window.matchMedia('(max-width: 768px)');
+
+mediaQueryList.addEventListener('change', event => {
+  if (!event.matches) {
+    refs.headerLink.forEach(headerLink => {
+      headerLink.removeEventListener('click', handleHeaderLinkClick);
+    });
+  }
 });
+
+// ==============================================================
