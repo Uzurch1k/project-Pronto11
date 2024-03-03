@@ -4,11 +4,12 @@ import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
 //Containers
 const booksContainer = document.querySelector('.books-container');
 const catsContainer = document.querySelector('.categories-menu');
-const windowWidth = window.innerWidth;
+
 
 // ==============================================================
 //Function for display books
 export async function displayTop() {
+     const windowWidth = window.innerWidth;
      const booksPerRow = booksPerRowFunc(windowWidth);
      const renderedTop = await fetchGeneral(booksPerRow);
 
@@ -65,7 +66,8 @@ function booksPerRowFunc(windowWith) {
 
 
 //function for change books display
-let ctrlBreikpoint = booksPerRowFunc(windowWidth);
+const windowWidthStart = window.innerWidth;
+let ctrlBreikpoint = booksPerRowFunc(windowWidthStart);
 
 async function changeTopDisplay() {
     const isAllCats = document.querySelector('.categories-nav.active').dataset.catname;
