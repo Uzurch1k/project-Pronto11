@@ -3,6 +3,7 @@
   flex-direction: column;
   border-radius: 16px;
   width: 100%;
+  min-width: 0;
   height: 460px;
   box-shadow: 0 10px 10px 0 rgba(245, 245, 247, 0.1);
   box-shadow: 0 10px 10px 0 rgba(245, 245, 247, 0.1);
@@ -10,12 +11,13 @@
     189.32% 190.93% at 59.76% -23.42%,
     rgb(79, 46, 232) 18.02733987569809%,
     rgb(255, 255, 255) 100%
-  );
-  padding: 40px 24px 0px 24px;
+);
+padding: 20px 40px 0px 40px;
 }
 
 html .swiper {
-  margin: 0;
+margin: 0;
+height: 292px;
 }
 
 .support-header {
@@ -29,15 +31,6 @@ html .swiper {
   align-items: center;
   margin-bottom: 40px;
   gap: 12px;
-}
-
-.swiper-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.swiper-slide {
 }
 
 .charity-link {
@@ -62,8 +55,9 @@ html .swiper {
   cursor: pointer;
   border-radius: 50%;
   border: none;
-  margin-left: 110px;
-  margin-top: 10px;
+  margin-left: 100px;
+  margin-top: 24px;
+  margin-bottom: 0px;
   padding: auto;
 }
 
@@ -73,6 +67,18 @@ html .swiper {
   .supp-container {
     height: 474px;
     width: 335px;
+    padding:24px 40px 0px 40px;
+  }
+  .swiper-button {
+      width: 38px;
+      height: 38px;
+      margin-left: 110px;
+    
+  }
+  
+  .swiper-button-icon {
+      width: 22px;
+      height: 22px;
   }
 }
 
@@ -82,5 +88,15 @@ html .swiper {
   .supp-container {
     height: 474px;
     width: 100%;
+    padding: 30px 40px 0px;
   }
 }
+html .swiper {
+    margin: 0;
+    
+}
+.swiper-button {
+margin-left: 120px;
+}
+
+

@@ -5,9 +5,18 @@ import 'swiper/css/bundle';
 
 const swiper = new Swiper('.swiper', {
   direction: 'vertical',
-    loop: false,
+  loop: false,
+  initialSlide:0,
   speed: 100,
   slidesPerView: 6,
+   effect: 'slide',
+  rewind: true,
+  breakpoints: {
+    480: {
+      slidesPerView: 6,
+    }
+  },
+  spaceBetween: 20,
   keyboard: {
     enabled: true,
     onlyInViewport: true,
@@ -16,9 +25,14 @@ const swiper = new Swiper('.swiper', {
     invert: true,
     },
   shortSwipes: false,
- navigation: {
-nextEl: '.swiper-button-next',
-prevEl: '.swiper-button-prev',
-},
 
 });
+const customButton = document.querySelector('.swiper-button');
+
+customButton.addEventListener('click', function () {
+  if (swiper.activeIndex < swiper.slides.length - 1) {
+    swiper.slideNext();
+  } else {
+  swiper.slideTo(0);
+  }
+  });
