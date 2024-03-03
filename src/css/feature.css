@@ -33,6 +33,9 @@
 
 .toggle-thumb {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   transform-origin: left;
   width: 18px;
@@ -40,6 +43,31 @@
   background-image: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1),
     1px 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.toggle-thumb div {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    180deg,
+    #dadada 0%,
+    #f0efef 62.92%,
+    #fff 100%
+  );
+}
+.toggle-thumb div::after,
+.toggle-thumb div::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 50%;
+  width: 13px;
+  height: 13px;
 }
 .toggle-checkbox + .toggle-track > .toggle-thumb {
   animation-name: grow-out, bounce-out;
