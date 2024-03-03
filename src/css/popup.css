@@ -1,9 +1,9 @@
 .popup-backdrop {
+  width: 100%;
+  height: 100%;
   position: fixed;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: grid;
   align-items: center;
@@ -16,17 +16,15 @@
 
 .popup-window {
   position: relative;
-  margin-top: 70px;
-  margin-bottom: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   width: 336px;
   padding-top: 40px;
   padding-left: 25px;
   padding-right: 25px;
   padding-bottom: 40px;
-  background-color: #fff;
-  border: 1px solid #111;
+  background-color: var(--main-bg-color);
+  border: 1px solid var(--main-color);
   border-radius: 20px;
 }
 
@@ -38,19 +36,18 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: #ffffff;
+  background-color: transparent;
   border: none;
-  fill: #111;
   cursor: pointer;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.popup-close-btn:hover {
-  fill: #4f2ee8;
 }
 
 .popup-close-btn-icon {
-  stroke: #111;
+  stroke: var(--main-color);
+  transition: stroke 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.popup-close-btn-icon:hover {
+  stroke: var(--categor-color-hover);
 }
 
 .popup-book {
@@ -60,6 +57,9 @@
 .popup-wrap-img {
   width: 287px;
   height: 408px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
 }
 
 .popup-book-image {
@@ -78,7 +78,7 @@
   font-size: 16px;
   line-height: 18px;
   letter-spacing: -0.04em;
-  color: #111111;
+  color: var(--main-color);
   margin-bottom: 8px;
 }
 
@@ -88,7 +88,7 @@
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.04em;
-  color: #b4afaf;
+  color: var(--submain-color);
   margin-bottom: 18px;
 }
 
@@ -97,7 +97,7 @@
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.04em;
-  color: #111111;
+  color: var(--main-color);
   margin-bottom: 14px;
 }
 
@@ -111,13 +111,13 @@
 }
 
 .popup-shopping-links-icon {
-  filter: grayscale(100%);
+  filter: var(--icon-amazon);
 }
 
 .popup-shopping-links-icon:hover,
 .popup-shopping-links-icon:focus {
-  filter: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
-  transition-duration: 250ms;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+  mix-blend-mode: luminosity;
 }
 
 .popup-book-btn-add {
@@ -127,39 +127,29 @@
 }
 
 .popup-book-btn-add-to-shopinglist {
+  width: 499px;
+  height: 64px;
   margin-top: 40px;
   border: 2px solid #4f2ee8;
   border-radius: 50px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  align-items: center;
   display: flex;
-  text-align: center;
   justify-content: center;
+  align-items: center;
   font-weight: 700;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: #111111;
+  color: var(--main-color);
   cursor: pointer;
-  background-color: white;
+  background-color: transparent;
 }
 
 .popup-book-btn-add-to-shopinglist:hover {
-  color: #fff;
-  background-color: #4f2ee8;
+  color: var(--main-bg-color);
+  background-color: var(--categor-color-hover);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.popup-book-btn-add-to-shopinglist.disabled:hover {
-  background-color: gray;
-  opacity: 0.5;
-  cursor: not-allowed;
-  color: #111;
 }
 
 .under-btn-text {
@@ -173,6 +163,8 @@
   text-align: center;
   letter-spacing: -0.04em;
 }
+
+/* ------------------------------------------------------------------------------- */
 
 .is-active {
   visibility: visible;
@@ -209,6 +201,7 @@
   .popup-wrap-img {
     width: 192px;
     height: 281px;
+    margin-bottom: 0;
   }
 
   .popup-book-title {

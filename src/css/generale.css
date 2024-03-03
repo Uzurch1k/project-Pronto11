@@ -10,14 +10,6 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
-body::-webkit-scrollbar {
-  -webkit-appearance: none;
-  width: 10px;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--categor-scrol);
-  border-radius: 12px;
-}
 
 /*---------------------------- Adaptive mobile (320px) ----------------------------*/
 
@@ -91,6 +83,7 @@ body::-webkit-scrollbar-thumb {
   .sidebar {
     width: 356px;
     flex-direction: column;
+    justify-content: flex-start;
     flex-shrink: 0;
     gap: 86px;
   }

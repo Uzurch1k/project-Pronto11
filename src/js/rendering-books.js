@@ -1,11 +1,11 @@
 //Render top books
-export const renderTop = (data) => {;
+export const renderTop = (data, booksPerRow) => {;
     const categoriesTop = data.map(el => {
         const catName = el.list_name;
-        const books = renderOneBook(el.books)
+        const books = renderOneBook(el.books.slice(0, booksPerRow))
         return `<div class="books-category-container">
         <h3 class="books-category-title">${catName}</h3>
-        <ul class="books-list top-mode">${books}</ul>
+        <ul class="books-list">${books}</ul>
         <div class="books-btn-container">
           <button data-catname="${catName}" type="button" class="books-btn">see more</button>
         </div>
@@ -17,58 +17,15 @@ export const renderTop = (data) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-    // console.log(data);
-    return  `<li class="categories-list">
-    <a href="#" data-catname="" class="categories-nav active">All categories</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Combined Print & E-book Nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback trade fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Advice, how-to & Miscellaneous</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Children’s middle grade hardcover</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Children’s middle grade hardcover</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Print and E-book Fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Combined Print & E-book Nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Hardcover nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback trade fiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Paperback nonfiction</a>
-  </li>
-  <li class="categories-list">
-    <a href="#" data-catname="Advice How-To and Miscellaneous" class="categories-nav">Advice, how-to & Miscellaneous</a>
-  </li>`;
+  const categoriesItems = data.map(el => {
+    return `<li class="categories-list">
+      <a href="#" data-catname="${el.list_name}" class="categories-nav">${el.list_name}</a>
+    </li>`;
+  }).join('');
+
+  return `<li class="categories-list">
+  <a href="#" data-catname="" class="categories-nav active">All categories</a>
+  </li>${categoriesItems}`;
 }
 
 //Render category books
@@ -87,24 +44,21 @@ export const renderCategory = (data, categoryName) => {
 //Render one book
 function renderOneBook(books) {
     const booksRendered = books.map(el => {
-        const id = el._id;
-        const image = el.book_image;
-        const title = el.title;
-        const authoe = el.author;
+        const {_id, book_image, title, author} = el;
         return `<li class="books-item">
         <div class="books-wrapper">
           <img
             class="books-img"
-            src="${image}"
-            alt="${image}"
+            src="${book_image}"
+            alt="${title}"
           />
-          <a href="#" data-id="${id}" class="books-overlay">
-            <p class="books-overlay-text">QUICK VIEW</p>
+          <a href="#" data-id="${_id}" class="books-overlay">
+            QUICK VIEW
           </a>
         </div>
         <div class="books-info">
           <p class="books-info-title">${title}</p>
-          <p class="books-info-author">${authoe}</p>
+          <p class="books-info-author">${author}</p>
         </div>
       </li>`;
     }).join('');

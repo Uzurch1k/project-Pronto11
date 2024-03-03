@@ -5,10 +5,13 @@ import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
 const booksContainer = document.querySelector('.books-container');
 const catsContainer = document.querySelector('.categories-menu');
 
+
 // ==============================================================
 //Function for display books
 export async function displayTop() {
-     const renderedTop = await fetchGeneral();
+     const windowWidth = window.innerWidth;
+     const booksPerRow = booksPerRowFunc(windowWidth);
+     const renderedTop = await fetchGeneral(booksPerRow);
 
      booksContainer.innerHTML = renderedTop;
      wrapLastWord();
@@ -40,10 +43,49 @@ function wrapLastWord() {
     const textContent = title.textContent.split(" ");
     const lastWord = textContent.pop();
 
-    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span>${lastWord}</span>` : lastWord);
+    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span  class="books-title-color">${lastWord}</span>` : lastWord);
 
     title.innerHTML = updatedContent;
 }
+
+
+//Fontiono for detectiong books per row
+function booksPerRowFunc(windowWith) {
+    let booksCount = 3;
+
+    if(windowWith >= 1440) {
+        booksCount = 5;
+    } 
+    
+    if(windowWith < 768) {
+        booksCount = 1;
+    }
+
+    return booksCount;
+}
+
+
+//function for change books display
+const windowWidthStart = window.innerWidth;
+let ctrlBreikpoint = booksPerRowFunc(windowWidthStart);
+
+async function changeTopDisplay() {
+    const isAllCats = document.querySelector('.categories-nav.active').dataset.catname;
+
+    if(!isAllCats) {
+        const windowWidth = window.innerWidth;
+        const booksPerRow = booksPerRowFunc(windowWidth);
+
+        if(ctrlBreikpoint !== booksPerRow) {
+            ctrlBreikpoint = booksPerRow;
+            const renderedTop = await fetchGeneral(booksPerRow);
+
+            booksContainer.innerHTML = renderedTop;
+            wrapLastWord();
+        }
+    }
+}
+
 
 
 // ==============================================================
@@ -84,4 +126,7 @@ if(booksContainer) {
             displayCategory(catName);
         }
     });
+
+
+    window.addEventListener("resize", changeTopDisplay);
 }
