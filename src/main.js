@@ -12,7 +12,7 @@ import * as header from './js/header';
 import * as books from './js/books';
 // import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
-// import { shopping } from './js/shopping';
+import * as shopping from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
 import { popup } from './js/popup';
 
