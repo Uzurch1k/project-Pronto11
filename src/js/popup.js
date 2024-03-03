@@ -158,7 +158,7 @@ function template(obj) {
 }
 
 // ==============================================================
-// дописати логіку кнопки ADD TO SHOPPING LIST
+// логіка перевірки LocalStorage та відпрацювання кнопки ADD TO SHOPPING LIST
 // ==============================================================
 
 function checkLocalStorage() {
@@ -203,7 +203,7 @@ function clickOnAddToShopingListBtn() {
       addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
       addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
     } else {
-      // Тут викликаэмо функцію видалення
+      // Тут треба викликати функцію видалення з LocalStorage
       document.querySelector('.under-btn-text').remove();
       addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
     }
