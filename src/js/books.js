@@ -10,9 +10,9 @@ const catsContainer = document.querySelector('.categories-menu');
 // ==============================================================
 //Function for display books
 const topRenderedCode = {
-    'perRow5': JSON.parse(localStorage.getItem('renderedtops5')) || '',
-    'perRow3': JSON.parse(localStorage.getItem('renderedtops3')) || '',
-    'perRow1': JSON.parse(localStorage.getItem('renderedtops1')) || '',
+    'perRow5': JSON.parse(sessionStorage.getItem('renderedtops5')) || '',
+    'perRow3': JSON.parse(sessionStorage.getItem('renderedtops3')) || '',
+    'perRow1': JSON.parse(sessionStorage.getItem('renderedtops1')) || '',
 };
 
 async function displayTop() {
@@ -20,13 +20,13 @@ async function displayTop() {
     const windowWidth = window.innerWidth;
     const booksPerRowForDisplay = booksPerRowFunc(windowWidth);
 
-    let topRenderedCodeGeneral = topRenderedCode['perRow'+booksPerRowForDisplay];
+    const topRenderedCodeGeneral = topRenderedCode['perRow'+booksPerRowForDisplay];
 
     if(!topRenderedCodeGeneral) {
         const renderedTop = await fetchGeneral(booksPerRowForDisplay);
    
         booksContainer.innerHTML = renderedTop;
-        localStorage.setItem('renderedtops'+booksPerRowForDisplay, JSON.stringify(renderedTop));
+        sessionStorage.setItem('renderedtops'+booksPerRowForDisplay, JSON.stringify(renderedTop));
         topRenderedCode['perRow'+booksPerRowForDisplay] = renderedTop;
     } else {
         booksContainer.innerHTML = topRenderedCodeGeneral;
@@ -130,7 +130,7 @@ if(booksContainer) {
             
             scrollToElement(booksContainer, {
                 offset: -24,
-                duration: 200
+                duration: 500
             });
 
             if(catName) {
