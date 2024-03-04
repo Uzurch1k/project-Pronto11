@@ -4,16 +4,25 @@ import { renderTop, renderCategories, renderCategory } from './rendering-books';
 const BASEURL = 'https://books-backend.p.goit.global';
 
 //Fatch for top books
+let savedFetch = JSON.parse(sessionStorage.getItem('savedfetch')) || '';
 export const fetchGeneral = async booksPerRow => {
-  const endpoint = '/books/top-books/';
-  const fetchUrl = BASEURL + endpoint;
 
-  try {
-    const response = await axios.get(fetchUrl);
-    return renderTop(response.data, booksPerRow);
-  } catch (error) {
-    console.log(error);
+  if(!savedFetch) {
+    const endpoint = '/books/top-books/';
+    const fetchUrl = BASEURL + endpoint;
+  
+    try {
+      const response = await axios.get(fetchUrl);
+      sessionStorage.setItem('savedfetch', JSON.stringify(response.data));
+      savedFetch = response.data;
+      return renderTop(response.data, booksPerRow);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    return renderTop(savedFetch, booksPerRow);
   }
+  
 };
 
 //Fatch for categories
