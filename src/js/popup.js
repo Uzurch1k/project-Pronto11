@@ -8,10 +8,6 @@ import {
 // функція спрацьовує при кліку на QUICK VIEW
 // ==============================================================
 
-setTimeout(() => {
-  popup();
-}, 3000);
-
 export async function popup() {
   const booksList = document.querySelector('.books-container');
 
