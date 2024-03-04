@@ -43,7 +43,7 @@ async function displayCategory(catName) {
 
 // ==============================================================
 //Function for wrapp last title word
-function wrapLastWord() {
+async function wrapLastWord() {
     const title = document.querySelector('.books-title');
     const textContent = title.textContent.split(" ");
     const lastWord = textContent.pop();
