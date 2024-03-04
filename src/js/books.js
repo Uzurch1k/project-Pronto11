@@ -114,13 +114,13 @@ if(booksContainer) {
             scrollToElement(booksContainer, {
                 offset: -24,
                 duration: 200
-            }).on('end', () => {
-                if(catName) {
-                    displayCategory(catName);
-                } else {
-                    displayTop();
-                }
             });
+
+            if(catName) {
+                displayCategory(catName);
+            } else {
+                displayTop();
+            }
         }
     });
     
