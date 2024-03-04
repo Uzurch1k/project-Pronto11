@@ -136,42 +136,71 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  right: 40px;
-  bottom: 50px;
-  width: 70px;
-  height: 70px;
+  right: 30px;
+  bottom: 30px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  background-color: #4129ad;
+  background-color: #4f2ee8;
   opacity: 0;
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
   animation: pulse 4s infinite;
 }
 .scroll-up:hover {
-  background-color: #876cff;
+  background-color: #b0a3eb;
 }
 .scroll-up.show {
   opacity: 1;
 }
 .scroll-up-icon {
-  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  width: 25px;
-  height: 25px;
-  fill: #876cff;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 20px;
+  height: 20px;
+  fill: #b0a3eb;
 }
 .scroll-up:hover .scroll-up-icon {
-  fill: #4129ad;
+  fill: #4f2ee8;
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+    box-shadow: var(--scroll-up);
   }
   30% {
-    box-shadow: 0 0 0 13px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
   }
   100% {
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
-/*--------------------------------------------------------*/
+/*---------------------------- Adaptive tablet (768px) ----------------------------*/
+
+@media screen and (min-width: 768px) {
+  .scroll-up {
+    right: 45px;
+    bottom: 45px;
+    width: 65px;
+    height: 65px;
+  }
+  .scroll-up-icon {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+/*---------------------------- Adaptive desktop (1440px) ----------------------------*/
+
+@media screen and (min-width: 1440px) {
+  .scroll-up {
+    right: 50px;
+    bottom: 50px;
+    width: 70px;
+    height: 70px;
+  }
+  .scroll-up-icon {
+    width: 23px;
+    height: 23px;
+  }
+}

@@ -25,21 +25,21 @@ export const toggle = toggleBtn.addEventListener('click', () => {
 
 // ===============================================================
 
-// const scrollToTopBtn = document.querySelector('.scroll-up');
+const scrollToTopBtn = document.querySelector('.scroll-up');
 
-// window.addEventListener('scroll', () => {
-//   if (window.scrollY > 120) {
-//     scrollToTopBtn.classList.add('show');
-//   } else {
-//     scrollToTopBtn.classList.remove('show');
-//   }
-// });
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 120) {
+    scrollToTopBtn.classList.add('show');
+  } else {
+    scrollToTopBtn.classList.remove('show');
+  }
+});
 
-// scrollToTopBtn.addEventListener('click', () => {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: 'smooth',
-//   });
-// });
+scrollToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
 
 // ===============================================================
