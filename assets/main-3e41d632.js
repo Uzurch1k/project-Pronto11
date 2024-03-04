@@ -90,4 +90,4 @@ import{S as N,a as g,s as E,P as H}from"./vendor-7a68f705.js";(function(){const 
         delete, press the button "Remove from the shopping list".
       </p>
     `}
-//# sourceMappingURL=main-8921df54.js.map
+//# sourceMappingURL=main-3e41d632.js.map
