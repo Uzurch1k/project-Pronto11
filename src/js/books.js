@@ -9,15 +9,22 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
+let topRenderedCode = JSON.parse(localStorage.getItem('renderedtops')) || [];
 async function displayTop() {
     addingLoader();
 
-     const windowWidth = window.innerWidth;
-     const booksPerRow = booksPerRowFunc(windowWidth);
-     const renderedTop = await fetchGeneral(booksPerRow);
+    if(!topRenderedCode) {
+        const windowWidth = window.innerWidth;
+        const booksPerRow = booksPerRowFunc(windowWidth);
+        const renderedTop = await fetchGeneral(booksPerRow);
+   
+        booksContainer.innerHTML = renderedTop;
+        localStorage.setItem('renderedtops', JSON.stringify(renderedTop));
+    } else {
+        booksContainer.innerHTML = topRenderedCode;
+    }
 
-     booksContainer.innerHTML = renderedTop;
-     wrapLastWord();
+    wrapLastWord();
 };
 
 
