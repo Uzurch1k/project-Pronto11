@@ -1,0 +1,93 @@
+import{S as A,a as g,s as E,P as D}from"./vendor-7a68f705.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))s(n);new MutationObserver(n=>{for(const a of n)if(a.type==="childList")for(const c of a.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&s(c)}).observe(document,{childList:!0,subtree:!0});function o(n){const a={};return n.integrity&&(a.integrity=n.integrity),n.referrerPolicy&&(a.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?a.credentials="include":n.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(n){if(n.ep)return;n.ep=!0;const a=o(n);fetch(n.href,a)}})();const q=document.querySelector(".toggle-checkbox");document.addEventListener("DOMContentLoaded",()=>{localStorage.getItem("theme")==="theme-dark"&&(f("theme-dark"),q.checked=!0)});function f(e){localStorage.setItem("theme",e),document.documentElement.setAttribute("data-theme",e)}q.addEventListener("click",()=>{localStorage.getItem("theme")==="theme-dark"?f("theme-light"):f("theme-dark")});const k=document.querySelector(".scroll-up");window.addEventListener("scroll",()=>{window.scrollY>120?k.classList.add("show"):k.classList.remove("show")});k.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});const i={body:document.querySelector("body"),burger:document.querySelector(".header-btn-burgher"),headerNav:document.querySelector(".header-menu"),headerLink:document.querySelectorAll(".header-nav-item-modal"),logo:document.querySelector(".header-logo"),home:document.querySelector(".header-home"),shopping:document.querySelector(".header-shopping"),homeMobal:document.querySelector(".header-home-modal"),shoppingMobal:document.querySelector(".header-shopping-modal")};function x(){i.burger.classList.toggle("active"),i.headerNav.classList.toggle("active"),i.body.classList.toggle("lock")}i.burger.addEventListener("click",x);function y(){localStorage.setItem("isActive","home")}i.logo.addEventListener("click",y);i.home.addEventListener("click",y);i.homeMobal.addEventListener("click",y);function B(){localStorage.setItem("isActive","shopping")}i.shopping.addEventListener("click",B);i.shoppingMobal.addEventListener("click",B);window.addEventListener("DOMContentLoaded",()=>{const e=localStorage.getItem("isActive");i.home.classList.add("active"),i.homeMobal.classList.add("active"),e==="home"?(i.home.classList.add("active"),i.shopping.classList.remove("active"),i.homeMobal.classList.add("active"),i.shoppingMobal.classList.remove("active")):e==="shopping"&&(i.home.classList.remove("active"),i.shopping.classList.add("active"),i.homeMobal.classList.remove("active"),i.shoppingMobal.classList.add("active"))});const d=new A(".swiper",{direction:"vertical",loop:!1,initialSlide:0,speed:500,slidesPerView:6,effect:"slide",rewind:!0,breakpoints:{292:{slidesPerView:6}},spaceBetween:20,keyboard:{enabled:!0,onlyInViewport:!0}});d.allowTouchMove=!1;const h=document.querySelector(".swiper-button");h.addEventListener("click",function(){d.activeIndex===2?h.classList.add("rotate"):h.classList.remove("rotate"),d.activeIndex<d.slides.length-1?d.slideNext():d.slideTo(0)});const I=(e,t)=>`<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>${e.map(s=>{const n=s.list_name,a=P(s.books.slice(0,t));return`<div class="books-category-container">
+        <h3 class="books-category-title">${n}</h3>
+        <ul class="books-list">${a}</ul>
+        <div class="books-btn-container">
+          <button data-catname="${n}" type="button" class="books-btn">see more</button>
+        </div>
+      </div>`}).join("")}</div>`,_=e=>`<li class="categories-list">
+  <a href="#" data-catname="" class="categories-nav active">All categories</a>
+  </li>${e.sort((o,s)=>o.list_name<s.list_name?-1:o.list_name>s.list_name?1:0).map(o=>`<li class="categories-list">
+      <a href="#" data-catname="${o.list_name}" class="categories-nav">${o.list_name}</a>
+    </li>`).join("")}`,R=(e,t)=>{const o=P(e);return`<div class="books-container">
+    <h2 class="books-title">${t}</h2>
+    <div class="books-category-container">
+      <ul class="books-list">${o}</ul>
+    </div>
+  </div>`};function P(e){return e.map(o=>{const{_id:s,book_image:n,title:a,author:c}=o;return`<li class="books-item">
+        <div class="books-wrapper">
+          <img
+            class="books-img"
+            src="${n}"
+            alt="${a}"
+          />
+          <a href="#" data-id="${s}" class="books-overlay">
+            QUICK VIEW
+          </a>
+        </div>
+        <div class="books-info">
+          <p class="books-info-title">${a}</p>
+          <p class="books-info-author">${c}</p>
+        </div>
+      </li>`}).join("")}const m="https://books-backend.p.goit.global";let b=JSON.parse(sessionStorage.getItem("savedfetch"))||"";const F=async e=>{if(b)return I(b,e);{const o=m+"/books/top-books/";try{const s=await g.get(o);return sessionStorage.setItem("savedfetch",JSON.stringify(s.data)),b=s.data,I(s.data,e)}catch(s){console.log(s)}}},J=async()=>{const t=m+"/books/category-list/";try{const o=await g.get(t);return _(o.data)}catch(o){console.log(o)}},j=async e=>{const o=m+"/books/category/",s={category:e};try{const n=await g.get(o,{params:s});return R(n.data,e)}catch(n){console.log(n)}},$=async e=>{const t=`/books/${e}`,o=m+t;try{return(await g.get(o)).data}catch(s){console.log(s)}},V=async e=>{try{const t=await $(e);let o=JSON.parse(localStorage.getItem("shoppinglist"))||[];o.push(t),localStorage.setItem("shoppinglist",JSON.stringify(o))}catch(t){console.error(t)}},W=async e=>{const o=(JSON.parse(localStorage.getItem("shoppinglist"))||[]).filter(s=>s._id!==e);localStorage.setItem("shoppinglist",JSON.stringify(o))};setTimeout(()=>{N()},3e3);async function N(){const e=document.querySelector(".books-container");e&&e.addEventListener("click",t);async function t(o){const s=document.querySelector(".popup-window");if(s.innerHTML="",o.target.classList.contains("books-overlay")){const n=o.target.dataset.id,a=await $(n),c=G(a);s.insertAdjacentHTML("beforeend",c),U()}}}async function U(){const e=document.querySelector(".popup-backdrop"),t=document.querySelector(".popup-close-btn");s(),z(),K(),e.addEventListener("click",a),document.addEventListener("keydown",c),t.addEventListener("click",n),document.addEventListener("keydown",o);function o(r){r.keyCode===32&&r.preventDefault()}function s(){e.classList.add("is-active")}function n(){p(),t.removeEventListener("click",n),document.removeEventListener("keydown",o)}function a(r){r.target===r.currentTarget&&(p(),e.removeEventListener("click",a),document.removeEventListener("keydown",o))}function c(r){r.keyCode===27&&(p(),document.removeEventListener("keydown",c),document.removeEventListener("keydown",o))}function p(){e.classList.remove("is-active")}}function G(e){const{_id:t,author:o,title:s,book_image:n,buy_links:a,description:c=""}=e,[p,r]=a;return`<button class="popup-close-btn">
+      <svg class="popup-close-btn-icon" width="28" height="28">
+        <use href="./img/icons.svg#icon-header-close"></use>
+      </svg>
+    </button>
+    <div class="popup-book">
+      <div class="popup-wrap-img">
+        <img class="popup-book-image" src="${n}" alt="обкладинка" />
+      </div>
+      <div class="popup-book-content">
+        <h2 class="popup-book-title">${s}</h2>
+        <h3 class="popup-book-author">${o}</h3>
+        <p class="popup-book-review">${c}</p>
+        <ul class="popup-shopping-links">
+          <li>
+            <a
+              href="${p.url}"
+              target="blank"
+              rel="nofollow noopener noreferrer"
+              aria-label="Link to shop"
+              class="amazon popup-shopping-links-icon"
+            >
+              <img
+                src="./img/shopping/amazon.png"
+                class="popup-shopping-links-icon"
+                alt="Logo of shop"
+                width="62"
+              />
+            </a>
+          </li>
+          <li>
+            <a
+              href="${r.url}"
+              target="blank"
+              rel="nofollow noopener noreferrer"
+              aria-label="Link to shop"
+              class="book popup-shopping-links-icon"
+            >
+              <img
+                src="./img/shopping/book-apple.png"
+                alt="Logo of shop"
+                width="33"
+              />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="popup-book-btn-add">
+      <button
+        type="button"
+        class="popup-book-btn-add-to-shopinglist"
+        data-id="${t}"
+        id="add"
+        aria-label="Add card to shopping list"
+      ></button>
+    </div>`}function z(){const e=document.querySelector(".popup-book-btn-add-to-shopinglist"),t=e.dataset.id;(JSON.parse(localStorage.getItem("shoppinglist"))||[]).map(n=>n._id).includes(t)?(e.textContent="REMOVE FROM THE SHOPPING LIST",e.insertAdjacentHTML("afterend",H())):e.textContent="ADD TO SHOPPING LIST"}function K(){const e=document.querySelector(".popup-book-btn-add-to-shopinglist"),t=e.dataset.id;e.addEventListener("click",o);function o(){(JSON.parse(localStorage.getItem("shoppinglist"))||[]).map(a=>a._id).includes(t)?(W(t),document.querySelector(".under-btn-text").remove(),e.textContent="ADD TO SHOPPING LIST"):(V(t),e.textContent="REMOVE FROM THE SHOPPING LIST",e.insertAdjacentHTML("afterend",H()))}}function H(){return`
+      <p class="under-btn-text">
+        Congratulations! You have added the book to the shopping list. To
+        delete, press the button "Remove from the shopping list".
+      </p>
+    `}const l=document.querySelector(".books-container"),u=document.querySelector(".categories-menu");let T;async function v(){w();const e=window.innerWidth,t=S(e),o=await F(t);l.innerHTML=o,T||(N(),T=!0),L()}async function Y(){const e=await J();u.innerHTML=e}async function C(e){w();const t=await j(e);l.innerHTML=t,L()}async function L(){const e=document.querySelector(".books-title"),t=e.textContent.split(" "),o=t.pop(),s=t.join(" ")+(t.length>0?` <span  class="books-title-color">${o}</span>`:o);e.innerHTML=s}function S(e){let t=5;return e>=1440&&(t=5),e>=768&&e<1440&&(t=3),e<768&&(t=1),t}const Q=window.innerWidth;let M=S(Q);async function X(){if(!document.querySelector(".categories-nav.active").dataset.catname){const t=window.innerWidth,o=S(t);M!==o&&(M=o,w(),await v(),L())}}l&&(v(),Y(),u.addEventListener("click",e=>{e.preventDefault();const t=e.target;if(t.tagName==="A"){const o=t.dataset.catname;u.querySelector(".active").classList.remove("active"),t.classList.add("active"),E(l,{offset:-24,duration:500}),o?C(o):v()}}),l.addEventListener("click",e=>{e.preventDefault();const t=e.target;if(t.classList.contains("books-btn")){const o=t.dataset.catname;u.querySelector(".active").classList.remove("active"),u.querySelector('[data-catname="'+o+'"]').classList.add("active"),E(l,{offset:-24,duration:700}).on("end",()=>{C(o)})}}),window.addEventListener("resize",X));function w(){l.innerHTML='<li class="loader-container"><span class="loader"></span></li>'}const O=document.querySelector("#pagination-wrapper");function Z(){return matchMedia("(min-width: 768px)").matches?3:2}const ee=Z(),te={totalItems:10,itemsPerPage:3,visiblePages:ee,centerAlign:!1,template:{page:'<a href="#" class="tui-page-btn"><span class="number-text">{{page}}</span></a>',currentPage:'<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',moveButton:'<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}"><span class="tui-ico-{{type}}"></span></a>',disabledMoveButton:'<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}"><span class="tui-ico-{{type}}"></span></span>',moreButton:'<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}"><span class="tui-ico-ellip">...</span></a>'}};function oe(){O!==null&&new D(O,te)}oe();
+//# sourceMappingURL=main-112b1954.js.map
