@@ -215,15 +215,7 @@
   line-height: 1.2;
   margin-right: 8px;
   color: var(--header-icon-color);
-  /* transition: transform 250ms cubic-bezier(0.075, 0.82, 0.165, 1); */
-}
-
-/* .tui-page-btn:hover {
-  transform: translateY(-2px);
-} */
-
-.tui-page-btn:not(.tui-first, .tui-prev, .tui-next, .tui-last) {
-  border-color: var(--header-icon-color);
+  transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .tui-pagination .tui-is-selected,
@@ -232,12 +224,9 @@
   background: var(--header-icon-color);
 }
 
-.tui-pagination .tui-prev {
-  margin-right: 14px;
-}
-
+.tui-pagination .tui-prev,
 .tui-pagination .tui-next {
-  margin-left: 14px;
+  margin-right: 14px;
 }
 
 .tui-first {
@@ -275,7 +264,15 @@
 
 .tui-page-btn:hover .number-text,
 .tui-page-btn:hover .tui-ico-ellip {
-  color: #eac645;
+  color: var(--header-bg-color);
+}
+
+.tui-page-btn:not(.tui-first, .tui-prev, .tui-next, .tui-last) {
+  border-color: var(--header-icon-color);
+}
+
+.tui-page-btn:hover:not(.tui-first, .tui-prev, .tui-next, .tui-last) {
+  background-color: var(--header-icon-color);
 }
 
 .tui-last,
@@ -300,7 +297,7 @@
   line-height: 1.1;
 }
 
-/*---------------------------- Adaptive tablet ----------------------------*/
+/*---------------------------- Adaptive tablet and Desktop----------------------------*/
 @media screen and (min-width: 768px) {
   .tui-pagination {
     max-width: 446px;
