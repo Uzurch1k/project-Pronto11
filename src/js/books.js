@@ -1,4 +1,5 @@
 import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
+import scrollToElement  from 'scroll-to-element';
 
 
 //Containers
@@ -129,7 +130,12 @@ if(booksContainer) {
             catsContainer.querySelector('.active').classList.remove('active');
             catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
             
-            displayCategory(catName);
+            scrollToElement(booksContainer, {
+                offset: -24,
+                duration: 1000
+            }).on('end', () => {
+                displayCategory(catName);
+            });
         }
     });
 
