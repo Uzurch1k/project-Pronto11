@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.7",
+    "izitoast": "^1.4.0",
     "scroll-to-element": "^2.0.3",
     "swiper": "^11.0.7",
     "tui-pagination": "^3.4.1",
