@@ -19,14 +19,8 @@ const swiper = new Swiper('.swiper', {
     enabled: true,
     onlyInViewport: true,
   },
-  mousewheel: {
-    enabled: false,
-  },
-  shortSwipes: false,
-  preventClicks: true,
-  noSwiping: true,
-  disableMouseEvents: true,
 });
+swiper.allowTouchMove = false;
 
 const customButton = document.querySelector('.swiper-button');
 
