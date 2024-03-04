@@ -14,11 +14,9 @@ export const saveBookToLocalStorage = async (bookId) => {
     }
 };
 
-export const removeBookFromLocalStorage = async (bookId) => {
-    try {    
-        const shoppinglist = JSON.parse(localStorage.getItem('shoppinglist')) || [];
-        localStorage.setItem('shoppinglist', JSON.stringify(shoppinglist.filter(item => item._id !== bookId)));
-    } catch (error) {
-        console.error(error);
-    }        
-}
+
+export const removeBookFromLocalStorage = async (bookId) => {  
+    const shoppinglist = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+    const filteredList = shoppinglist.filter(item => item._id !== bookId);
+    localStorage.setItem('shoppinglist', JSON.stringify(filteredList));
+};  
