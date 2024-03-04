@@ -7,13 +7,13 @@
 
 @import url('./header.css');
 @import url('./authorization.css');
-@import url('./burger.css');
 
 @import url('./categories.css');
 @import url('./support.css');
 
 @import url('./books.css');
 @import url('./shopping.css');
+@import url('./pagination.css');
 @import url('./popup.css');
 
 /* ----------------------------------- */

@@ -17,7 +17,6 @@ export const renderTop = (data, booksPerRow) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-  console.log(data)
   const categoriesItems = data.sort((a, b) => {
     if (a.list_name < b.list_name) {
       return -1;

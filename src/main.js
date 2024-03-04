@@ -1,5 +1,7 @@
 // ==============================================================
 
+import { toggle } from './js/feature';
+
 // import { fetchGeneral, fetchCategories, fetchCategory } from './js/fetch-api';
 // import { localStorage } from './js/local-storage';
 
@@ -15,7 +17,5 @@ import * as books from './js/books';
 import * as shopping from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
 import { popup } from './js/popup';
-
-import { toggle } from './js/feature';
 
 // ==============================================================

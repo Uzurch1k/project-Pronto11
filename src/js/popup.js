@@ -98,10 +98,9 @@ function template(obj) {
   const { _id, author, title, book_image, buy_links, description = '' } = obj;
   const [amazon, appleBook] = buy_links;
 
-  return `
-<button class="popup-close-btn">
+  return `<button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="../img/icons.svg#icon-header-close"></use>
+        <use href="./img/icons.svg#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
@@ -122,7 +121,7 @@ function template(obj) {
               class="amazon popup-shopping-links-icon"
             >
               <img
-                src="../img/shopping/amazon.png"
+                src="./img/shopping/amazon.png"
                 class="popup-shopping-links-icon"
                 alt="Logo of shop"
                 width="62"
@@ -138,7 +137,7 @@ function template(obj) {
               class="book popup-shopping-links-icon"
             >
               <img
-                src="../img/shopping/book-apple.png"
+                src="./img/shopping/book-apple.png"
                 alt="Logo of shop"
                 width="33"
               />
@@ -155,9 +154,7 @@ function template(obj) {
         id="add"
         aria-label="Add card to shopping list"
       ></button>
-    </div>
-
-    `;
+    </div>`;
 }
 
 // ==============================================================
