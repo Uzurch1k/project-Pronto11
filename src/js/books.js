@@ -9,15 +9,30 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
+const topRenderedCode = {
+    'perRow5': JSON.parse(localStorage.getItem('renderedtops5')) || '',
+    'perRow3': JSON.parse(localStorage.getItem('renderedtops3')) || '',
+    'perRow1': JSON.parse(localStorage.getItem('renderedtops1')) || '',
+};
+
 async function displayTop() {
     addingLoader();
+    const windowWidth = window.innerWidth;
+    const booksPerRowForDisplay = booksPerRowFunc(windowWidth);
 
-     const windowWidth = window.innerWidth;
-     const booksPerRow = booksPerRowFunc(windowWidth);
-     const renderedTop = await fetchGeneral(booksPerRow);
+    let topRenderedCodeGeneral = topRenderedCode['perRow'+booksPerRowForDisplay];
 
-     booksContainer.innerHTML = renderedTop;
-     wrapLastWord();
+    if(!topRenderedCodeGeneral) {
+        const renderedTop = await fetchGeneral(booksPerRowForDisplay);
+   
+        booksContainer.innerHTML = renderedTop;
+        localStorage.setItem('renderedtops'+booksPerRowForDisplay, JSON.stringify(renderedTop));
+        topRenderedCode['perRow'+booksPerRowForDisplay] = renderedTop;
+    } else {
+        booksContainer.innerHTML = topRenderedCodeGeneral;
+    }
+
+    wrapLastWord();
 };
 
 
@@ -56,10 +71,14 @@ function wrapLastWord() {
 
 //Fontiono for detectiong books per row
 function booksPerRowFunc(windowWith) {
-    let booksCount = 3;
+    let booksCount = 5;
 
     if(windowWith >= 1440) {
         booksCount = 5;
+    } 
+
+    if(windowWith >= 768 && windowWith < 1440) {
+        booksCount = 3;
     } 
     
     if(windowWith < 768) {
@@ -82,12 +101,10 @@ async function changeTopDisplay() {
         const booksPerRow = booksPerRowFunc(windowWidth);
 
         if(ctrlBreikpoint !== booksPerRow) {
-            addingLoader();
-            
             ctrlBreikpoint = booksPerRow;
-            const renderedTop = await fetchGeneral(booksPerRow);
 
-            booksContainer.innerHTML = renderedTop;
+            addingLoader();
+            displayTop();
             wrapLastWord();
         }
     }
