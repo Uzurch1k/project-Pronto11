@@ -25,7 +25,7 @@ const options = {
   visiblePages: visiblePageNumber,
   centerAlign: false,
   template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    page: '<a href="#" class="tui-page-btn"><span class="number-text">{{page}}</span></a>',
     currentPage:
       '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
