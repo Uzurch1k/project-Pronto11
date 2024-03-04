@@ -93,4 +93,4 @@ import{S as $,a as g,s as S,P as H}from"./vendor-7a68f705.js";(function(){const 
         delete, press the button "Remove from the shopping list".
       </p>
     `}const P=document.querySelector(".toggle-checkbox");document.addEventListener("DOMContentLoaded",()=>{localStorage.getItem("theme")==="theme-dark"&&(b("theme-dark"),P.checked=!0)});function b(e){localStorage.setItem("theme",e),document.documentElement.setAttribute("data-theme",e)}P.addEventListener("click",()=>{localStorage.getItem("theme")==="theme-dark"?b("theme-light"):b("theme-dark")});const k=document.querySelector(".scroll-up");window.addEventListener("scroll",()=>{window.scrollY>120?k.classList.add("show"):k.classList.remove("show")});k.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
-//# sourceMappingURL=main-a54e8d95.js.map
+//# sourceMappingURL=main-07a6a7ec.js.map
