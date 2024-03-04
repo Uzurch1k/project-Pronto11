@@ -17,7 +17,17 @@ export const renderTop = (data, booksPerRow) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-  const categoriesItems = data.map(el => {
+  console.log(data)
+  const categoriesItems = data.sort((a, b) => {
+    if (a.list_name < b.list_name) {
+      return -1;
+    }
+    if (a.list_name > b.list_name) {
+      return 1;
+    }
+    return 0;
+  })
+  .map(el => {
     return `<li class="categories-list">
       <a href="#" data-catname="${el.list_name}" class="categories-nav">${el.list_name}</a>
     </li>`;
