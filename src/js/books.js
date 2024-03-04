@@ -111,11 +111,16 @@ if(booksContainer) {
             catsContainer.querySelector('.active').classList.remove('active');
             target.classList.add('active');
             
-            if(catName) {
-                displayCategory(catName);
-            } else {
-                displayTop();
-            }
+            scrollToElement(booksContainer, {
+                offset: -24,
+                duration: 200
+            }).on('end', () => {
+                if(catName) {
+                    displayCategory(catName);
+                } else {
+                    displayTop();
+                }
+            });
         }
     });
     
@@ -132,7 +137,7 @@ if(booksContainer) {
             
             scrollToElement(booksContainer, {
                 offset: -24,
-                duration: 1000
+                duration: 700
             }).on('end', () => {
                 displayCategory(catName);
             });
