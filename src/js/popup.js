@@ -123,6 +123,7 @@ function template(obj) {
             >
               <img
                 src="../img/shopping/amazon.png"
+                class="popup-shopping-links-icon"
                 alt="Logo of shop"
                 width="62"
               />
