@@ -1,5 +1,15 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 //Render top books
-export const renderTop = (data, booksPerRow) => {;
+export const renderTop = (data, booksPerRow) => {
+  if (!data || data.length === 0){
+    const emptyCategoryHtml = `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>
+    </div>${getEmtyCategoryHtml()}`; 
+
+    return emptyCategoryHtml;
+  }
+  else{
     const categoriesTop = data.map(el => {
         const catName = el.list_name;
         const books = renderOneBook(el.books.slice(0, booksPerRow))
@@ -13,6 +23,7 @@ export const renderTop = (data, booksPerRow) => {;
     }).join('');
 
     return `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>${categoriesTop}</div>`;
+  }
 }
 
 //Render categories
@@ -37,17 +48,43 @@ export const renderCategories = (data) => {
   </li>${categoriesItems}`;
 }
 
+function getEmtyCategoryHtml(){
+  iziToast.error({
+    message:
+      'Sorry, no books found.',
+    position: 'topRight',
+    icon: null,
+  });
+
+  return `</div>
+  <div class="empty-category">
+  <svg class="icon-shopp-stub">
+    <use href="/img/icons.svg#icon-shopp-stub"></use>
+    </svg>
+  <span>Nothing found</span>
+  </div>`;
+}
+
 //Render category books
 export const renderCategory = (data, categoryName) => {
-    const books = renderOneBook(data)
-    const categoryHtml = `<div class="books-container">
-    <h2 class="books-title">${categoryName}</h2>
-    <div class="books-category-container">
-      <ul class="books-list">${books}</ul>
-    </div>
-  </div>`;
+    if (!data || data.length === 0){
+        const emptyCategoryHtml = `<div class="books-container">
+        <h2 class="books-title">${categoryName}</h2>
+        </div>${getEmtyCategoryHtml()}`; 
 
-    return categoryHtml;
+        return emptyCategoryHtml;
+    }  
+    else{
+      const books = renderOneBook(data)
+      const categoryHtml = `<div class="books-container">
+        <h2 class="books-title">${categoryName}</h2>
+        <div class="books-category-container">
+          <ul class="books-list">${books}</ul>
+        </div>
+      </div>`;
+  
+      return categoryHtml;
+    }
 }
 
 //Render one book
