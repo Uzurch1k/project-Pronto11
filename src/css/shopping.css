@@ -70,12 +70,20 @@
   width: 32px;
   filter: var(--icon-amazon);
 }
+.shop-amazon:hover,
+.shop-amazon:focus {
+  filter: grayscale(100%) invert(50%);
+}
 
 .shop-apple {
   flex-shrink: 0;
   width: 16px;
   mix-blend-mode: luminosity;
 }
+.shop-apple:hover {
+  mix-blend-mode: normal;
+}
+
 .empty-page {
   display: flex;
   flex-direction: column;
@@ -247,12 +255,12 @@
 .tui-next {
   margin-right: 5px;
   background-color: #eac645;
-  background-image: url(../img/shopping/vectors/vector-right1.png);
+  background-image: url(/img/shopping/vectors/vector-right1.png);
 }
 
 .tui-last {
   background-color: #eac645;
-  background-image: url(../img/shopping/vectors/vector-right2.png);
+  background-image: url(/img/shopping/vectors/vector-right2.png);
 }
 
 .tui-first:hover,
@@ -262,7 +270,7 @@
 
 .tui-next:hover,
 .tui-last:hover {
-  background-color: #f7d455;
+  background-color: #f3dd8f;
 }
 
 .tui-page-btn:hover .number-text,

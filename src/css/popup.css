@@ -47,7 +47,7 @@
 }
 
 .popup-close-btn-icon:hover {
-  stroke: var(--categor-color-hover);
+  stroke: #8a8797;
 }
 
 .popup-book {
@@ -110,14 +110,18 @@
   align-items: center;
 }
 
-.popup-shopping-links-icon {
+.amazon img {
   filter: var(--icon-amazon);
 }
-
-.popup-shopping-links-icon:hover,
-.popup-shopping-links-icon:focus {
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
+.amazon img:hover,
+.amazon img:focus {
+  filter: grayscale(100%) invert(50%);
+}
+.book img {
   mix-blend-mode: luminosity;
+}
+.book img:hover {
+  mix-blend-mode: normal;
 }
 
 .popup-book-btn-add {
@@ -143,13 +147,13 @@
   color: var(--main-color);
   cursor: pointer;
   background-color: transparent;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup-book-btn-add-to-shopinglist:hover {
-  color: var(--main-bg-color);
-  background-color: var(--categor-color-hover);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  background-color: #4f2ee8;
 }
 
 .under-btn-text {
