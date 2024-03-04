@@ -14,3 +14,9 @@ export const saveBookToLocalStorage = async (bookId) => {
     }
 };
 
+
+export const removeBookFromLocalStorage = async (bookId) => {  
+    const shoppinglist = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+    const filteredList = shoppinglist.filter(item => item._id !== bookId);
+    localStorage.setItem('shoppinglist', JSON.stringify(filteredList));
+};  
