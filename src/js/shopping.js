@@ -5,31 +5,51 @@
 // ==============================================================
 
 import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
+import '../css/shopping.css';
 
 export const pagesContainer = document.querySelector('#pagination-wrapper');
 
-const instance = new Pagination(pagesContainer, {
+function getVisiblePagesNumber() {
+  if (matchMedia('(min-width: 768px)').matches) {
+    return 3;
+  }
+
+  return 2;
+}
+
+const visiblePageNumber = getVisiblePagesNumber();
+
+const options = {
   totalItems: 10,
   itemsPerPage: 3,
-  visiblePages: 3,
+  visiblePages: visiblePageNumber,
+  centerAlign: false,
   template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}p</a>',
+    page: '<a href="#" class="tui-page-btn"><span class="number-text">{{page}}</span></a>',
     currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}p</strong>',
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span class="tui-ico-{{type}}"></span>' +
       '</a>',
     disabledMoveButton:
       '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '<span class="tui-ico-{{type}}"></span>' +
       '</span>',
     moreButton:
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
       '<span class="tui-ico-ellip">...</span>' +
       '</a>',
   },
-});
+};
 
+function checkIsThereElementOnPage() {
+  if (pagesContainer === null) {
+    return;
+  }
+
+  const instance = new Pagination(pagesContainer, options);
+}
+
+checkIsThereElementOnPage();
 // ==============================================================

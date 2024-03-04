@@ -17,7 +17,17 @@ export const renderTop = (data, booksPerRow) => {;
 
 //Render categories
 export const renderCategories = (data) => {
-  const categoriesItems = data.map(el => {
+  console.log(data)
+  const categoriesItems = data.sort((a, b) => {
+    if (a.list_name < b.list_name) {
+      return -1;
+    }
+    if (a.list_name > b.list_name) {
+      return 1;
+    }
+    return 0;
+  })
+  .map(el => {
     return `<li class="categories-list">
       <a href="#" data-catname="${el.list_name}" class="categories-nav">${el.list_name}</a>
     </li>`;
@@ -44,24 +54,21 @@ export const renderCategory = (data, categoryName) => {
 //Render one book
 function renderOneBook(books) {
     const booksRendered = books.map(el => {
-        const id = el._id;
-        const image = el.book_image;
-        const title = el.title;
-        const authoe = el.author;
+        const {_id, book_image, title, author} = el;
         return `<li class="books-item">
         <div class="books-wrapper">
           <img
             class="books-img"
-            src="${image}"
-            alt="${image}"
+            src="${book_image}"
+            alt="${title}"
           />
-          <a href="#" data-id="${id}" class="books-overlay">
-            <p class="books-overlay-text">QUICK VIEW</p>
+          <a href="#" data-id="${_id}" class="books-overlay">
+            QUICK VIEW
           </a>
         </div>
         <div class="books-info">
           <p class="books-info-title">${title}</p>
-          <p class="books-info-author">${authoe}</p>
+          <p class="books-info-author">${author}</p>
         </div>
       </li>`;
     }).join('');

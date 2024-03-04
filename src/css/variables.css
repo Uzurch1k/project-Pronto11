@@ -14,6 +14,11 @@
   --categor-scrol: #e0e0e0;
 
   --icon-amazon: grayscale(100%);
+
+  --icon-img-bg-first: url(/img/shopping/vectors/vector-left2.png);
+  --icon-img-bg-prev: url(/img/shopping/vectors/vector-left1.png);
+
+  --scroll-up: 0 0 0 0 rgba(135, 141, 151, 0.753);
 }
 
 :root[data-theme='theme-dark'] {
@@ -30,4 +35,9 @@
   --categor-scrol: rgba(17, 17, 17, 0.6);
 
   --icon-amazon: grayscale(100%) invert(100%);
+
+  --icon-img-bg-first: url(/img/shopping/vectors/vector-left-2-dark.png);
+  --icon-img-bg-prev: url(/img/shopping/vectors/vector-left-1-dark.png);
+
+  --scroll-up: 0 0 0 0 rgba(255, 255, 255, 0.3);
 }

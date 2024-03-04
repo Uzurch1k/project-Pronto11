@@ -1,4 +1,5 @@
 import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
+import scrollToElement  from 'scroll-to-element';
 
 
 //Containers
@@ -8,7 +9,9 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
-export async function displayTop() {
+async function displayTop() {
+    addingLoader();
+
      const windowWidth = window.innerWidth;
      const booksPerRow = booksPerRowFunc(windowWidth);
      const renderedTop = await fetchGeneral(booksPerRow);
@@ -20,7 +23,7 @@ export async function displayTop() {
 
 // ==============================================================
 //Function for display categories
-export async function displayCategories() {
+async function displayCategories() {
     const renderedCats = await fetchCategories();
 
     catsContainer.innerHTML = renderedCats;
@@ -29,7 +32,9 @@ export async function displayCategories() {
 
 // ==============================================================
 //Function for display category books
-export async function displayCategory(catName) {
+async function displayCategory(catName) {
+    addingLoader();
+
     const renderedCat = await fetchCategory(catName);
 
      booksContainer.innerHTML = renderedCat;
@@ -43,7 +48,7 @@ function wrapLastWord() {
     const textContent = title.textContent.split(" ");
     const lastWord = textContent.pop();
 
-    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span>${lastWord}</span>` : lastWord);
+    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span  class="books-title-color">${lastWord}</span>` : lastWord);
 
     title.innerHTML = updatedContent;
 }
@@ -77,6 +82,8 @@ async function changeTopDisplay() {
         const booksPerRow = booksPerRowFunc(windowWidth);
 
         if(ctrlBreikpoint !== booksPerRow) {
+            addingLoader();
+            
             ctrlBreikpoint = booksPerRow;
             const renderedTop = await fetchGeneral(booksPerRow);
 
@@ -104,6 +111,11 @@ if(booksContainer) {
             catsContainer.querySelector('.active').classList.remove('active');
             target.classList.add('active');
             
+            scrollToElement(booksContainer, {
+                offset: -24,
+                duration: 200
+            });
+
             if(catName) {
                 displayCategory(catName);
             } else {
@@ -123,10 +135,21 @@ if(booksContainer) {
             catsContainer.querySelector('.active').classList.remove('active');
             catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
             
-            displayCategory(catName);
+            scrollToElement(booksContainer, {
+                offset: -24,
+                duration: 700
+            }).on('end', () => {
+                displayCategory(catName);
+            });
         }
     });
 
 
     window.addEventListener("resize", changeTopDisplay);
+}
+
+
+//Loader function
+function addingLoader() {
+    booksContainer.innerHTML = '<li class="loader-container"><span class="loader"></span></li>';
 }
