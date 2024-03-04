@@ -9,28 +9,13 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
-const topRenderedCode = {
-    'perRow5': JSON.parse(sessionStorage.getItem('renderedtops5')) || '',
-    'perRow3': JSON.parse(sessionStorage.getItem('renderedtops3')) || '',
-    'perRow1': JSON.parse(sessionStorage.getItem('renderedtops1')) || '',
-};
-
 async function displayTop() {
     addingLoader();
     const windowWidth = window.innerWidth;
     const booksPerRowForDisplay = booksPerRowFunc(windowWidth);
-
-    const topRenderedCodeGeneral = topRenderedCode['perRow'+booksPerRowForDisplay];
-
-    if(!topRenderedCodeGeneral) {
-        const renderedTop = await fetchGeneral(booksPerRowForDisplay);
+    const renderedTop = await fetchGeneral(booksPerRowForDisplay);
    
-        booksContainer.innerHTML = renderedTop;
-        sessionStorage.setItem('renderedtops'+booksPerRowForDisplay, JSON.stringify(renderedTop));
-        topRenderedCode['perRow'+booksPerRowForDisplay] = renderedTop;
-    } else {
-        booksContainer.innerHTML = topRenderedCodeGeneral;
-    }
+    booksContainer.innerHTML = renderedTop;
 
     wrapLastWord();
 };
@@ -104,7 +89,7 @@ async function changeTopDisplay() {
             ctrlBreikpoint = booksPerRow;
 
             addingLoader();
-            displayTop();
+            await displayTop();
             wrapLastWord();
         }
     }
