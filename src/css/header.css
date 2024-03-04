@@ -95,7 +95,7 @@ body.lock {
   margin-top: 85px;
 }
 .header-btn-submit-modal {
-  background: #4f2ee8;
+  background-color: #4f2ee8;
   border: 1.5px solid #111;
   border-radius: 18px;
   width: 184px;
@@ -261,7 +261,7 @@ body.lock {
 
   .header-btn-submit {
     display: block;
-    background: #4f2ee8;
+    background-color: #4f2ee8;
     border: 1.5px solid #111;
     border-radius: 18px;
     width: 184px;
@@ -277,6 +277,7 @@ body.lock {
     gap: 90px;
     padding: 0;
     margin-left: 25px;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header-menu {
     display: none;
@@ -297,5 +298,8 @@ body.lock {
   .header-nav-list {
     gap: 24px;
     margin-left: 115px;
+  }
+  .header-btn-submit:hover {
+    background-color: #785bf7;
   }
 }

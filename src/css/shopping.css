@@ -117,7 +117,7 @@
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .shopping-trash:hover {
-  background-color: #5d4ea0;
+  background-color: #785bf7;
 }
 .trash-icon {
   stroke: #fff;
