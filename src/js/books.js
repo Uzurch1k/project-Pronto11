@@ -1,4 +1,5 @@
 import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
+import { popup } from './popup';
 import scrollToElement  from 'scroll-to-element';
 
 
@@ -9,6 +10,7 @@ const catsContainer = document.querySelector('.categories-menu');
 
 // ==============================================================
 //Function for display books
+let popupIsStarted;
 async function displayTop() {
     addingLoader();
     const windowWidth = window.innerWidth;
@@ -16,6 +18,10 @@ async function displayTop() {
     const renderedTop = await fetchGeneral(booksPerRowForDisplay);
    
     booksContainer.innerHTML = renderedTop;
+    if(!popupIsStarted) {
+        popup();
+        popupIsStarted = true;
+    }
 
     wrapLastWord();
 };
