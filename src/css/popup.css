@@ -150,12 +150,16 @@
   cursor: pointer;
   background-color: transparent;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup-book-btn-add-to-shopinglist:hover {
   color: #fff;
   background-color: #4f2ee8;
+}
+.popup-book-btn-add-to-shopinglist:focus {
+  box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.15);
 }
 
 .under-btn-text {
