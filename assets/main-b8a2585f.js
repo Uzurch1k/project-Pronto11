@@ -31,7 +31,7 @@ import{S as $,a as g,s as S,P as H}from"./vendor-7a68f705.js";(function(){const 
       </li>`}).join("")}const m="https://books-backend.p.goit.global",q=async e=>{const o=m+"/books/top-books/";try{const s=await g.get(o);return A(s.data,e)}catch(s){console.log(s)}},_=async()=>{const t=m+"/books/category-list/";try{const o=await g.get(t);return D(o.data)}catch(o){console.log(o)}},R=async e=>{const o=m+"/books/category/",s={category:e};try{const n=await g.get(o,{params:s});return x(n.data,e)}catch(n){console.log(n)}},B=async e=>{const t=`/books/${e}`,o=m+t;try{return(await g.get(o)).data}catch(s){console.log(s)}},l=document.querySelector(".books-container"),u=document.querySelector(".categories-menu");async function w(){L();const e=window.innerWidth,t=y(e),o=await q(t);l.innerHTML=o,v()}async function W(){const e=await _();u.innerHTML=e}async function E(e){L();const t=await R(e);l.innerHTML=t,v()}function v(){const e=document.querySelector(".books-title"),t=e.textContent.split(" "),o=t.pop(),s=t.join(" ")+(t.length>0?` <span  class="books-title-color">${o}</span>`:o);e.innerHTML=s}function y(e){let t=3;return e>=1440&&(t=5),e<768&&(t=1),t}const j=window.innerWidth;let T=y(j);async function V(){if(!document.querySelector(".categories-nav.active").dataset.catname){const t=window.innerWidth,o=y(t);if(T!==o){L(),T=o;const s=await q(o);l.innerHTML=s,v()}}}l&&(w(),W(),u.addEventListener("click",e=>{e.preventDefault();const t=e.target;if(t.tagName==="A"){const o=t.dataset.catname;u.querySelector(".active").classList.remove("active"),t.classList.add("active"),S(l,{offset:-24,duration:200}),o?E(o):w()}}),l.addEventListener("click",e=>{e.preventDefault();const t=e.target;if(t.classList.contains("books-btn")){const o=t.dataset.catname;u.querySelector(".active").classList.remove("active"),u.querySelector('[data-catname="'+o+'"]').classList.add("active"),S(l,{offset:-24,duration:700}).on("end",()=>{E(o)})}}),window.addEventListener("resize",V));function L(){l.innerHTML='<li class="loader-container"><span class="loader"></span></li>'}const I=document.querySelector("#pagination-wrapper");function F(){return matchMedia("(min-width: 768px)").matches?3:2}const J=F(),U={totalItems:10,itemsPerPage:3,visiblePages:J,centerAlign:!1,template:{page:'<a href="#" class="tui-page-btn"><span class="number-text">{{page}}</span></a>',currentPage:'<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',moveButton:'<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}"><span class="tui-ico-{{type}}"></span></a>',disabledMoveButton:'<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}"><span class="tui-ico-{{type}}"></span></span>',moreButton:'<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}"><span class="tui-ico-ellip">...</span></a>'}};function G(){I!==null&&new H(I,U)}G();const z=async e=>{try{const t=await B(e);let o=JSON.parse(localStorage.getItem("shoppinglist"))||[];o.push(t),localStorage.setItem("shoppinglist",JSON.stringify(o))}catch(t){console.error(t)}},K=async e=>{const o=(JSON.parse(localStorage.getItem("shoppinglist"))||[]).filter(s=>s._id!==e);localStorage.setItem("shoppinglist",JSON.stringify(o))};setTimeout(()=>{Y()},3e3);async function Y(){const e=document.querySelector(".books-container");e&&e.addEventListener("click",t);async function t(o){const s=document.querySelector(".popup-window");if(s.innerHTML="",o.target.classList.contains("books-overlay")){const n=o.target.dataset.id,a=await B(n),c=X(a);s.insertAdjacentHTML("beforeend",c),Q()}}}async function Q(){const e=document.querySelector(".popup-backdrop"),t=document.querySelector(".popup-close-btn");s(),Z(),ee(),e.addEventListener("click",a),document.addEventListener("keydown",c),t.addEventListener("click",n),document.addEventListener("keydown",o);function o(r){r.keyCode===32&&r.preventDefault()}function s(){e.classList.add("is-active")}function n(){p(),t.removeEventListener("click",n),document.removeEventListener("keydown",o)}function a(r){r.target===r.currentTarget&&(p(),e.removeEventListener("click",a),document.removeEventListener("keydown",o))}function c(r){r.keyCode===27&&(p(),document.removeEventListener("keydown",c),document.removeEventListener("keydown",o))}function p(){e.classList.remove("is-active")}}function X(e){const{_id:t,author:o,title:s,book_image:n,buy_links:a,description:c=""}=e,[p,r]=a;return`
 <button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="./img/icons.svg#icon-header-close"></use>
+        <use href="../img/icons.svg#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
@@ -52,8 +52,8 @@ import{S as $,a as g,s as S,P as H}from"./vendor-7a68f705.js";(function(){const 
               class="amazon popup-shopping-links-icon"
             >
               <img
+                src="../img/shopping/amazon.png"
                 class="popup-shopping-links-icon"
-                src="./img/shopping/amazon.png"
                 alt="Logo of shop"
                 width="62"
               />
@@ -68,7 +68,7 @@ import{S as $,a as g,s as S,P as H}from"./vendor-7a68f705.js";(function(){const 
               class="book popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/book-apple.png"
+                src="../img/shopping/book-apple.png"
                 alt="Logo of shop"
                 width="33"
               />
@@ -93,4 +93,4 @@ import{S as $,a as g,s as S,P as H}from"./vendor-7a68f705.js";(function(){const 
         delete, press the button "Remove from the shopping list".
       </p>
     `}const P=document.querySelector(".toggle-checkbox");document.addEventListener("DOMContentLoaded",()=>{localStorage.getItem("theme")==="theme-dark"&&(b("theme-dark"),P.checked=!0)});function b(e){localStorage.setItem("theme",e),document.documentElement.setAttribute("data-theme",e)}P.addEventListener("click",()=>{localStorage.getItem("theme")==="theme-dark"?b("theme-light"):b("theme-dark")});const k=document.querySelector(".scroll-up");window.addEventListener("scroll",()=>{window.scrollY>120?k.classList.add("show"):k.classList.remove("show")});k.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})});
-//# sourceMappingURL=main-717c6c7f.js.map
+//# sourceMappingURL=main-b8a2585f.js.map
