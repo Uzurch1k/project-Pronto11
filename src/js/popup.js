@@ -1,5 +1,8 @@
 import { fetchBookById } from './fetch-api';
-import { saveBookToLocalStorage } from './local-storage';
+import {
+  removeBookFromLocalStorage,
+  saveBookToLocalStorage,
+} from './local-storage';
 
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
@@ -98,7 +101,7 @@ function template(obj) {
   return `
 <button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="./img/icons.svg#icon-header-close"></use>
+        <use href="/img/icons.svg#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
@@ -120,7 +123,7 @@ function template(obj) {
             >
               <img
                 class="popup-shopping-links-icon"
-                src="./img/shopping/amazon.png"
+                src="/img/shopping/amazon.png"
                 alt="Logo of shop"
                 width="62"
               />
@@ -135,7 +138,7 @@ function template(obj) {
               class="book popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/book-apple.png"
+                src="/img/shopping/book-apple.png"
                 alt="Logo of shop"
                 width="33"
               />
@@ -200,10 +203,12 @@ function clickOnAddToShopingListBtn() {
 
     if (!bookInLocalStorage) {
       saveBookToLocalStorage(bookId);
+
       addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
       addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
     } else {
-      // Тут треба викликати функцію видалення з LocalStorage
+      removeBookFromLocalStorage(bookId);
+
       document.querySelector('.under-btn-text').remove();
       addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
     }
