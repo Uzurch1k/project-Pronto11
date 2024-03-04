@@ -8,12 +8,7 @@ import {
 // функція спрацьовує при кліку на QUICK VIEW
 // ==============================================================
 
-setTimeout(() => {
-  popup();
-}, 3000);
-
-export async function popup() {
-  const booksList = document.querySelector('.books-container');
+const booksList = document.querySelector('.books-container');
 
   if (booksList) {
     booksList.addEventListener('click', onBookLinkClick);
@@ -35,7 +30,6 @@ export async function popup() {
       openModal();
     }
   }
-}
 
 // ==============================================================
 // логіка відкриття та закриття модалки
