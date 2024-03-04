@@ -7,9 +7,9 @@ import * as header from './js/header';
 // import { authorization } from './js/authorization';
 
 // import { categories } from './js/categories';
-// import { support } from './js/support';
+import * as support from './js/support';
 
-import './js/books';
+import * as books from './js/books';
 // import { renderTop, renderCategories, renderCategory } from './js/rendering-books';
 
 import * as shopping from './js/shopping';
