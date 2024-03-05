@@ -23,7 +23,7 @@ export const renderTop = (data, booksPerRow) => {
       </div>`;
     }).join('');
 
-    return `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>${categoriesTop}</div>`;
+    return `<h2 class="books-title">Best Sellers Books</h2>${categoriesTop}`;
   }
 }
 
@@ -77,12 +77,10 @@ export const renderCategory = (data, categoryName) => {
     }  
     else{
       const books = renderOneBook(data)
-      const categoryHtml = `<div class="books-container">
-        <h2 class="books-title">${categoryName}</h2>
-        <div class="books-category-container">
-          <ul class="books-list">${books}</ul>
-        </div>
-      </div>`;
+    const categoryHtml = `<h2 class="books-title">${categoryName}</h2>
+    <div class="books-category-container">
+      <ul class="books-list">${books}</ul>
+    </div>`;
   
       return categoryHtml;
     }

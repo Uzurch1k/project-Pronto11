@@ -1,6 +1,7 @@
 .books-container {
   display: flex;
   flex-direction: column;
+  gap: 40px;
 }
 
 .books-title {
@@ -8,14 +9,12 @@
   line-height: 1.1875;
   letter-spacing: -0.04em;
   color: var(--main-color);
-  margin-bottom: 40px;
 }
 .books-title-color {
   color: #4f2ee8;
 }
 
 .books-category-container {
-  margin-bottom: 40px;
 }
 
 .books-category-title {

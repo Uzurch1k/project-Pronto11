@@ -19,8 +19,21 @@ const swiper = new Swiper('.swiper', {
     enabled: true,
     onlyInViewport: true,
   },
+  shortSwipes: false,
+  // Вимкнути прокрутку за допомогою клавіші LKM
+  preventClicks: true,
+  // Вимкнути події миші
+  disableMouseEvents: true,
 });
 swiper.allowTouchMove = false;
+
+swiper.on('slideChange', function () {
+  if (swiper.isEnd) {
+    swiper.allowTouchMove = false;
+  } else {
+    swiper.allowTouchMove = true;
+  }
+});
 
 const customButton = document.querySelector('.swiper-button');
 
