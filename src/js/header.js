@@ -37,7 +37,7 @@ if (window.location.href.includes('index.html')) {
     refs.homeMobal.classList.add('active');
     refs.shoppingMobal.classList.remove('active');
   });
-} else {
+} else if (window.location.href.includes('shopping.html')) {
   window.addEventListener('DOMContentLoaded', () => {
     refs.home.classList.remove('active');
     refs.shopping.classList.add('active');
