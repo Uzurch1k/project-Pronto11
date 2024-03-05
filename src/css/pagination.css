@@ -37,9 +37,12 @@
   background: var(--header-icon-color);
 }
 
-.tui-pagination .tui-prev,
-.tui-pagination .tui-next {
+.tui-pagination .tui-prev {
   margin-right: 14px;
+}
+
+.tui-pagination .tui-next {
+  margin-left: 14px;
 }
 
 .tui-first {
