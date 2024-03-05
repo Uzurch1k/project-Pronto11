@@ -16,19 +16,11 @@ export async function popup() {
   }
 
   async function onBookLinkClick(event) {
-    const popupBookWrapper = document.querySelector('.popup-window');
-
-    popupBookWrapper.innerHTML = '';
-
     if (event.target.classList.contains('books-overlay')) {
       const bookId = event.target.dataset.id;
       const bookData = await fetchBookById(bookId);
 
-      const markup = template(bookData);
-
-      popupBookWrapper.insertAdjacentHTML('beforeend', markup);
-
-      openModal();
+      openModal(bookData);
     }
   }
 }
@@ -37,10 +29,15 @@ export async function popup() {
 // логіка відкриття та закриття модалки
 // ==============================================================
 
-async function openModal() {
+async function openModal(bookData) {
   const backdrop = document.querySelector('.popup-backdrop');
-  const closeBtn = document.querySelector('.popup-close-btn');
+  const popupBookWrapper = document.querySelector('.popup-window');
 
+  popupBookWrapper.innerHTML = '';
+  const markup = template(bookData);
+  popupBookWrapper.insertAdjacentHTML('beforeend', markup);
+
+  const closeBtn = document.querySelector('.popup-close-btn');
   showModal();
   checkLocalStorage();
   clickOnAddToShopingListBtn();
@@ -58,6 +55,7 @@ async function openModal() {
 
   function showModal() {
     backdrop.classList.add('is-active');
+    document.body.classList.add('modal-open');
   }
 
   function onClickCloseBtn() {
@@ -84,6 +82,7 @@ async function openModal() {
 
   function hideModal() {
     backdrop.classList.remove('is-active');
+    document.body.classList.remove('modal-open');
   }
 }
 

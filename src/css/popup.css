@@ -243,3 +243,7 @@
     line-height: 14px;
   }
 }
+
+body.modal-open {
+  overflow: hidden;
+}
