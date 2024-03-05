@@ -23,8 +23,11 @@ function handleHeaderLinkClick() {
 refs.burger.addEventListener('click', handleHeaderLinkClick);
 
 // =========================== Home and Shopping ===========================
-refs.home.classList.add('active');
-refs.homeMobal.classList.add('active');
+
+window.addEventListener('DOMContentLoaded', () => {
+  refs.home.classList.add('active');
+  refs.homeMobal.classList.add('active');
+});
 
 if (window.location.href.includes('index.html')) {
   window.addEventListener('DOMContentLoaded', () => {
