@@ -14,6 +14,8 @@
   --categor-scrol: #e0e0e0;
 
   --icon-amazon: grayscale(100%);
+  --icon-book-apple: grayscale(100%);
+  --icons-hover: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.35));
 
   --icon-img-bg-first: url(/img/shopping/vectors/vector-left2.png);
   --icon-img-bg-prev: url(/img/shopping/vectors/vector-left1.png);
@@ -34,7 +36,9 @@
   --categor-color-hover: #eac645;
   --categor-scrol: rgba(17, 17, 17, 0.6);
 
-  --icon-amazon: grayscale(100%) invert(100%);
+  --icon-amazon: brightness(0) invert(1);
+  --icon-book-apple: grayscale(100%);
+  --icons-hover: drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.35));
 
   --icon-img-bg-first: url(/img/shopping/vectors/vector-left-2-dark.png);
   --icon-img-bg-prev: url(/img/shopping/vectors/vector-left-1-dark.png);
