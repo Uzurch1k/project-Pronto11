@@ -195,6 +195,7 @@
   .popup-book {
     display: flex;
     gap: 24px;
+    margin-top: 7px;
   }
 
   .popup-wrap-img {

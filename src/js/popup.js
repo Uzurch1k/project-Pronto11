@@ -3,6 +3,9 @@ import {
   removeBookFromLocalStorage,
   saveBookToLocalStorage,
 } from './local-storage';
+import iconClose from '../img/icons.svg';
+import amazonImg from '../img/shopping/amazon.png';
+import apple from '../img/shopping/book-apple.png';
 
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
@@ -95,7 +98,7 @@ function template(obj) {
 
   return `<button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="./img/icons.svg#icon-header-close"></use>
+        <use href="${iconClose}#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
@@ -116,7 +119,7 @@ function template(obj) {
               class="amazon popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/amazon.png"
+                src="${amazonImg}"
                 class="popup-shopping-links-icon"
                 alt="Logo of shop"
                 width="62"
@@ -132,7 +135,7 @@ function template(obj) {
               class="book popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/book-apple.png"
+                src="${apple}"
                 alt="Logo of shop"
                 width="33"
               />
