@@ -40,6 +40,26 @@
   border-radius: 12px;
 }
 
+.empty-category{
+  display: flex;
+  padding-top: 48px;
+  width: 100%;
+  flex-direction: column;
+  row-gap: 24px;
+  align-items: center;
+}
+
+.empty-category svg{
+  fill: var(--categor-color-hover);
+  width: 70px;
+  height: 64px;
+}
+
+.empty-category span{
+  font-size: 22px;
+  color: var(--categor-color);
+}
+
 /*---------------------------- Adaptive tablet ----------------------------*/
 @media screen and (min-width: 768px) {
   .categories-menu {
