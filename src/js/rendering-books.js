@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import icon from '../img/icons.svg';
 
 //Render top books
 export const renderTop = (data, booksPerRow) => {
@@ -59,7 +60,7 @@ function getEmtyCategoryHtml(){
   return `</div>
   <div class="empty-category">
   <svg class="icon-shopp-stub">
-    <use href="/img/icons.svg#icon-shopp-stub"></use>
+    <use href="${icon}#icon-shopp-stub"></use>
     </svg>
   <span>Nothing found</span>
   </div>`;
