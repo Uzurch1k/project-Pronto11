@@ -106,8 +106,8 @@ function template(obj) {
         <img class="popup-book-image" src="${book_image}" alt="обкладинка" />
       </div>
       <div class="popup-book-content">
-        <h2 class="popup-book-title">${title}</h2>
-        <h3 class="popup-book-author">${author}</h3>
+        <h4 class="popup-book-title">${title}</h4>
+        <p class="popup-book-author">${author}</p>
         <p class="popup-book-review">${description}</p>
         <ul class="popup-shopping-links">
           <li>

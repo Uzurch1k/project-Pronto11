@@ -102,7 +102,7 @@ function renderOneBook(books) {
           </a>
         </div>
         <div class="books-info">
-          <p class="books-info-title">${title}</p>
+          <h4 class="books-info-title">${title}</h4>
           <p class="books-info-author">${author}</p>
         </div>
       </li>`;
