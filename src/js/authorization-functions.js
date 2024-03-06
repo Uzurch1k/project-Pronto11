@@ -13,7 +13,7 @@ const signInLink = document.querySelector('.authentication-signin');
 
 // ==============================================================
 
-function toggleAuthen(open) {
+export function toggleAuthen(open) {
   authen.classList.toggle('is-active', open);
   body.classList.toggle('authentication-open', open);
 }

@@ -85,18 +85,22 @@ const windowWidthStart = window.innerWidth;
 let ctrlBreikpoint = booksPerRowFunc(windowWidthStart);
 
 async function changeTopDisplay() {
-    const isAllCats = document.querySelector('.categories-nav.active').dataset.catname;
+    const AllCats = document.querySelector('.categories-nav.active');
 
-    if(!isAllCats) {
-        const windowWidth = window.innerWidth;
-        const booksPerRow = booksPerRowFunc(windowWidth);
+    if(AllCats) {
+        const isAllCats = AllCats.dataset.catname;
 
-        if(ctrlBreikpoint !== booksPerRow) {
-            ctrlBreikpoint = booksPerRow;
-
-            addingLoader();
-            await displayTop();
-            wrapLastWord();
+        if(!isAllCats) {
+            const windowWidth = window.innerWidth;
+            const booksPerRow = booksPerRowFunc(windowWidth);
+    
+            if(ctrlBreikpoint !== booksPerRow) {
+                ctrlBreikpoint = booksPerRow;
+    
+                addingLoader();
+                await displayTop();
+                wrapLastWord();
+            }
         }
     }
 }

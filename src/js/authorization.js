@@ -7,6 +7,8 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 
+import { toggleAuthen } from './authorization-functions';
+
 // Инициализация Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyAVC9h8-zdX_Zwfa8u_SlIxJpF4-2QNWH4',
@@ -31,9 +33,6 @@ if (signUpForm) {
 
 async function signUpEvent(e) {
   e.preventDefault();
-
-  console.log('asdas')
-  authState();
 
   const name = signUpForm.querySelector('#name-up').value;
   const email = signUpForm.querySelector('#email-up').value;
@@ -90,6 +89,7 @@ async function signIn(email, password) {
     );
     // Дополнительные действия при успешном входе
     console.log('User signed in successfully:', userCredential.user);
+    toggleAuthen(false);
   } catch (error) {
     // Обработка ошибок входа
     console.error('Sign in error:', error.code);
@@ -98,12 +98,20 @@ async function signIn(email, password) {
 
 
 async function authState() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      return user.uid;
-    } else {
-      return '111';
-    }
-  });
+  try {
+    await onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user)
+        return user.uid;
+      } else {
+        console.log('111')
+      }
+    });
+  } catch (error) {
+    console.error('Check error:', error.code);
+  }
 }
 
+
+
+authState()
