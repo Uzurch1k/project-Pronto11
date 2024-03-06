@@ -17,6 +17,7 @@ import * as books from './js/books';
 
 import * as shopping from './js/shopping';
 // import { renderingBooks } from './js/rendering-shopping';
+// import { pagination } from './js/pagination';
 // import './js/popup';
 
 // ==============================================================
