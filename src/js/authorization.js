@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 // Инициализация Firebase
@@ -25,56 +26,84 @@ const auth = getAuth();
 // Обработчик отправки формы регистрации
 const signUpForm = document.querySelector('.authentication-form-signup');
 if (signUpForm) {
-  signUpForm.addEventListener('submit', async e => {
-    e.preventDefault();
+  signUpForm.addEventListener('submit', signUpEvent);
+}
 
-    const name = signUpForm.querySelector('#name-up').value;
-    const email = signUpForm.querySelector('#email-up').value;
-    const password = signUpForm.querySelector('#password-up').value;
+async function signUpEvent(e) {
+  e.preventDefault();
 
-    try {
-      // Регистрация нового пользователя с использованием электронной почты, пароля и имени
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+  console.log('asdas')
+  authState();
 
-      // Установка имени пользователя
-      await updateProfile(userCredential.user, {
-        displayName: name,
-      });
+  const name = signUpForm.querySelector('#name-up').value;
+  const email = signUpForm.querySelector('#email-up').value;
+  const password = signUpForm.querySelector('#password-up').value;
 
-      // Дополнительные действия при успешной регистрации
-      console.log('User registered successfully:', userCredential.user);
-    } catch (error) {
-      // Обработка ошибок регистрации
-      console.error('Registration error:', error.message);
-    }
-  });
+  signUp(name, email, password);
+}
+
+async function signUp(name, email, password) {
+  try {
+    // Регистрация нового пользователя с использованием электронной почты, пароля и имени
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    ); 
+
+    // Установка имени пользователя
+    await updateProfile(userCredential.user, {
+      displayName: name,
+    });
+
+    // Дополнительные действия при успешной регистрации
+    console.log('User registered successfully:', userCredential.user);
+    signIn(email, password);
+  } catch (error) {
+    // Обработка ошибок регистрации
+    console.error('Registration error:', error.code);
+  }
 }
 
 // Обработчик отправки формы входа
 const signInForm = document.querySelector('.authentication-form-signin');
 if (signInForm) {
-  signInForm.addEventListener('submit', async e => {
-    e.preventDefault();
+  signInForm.addEventListener('submit', signInEvent);
+}
 
-    const email = signInForm.querySelector('#email-in').value;
-    const password = signInForm.querySelector('#password-in').value;
+async function signInEvent(e) {
+  e.preventDefault();
 
-    try {
-      // Вход пользователя с использованием электронной почты и пароля
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      // Дополнительные действия при успешном входе
-      console.log('User signed in successfully:', userCredential.user);
-    } catch (error) {
-      // Обработка ошибок входа
-      console.error('Sign in error:', error.message);
+  const email = signInForm.querySelector('#email-in').value;
+  const password = signInForm.querySelector('#password-in').value;
+
+  signIn(email, password);
+}
+
+async function signIn(email, password) {
+  try {
+    // Вход пользователя с использованием электронной почты и пароля
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // Дополнительные действия при успешном входе
+    console.log('User signed in successfully:', userCredential.user);
+  } catch (error) {
+    // Обработка ошибок входа
+    console.error('Sign in error:', error.code);
+  }
+}
+
+
+async function authState() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      return user.uid;
+    } else {
+      return '111';
     }
   });
 }
+
