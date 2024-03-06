@@ -1,0 +1,61 @@
+<div class="authentication">
+  <div class="authentication-body">
+    <button class="authentication-close" type="button">
+      <svg width="28" height="28" class="authentication-icon-close">
+        <use href="./img/icons.svg#icon-header-close"></use>
+      </svg>
+    </button>
+    <form class="authentication-form">
+      <div class="authentication-wrap">
+        <label class="authentication-label" for="name">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            pattern="[A-Za-z\s-]+"
+            placeholder="name"
+            required
+          />
+        </label>
+        <label class="authentication-label" for="email">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            placeholder="email"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-email">
+            <use href="./img/icons.svg#icon-authorization-email"></use>
+          </svg>
+        </label>
+        <label class="authentication-label" for="password">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$"
+            placeholder="password"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-lock">
+            <use href="./img/icons.svg#icon-authorization-lock"></use>
+          </svg>
+        </label>
+      </div>
+
+      <button type="submit" class="authentication-button">Sign up</button>
+
+      <ul class="authentication-list">
+        <li class="authentication-item">
+          <a class="authentication-signup" href="#">sign up</a>
+        </li>
+        <li class="authentication-item">
+          <a class="authentication-signin" href="#">sign in</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="authentication-blur"></div>
+</div>

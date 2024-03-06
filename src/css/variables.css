@@ -9,6 +9,11 @@
   --header-bg-color: #fff;
   --shop-bg-color: #fff;
 
+  --authentication-bg: #f6f6f6;
+  --authentication-btn: #111;
+  --authentication-btn-color: #f3f3f3;
+  --authentication-btn-color-hover: #f3f3f3;
+
   --categor-color: rgba(17, 17, 17, 0.6);
   --categor-color-hover: #4f2ee8;
   --categor-scrol: #e0e0e0;
@@ -31,6 +36,11 @@
   --header-icon-color: #fff;
   --header-bg-color: #111;
   --shop-bg-color: #111;
+
+  --authentication-bg: #202024;
+  --authentication-btn: #f6f6f6;
+  --authentication-btn-color: #202024;
+  --authentication-btn-color-hover: #f3f3f3;
 
   --categor-color: rgba(255, 255, 255, 0.6);
   --categor-color-hover: #eac645;
