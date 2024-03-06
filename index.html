@@ -23,9 +23,9 @@
 
     
     <script type="module" crossorigin src="/project-Pronto11/assets/vendor-0f9dcf05.js"></script>
-    <script type="module" crossorigin src="/project-Pronto11/assets/main-e2ea9ce1.js"></script>
+    <script type="module" crossorigin src="/project-Pronto11/assets/main-9762961e.js"></script>
     <link rel="stylesheet" href="/project-Pronto11/assets/vendor-827d51bf.css">
-    <link rel="stylesheet" href="/project-Pronto11/assets/main-fa3e18cc.css">
+    <link rel="stylesheet" href="/project-Pronto11/assets/main-bd2a5235.css">
   </head>
 
   <body data-page="home">
@@ -37,7 +37,7 @@
       <nav class="header-navigation">
         <a href="./index.html" class="header-logo">
           <svg width="24" height="24" class="header-logo-item">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-logo"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-logo"></use>
           </svg>
           Bookshelf
         </a>
@@ -49,7 +49,7 @@
             <a class="header-shopping" href="./shopping.html">
               Shopping list
               <svg width="20" height="20" class="header-shop-svg">
-                <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-shopp"></use>
+                <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-shopp"></use>
               </svg>
             </a>
           </li>
@@ -66,19 +66,19 @@
           </div>
         </div>
 
-        <button type="submit" class="header-btn-submit">
+        <button type="submit" class="header-btn-submit header-submit">
           Sing up
           <svg width="20" height="20" class="header-sing-svg">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-vector-log-left"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-vector-log-left"></use>
           </svg>
         </button>
 
         <button type="button" class="header-btn-burgher">
           <svg width="28" height="28" class="header-burgher-svg">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-burger"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-burger"></use>
           </svg>
           <svg width="28" height="28" class="header-esc-svg">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-close"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-close"></use>
           </svg>
         </button>
       </div>
@@ -88,10 +88,10 @@
   <div class="header-menu">
     <div class="container">
       <div class="header-menu-content">
-        <button type="submit" class="header-btn-submit-modal">
+        <button type="submit" class="header-btn-submit-modal header-submit">
           Sing up
           <svg width="20" height="20" class="header-sing-svg">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-vector-log-left"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-vector-log-left"></use>
           </svg>
         </button>
 
@@ -103,7 +103,7 @@
             <a class="header-shopping-modal" href="./shopping.html">
               Shopping list
               <svg width="20" height="20" class="header-shop-svg-modal">
-                <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-header-shopp"></use>
+                <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-shopp"></use>
               </svg>
             </a>
           </li>
@@ -127,7 +127,68 @@
 
 
       <!--  -->
-      
+      <div class="authentication">
+  <div class="authentication-body">
+    <button class="authentication-close" type="button">
+      <svg width="28" height="28" class="authentication-icon-close">
+        <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-close"></use>
+      </svg>
+    </button>
+    <form class="authentication-form">
+      <div class="authentication-wrap">
+        <label class="authentication-label" for="name">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            pattern="[A-Za-z\s-]+"
+            placeholder="name"
+            required
+          />
+        </label>
+        <label class="authentication-label" for="email">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            placeholder="email"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-email">
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-email"></use>
+          </svg>
+        </label>
+        <label class="authentication-label" for="password">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{6,}$"
+            placeholder="password"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-lock">
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-lock"></use>
+          </svg>
+        </label>
+      </div>
+
+      <button type="submit" class="authentication-button">Sign up</button>
+
+      <ul class="authentication-list">
+        <li class="authentication-item">
+          <a class="authentication-signup" href="#">sign up</a>
+        </li>
+        <li class="authentication-item">
+          <a class="authentication-signin" href="#">sign in</a>
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="authentication-blur"></div>
+</div>
+
 
       <main>
         <h1 class="visually-hidden">Website for selecting books "Bookshelf"</h1>
@@ -198,7 +259,7 @@
     <div class="support-header-wrapper">
       <h3 class="support-header">Support Ukraine</h3>
       <svg class="supp-icon" width="20" height="32">
-        <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-supp-ukraine"></use>
+        <use href="/project-Pronto11/assets/icons-59613547.svg#icon-supp-ukraine"></use>
       </svg>
     </div>
     <div class="swiper">
@@ -352,7 +413,7 @@
     </div>
     <button type="button" class="swiper-button">
       <svg class="swiper-button-icon" width="20" height="20">
-        <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-supp-vector-down"></use>
+        <use href="/project-Pronto11/assets/icons-59613547.svg#icon-supp-vector-down"></use>
       </svg>
     </button>
   </div>
@@ -377,7 +438,7 @@
         </div>
         <button class="scroll-up">
           <svg width="20" height="20" class="scroll-up-icon">
-            <use href="/project-Pronto11/assets/icons-f8f0c595.svg#icon-scroll-up"></use>
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-scroll-up"></use>
           </svg>
         </button>
       </main>
