@@ -1,12 +1,16 @@
 .authentication {
   background-color: #4f2ee8;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 20;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   opacity: 0;
   visibility: hidden;
@@ -25,10 +29,10 @@ body.authentication-open {
 
 .authentication-blur {
   position: absolute;
-  top: -860px;
-  left: -860px;
-  width: 1420px;
-  height: 1420px;
+  top: -1080px;
+  left: -1080px;
+  width: 1400px;
+  height: 1400px;
   border-radius: 100%;
   background-color: rgba(204, 236, 231, 0.5);
   filter: blur(1079.5821533203125px);
@@ -125,6 +129,7 @@ body.authentication-open {
   stroke: #4f2ee8;
 }
 .authentication-button {
+  padding: 0;
   font-size: 16px;
   line-height: 1.125;
   border: none;
@@ -170,6 +175,10 @@ body.authentication-open {
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/
 
 @media screen and (min-width: 768px) {
+  .authentication-blur {
+    top: -700px;
+    left: -700px;
+  }
   .authentication-body {
     width: 579px;
     padding: 78px 38px 38px 38px;

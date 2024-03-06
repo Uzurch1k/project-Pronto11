@@ -7,7 +7,7 @@ import { toggle } from './js/feature';
 
 import * as header from './js/header';
 // import * as authorization from './js/authorization';
-import { open, openModal, close } from './js/authorization-functions';
+import * as authorizationFunctions from './js/authorization-functions';
 
 // import { categories } from './js/categories';
 import * as support from './js/support';
