@@ -6,8 +6,10 @@ import {
   updateProfile,
   onAuthStateChanged,
 } from 'firebase/auth';
+import iziToast from 'izitoast';
 
 import { toggleAuthen } from './authorization-functions';
+const headerSubmitCont = document.querySelector('.authentication-buttons');
 
 // Инициализация Firebase
 const firebaseConfig = {
@@ -34,14 +36,19 @@ if (signUpForm) {
 async function signUpEvent(e) {
   e.preventDefault();
 
-  const name = signUpForm.querySelector('#name-up').value;
-  const email = signUpForm.querySelector('#email-up').value;
-  const password = signUpForm.querySelector('#password-up').value;
-
-  signUp(name, email, password);
+  if(!signUpForm.classList.contains('disable')) {
+    const name = signUpForm.querySelector('#name-up').value;
+    const email = signUpForm.querySelector('#email-up').value;
+    const password = signUpForm.querySelector('#password-up').value;
+  
+    disableForm(signUpForm);
+    emptyError(signUpForm);
+    await signUp(signUpForm, name, email, password);
+    removeDisableForm(signUpForm);
+  }
 }
 
-async function signUp(name, email, password) {
+async function signUp(form, name, email, password) {
   try {
     // Регистрация нового пользователя с использованием электронной почты, пароля и имени
     const userCredential = await createUserWithEmailAndPassword(
@@ -56,11 +63,12 @@ async function signUp(name, email, password) {
     });
 
     // Дополнительные действия при успешной регистрации
-    console.log('User registered successfully:', userCredential.user);
-    signIn(email, password);
+    authState();
+    sucessMassage('Registration');
+    toggleAuthen(false);
   } catch (error) {
     // Обработка ошибок регистрации
-    console.error('Registration error:', error.code);
+    showError(form, error.code)
   }
 }
 
@@ -73,13 +81,18 @@ if (signInForm) {
 async function signInEvent(e) {
   e.preventDefault();
 
-  const email = signInForm.querySelector('#email-in').value;
-  const password = signInForm.querySelector('#password-in').value;
+  if(!signInForm.classList.contains('disable')) {
+    const email = signInForm.querySelector('#email-in').value;
+    const password = signInForm.querySelector('#password-in').value;
 
-  signIn(email, password);
+    disableForm(signInForm);
+    emptyError(signInForm);
+    await signIn(signInForm, email, password);
+    removeDisableForm(signInForm);
+  }
 }
 
-async function signIn(email, password) {
+async function signIn(form, email, password) {
   try {
     // Вход пользователя с использованием электронной почты и пароля
     const userCredential = await signInWithEmailAndPassword(
@@ -88,24 +101,33 @@ async function signIn(email, password) {
       password
     );
     // Дополнительные действия при успешном входе
-    console.log('User signed in successfully:', userCredential.user);
+    sucessMassage('Authorization');
     toggleAuthen(false);
   } catch (error) {
     // Обработка ошибок входа
-    console.error('Sign in error:', error.code);
+    showError(form, error.code)
   }
 }
 
 
+//Logout
+headerSubmitCont.addEventListener('click', (e) => {
+  const targetIs = e.target.classList.contains('log-out');
+  
+  if(targetIs) {
+    auth.signOut().then(function() {
+      sucessMassage('Log out');
+    }).catch(function(error) {
+      errorMassage('Unable to log out');
+    });
+  }
+});
+
+
 async function authState() {
   try {
-    await onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user)
-        return user.uid;
-      } else {
-        console.log('111')
-      }
+    onAuthStateChanged(auth, (user) => {
+      renderAuthHeader(user);
     });
   } catch (error) {
     console.error('Check error:', error.code);
@@ -114,4 +136,90 @@ async function authState() {
 
 
 
-authState()
+function renderAuthHeader(user) {
+  const authContainer = document.querySelector('.authentication-buttons');
+
+   if(!user) {
+    authContainer.innerHTML = `<button type="button" class="header-btn-submit">Sing up
+    <svg width="20" height="20" class="header-sing-svg">
+      <use href="../img/icons.svg#icon-header-vector-log-left"></use>
+    </svg>
+  </button>`;
+   } else {
+    const name = user.displayName;
+    authContainer.innerHTML = `<div class="authorized">
+    <button type="button" class="authorized-btn">
+      <div class="authorized-data">
+        <div class="authorized-ava-wrap">
+          <img src="../img/shopping/book-apple.png" alt="" />
+        </div>
+        <p class="authorized-name">${name}</p>
+      </div>
+      <div class="authorized-vector-wrap">
+        <svg width="23" height="26" class="authorized-vector">
+          <use href="../img/icons.svg#icon-header-vector-down"></use>
+        </svg>
+      </div>
+    </button>
+    <button type="button" class="log-out">
+      Log out
+      <svg width="20" height="20" class="header-sing-svg">
+        <use href="../img/icons.svg#icon-header-vector-log-left"></use>
+      </svg>
+    </button>
+  </div>`;
+   }
+}
+
+authState();
+
+
+//Add disable to form
+function disableForm(form) {
+  form.classList.add('disable');
+}
+
+function removeDisableForm(form) {
+  form.classList.remove('disable');
+}
+
+function showError(form, errorCode) {
+  console.log(errorCode)
+  let errorText = 'An unknown error has occurred. Please try again.';
+  const errorCont = form.querySelector('.authentication-errorcont');
+
+  if(errorCode === 'auth/email-already-in-use') {
+    errorText = 'A user with this email address already exists.';
+  }
+
+  if(errorCode === 'auth/invalid-credential') {
+    errorText = 'Incorrect login or password';
+  }
+
+  if(errorCode === 'auth/weak-password') {
+    errorText = 'Your password is too weak';
+  }
+
+  errorCont.innerHTML = `<div class="auth-error">${errorText}</div>`;
+}
+
+function emptyError(form) {
+  const errorCont = form.querySelector('.authentication-errorcont');
+  errorCont.innerHTML = '';
+}
+
+function sucessMassage(type) {
+  iziToast.success({
+    message: `${type} is successful`,
+    position: 'bottomRight',
+    icon: null,
+  });
+}
+
+function errorMassage(text) {
+  iziToast.error({
+    message: text,
+    position: 'bottomRight',
+    icon: null,
+  });
+}
