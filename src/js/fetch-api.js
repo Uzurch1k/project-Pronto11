@@ -26,16 +26,24 @@ export const fetchGeneral = async booksPerRow => {
 };
 
 //Fatch for categories
+let savedCatsFetch = JSON.parse(sessionStorage.getItem('savedcategoriesfetch')) || '';
 export const fetchCategories = async () => {
   const endpoint = '/books/category-list/';
   const fetchUrl = BASEURL + endpoint;
 
-  try {
-    const response = await axios.get(fetchUrl);
-    return renderCategories(response.data);
-  } catch (error) {
-    console.log(error);
+  if(!savedCatsFetch) {
+    try {
+      const response = await axios.get(fetchUrl);
+      sessionStorage.setItem('savedcategoriesfetch', JSON.stringify(response.data));
+      savedCatsFetch = response.data;
+      return renderCategories(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    return renderCategories(savedCatsFetch);
   }
+  
 };
 
 //Fatch for categories books

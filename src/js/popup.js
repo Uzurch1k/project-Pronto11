@@ -3,6 +3,9 @@ import {
   removeBookFromLocalStorage,
   saveBookToLocalStorage,
 } from './local-storage';
+import iconClose from '../img/icons.svg';
+import amazonImg from '../img/shopping/amazon.png';
+import apple from '../img/shopping/book-apple.png';
 
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
@@ -16,19 +19,11 @@ export async function popup() {
   }
 
   async function onBookLinkClick(event) {
-    const popupBookWrapper = document.querySelector('.popup-window');
-
-    popupBookWrapper.innerHTML = '';
-
     if (event.target.classList.contains('books-overlay')) {
       const bookId = event.target.dataset.id;
       const bookData = await fetchBookById(bookId);
 
-      const markup = template(bookData);
-
-      popupBookWrapper.insertAdjacentHTML('beforeend', markup);
-
-      openModal();
+      openModal(bookData);
     }
   }
 }
@@ -37,10 +32,15 @@ export async function popup() {
 // логіка відкриття та закриття модалки
 // ==============================================================
 
-async function openModal() {
+async function openModal(bookData) {
   const backdrop = document.querySelector('.popup-backdrop');
-  const closeBtn = document.querySelector('.popup-close-btn');
+  const popupBookWrapper = document.querySelector('.popup-window');
 
+  popupBookWrapper.innerHTML = '';
+  const markup = template(bookData);
+  popupBookWrapper.insertAdjacentHTML('beforeend', markup);
+
+  const closeBtn = document.querySelector('.popup-close-btn');
   showModal();
   checkLocalStorage();
   clickOnAddToShopingListBtn();
@@ -58,6 +58,7 @@ async function openModal() {
 
   function showModal() {
     backdrop.classList.add('is-active');
+    document.body.classList.add('modal-open');
   }
 
   function onClickCloseBtn() {
@@ -84,6 +85,7 @@ async function openModal() {
 
   function hideModal() {
     backdrop.classList.remove('is-active');
+    document.body.classList.remove('modal-open');
   }
 }
 
@@ -96,7 +98,7 @@ function template(obj) {
 
   return `<button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
-        <use href="./img/icons.svg#icon-header-close"></use>
+        <use href="${iconClose}#icon-header-close"></use>
       </svg>
     </button>
     <div class="popup-book">
@@ -104,8 +106,8 @@ function template(obj) {
         <img class="popup-book-image" src="${book_image}" alt="обкладинка" />
       </div>
       <div class="popup-book-content">
-        <h2 class="popup-book-title">${title}</h2>
-        <h3 class="popup-book-author">${author}</h3>
+        <h4 class="popup-book-title">${title}</h4>
+        <p class="popup-book-author">${author}</p>
         <p class="popup-book-review">${description}</p>
         <ul class="popup-shopping-links">
           <li>
@@ -117,7 +119,7 @@ function template(obj) {
               class="amazon popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/amazon.png"
+                src="${amazonImg}"
                 class="popup-shopping-links-icon"
                 alt="Logo of shop"
                 width="62"
@@ -133,7 +135,7 @@ function template(obj) {
               class="book popup-shopping-links-icon"
             >
               <img
-                src="./img/shopping/book-apple.png"
+                src="${apple}"
                 alt="Logo of shop"
                 width="33"
               />

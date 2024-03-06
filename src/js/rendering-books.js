@@ -1,5 +1,16 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+import icon from '../img/icons.svg';
+
 //Render top books
-export const renderTop = (data, booksPerRow) => {;
+export const renderTop = (data, booksPerRow) => {
+  if (!data || data.length === 0){
+    const emptyCategoryHtml = `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>
+    </div>${getEmtyCategoryHtml()}`; 
+
+    return emptyCategoryHtml;
+  }
+  else{
     const categoriesTop = data.map(el => {
         const catName = el.list_name;
         const books = renderOneBook(el.books.slice(0, booksPerRow))
@@ -12,7 +23,8 @@ export const renderTop = (data, booksPerRow) => {;
       </div>`;
     }).join('');
 
-    return `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>${categoriesTop}</div>`;
+    return `<h2 class="books-title">Best Sellers Books</h2>${categoriesTop}`;
+  }
 }
 
 //Render categories
@@ -37,17 +49,41 @@ export const renderCategories = (data) => {
   </li>${categoriesItems}`;
 }
 
+function getEmtyCategoryHtml(){
+  iziToast.error({
+    message:
+      'Sorry, no books found.',
+    position: 'topRight',
+    icon: null,
+  });
+
+  return `</div>
+  <div class="empty-category">
+  <svg class="icon-shopp-stub">
+    <use href="${icon}#icon-shopp-stub"></use>
+    </svg>
+  <span>Nothing found</span>
+  </div>`;
+}
+
 //Render category books
 export const renderCategory = (data, categoryName) => {
-    const books = renderOneBook(data)
-    const categoryHtml = `<div class="books-container">
-    <h2 class="books-title">${categoryName}</h2>
+    if (!data || data.length === 0){
+        const emptyCategoryHtml = `<div class="books-container">
+        <h2 class="books-title">${categoryName}</h2>
+        </div>${getEmtyCategoryHtml()}`; 
+
+        return emptyCategoryHtml;
+    }  
+    else{
+      const books = renderOneBook(data)
+    const categoryHtml = `<h2 class="books-title">${categoryName}</h2>
     <div class="books-category-container">
       <ul class="books-list">${books}</ul>
-    </div>
-  </div>`;
-
-    return categoryHtml;
+    </div>`;
+  
+      return categoryHtml;
+    }
 }
 
 //Render one book
@@ -66,7 +102,7 @@ function renderOneBook(books) {
           </a>
         </div>
         <div class="books-info">
-          <p class="books-info-title">${title}</p>
+          <h4 class="books-info-title">${title}</h4>
           <p class="books-info-author">${author}</p>
         </div>
       </li>`;
