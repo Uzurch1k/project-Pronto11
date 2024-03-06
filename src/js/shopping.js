@@ -1,57 +1,25 @@
 // ==============================================================
+
 import {
   saveBookToLocalStorage,
   removeBookFromLocalStorage,
 } from './local-storage';
-import Pagination from 'tui-pagination';
-import '../css/pagination.css';
+
+import { createButtonsPagination } from './pagination';
 
 const refs = {
   emptyPage: document.querySelector('.empty-page'),
   shoppingList: document.querySelector('.shopping-list'),
+  pagesContainer: document.querySelector('#pagination-wrapper'),
 };
+
+const perPage = 3;
 
 // ==============================================================
 
-export const pagesContainer = document.querySelector('#pagination-wrapper');
-
-function getVisiblePagesNumber() {
-  if (matchMedia('(min-width: 768px)').matches) {
-    return 3;
-  }
-
-  return 2;
-}
-
-const visiblePageNumber = getVisiblePagesNumber();
-
-const options = {
-  totalItems: 10,
-  itemsPerPage: 3,
-  visiblePages: visiblePageNumber,
-  centerAlign: false,
-  template: {
-    page: '<a href="#" class="tui-page-btn"><span class="number-text">{{page}}</span></a>',
-    currentPage:
-      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}"></span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
-      '<span class="tui-ico-{{type}}"></span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
-
 function checkIsThereElementOnPage() {
   if (
-    pagesContainer === null &&
+    refs.pagesContainer === null &&
     refs.emptyPage === null &&
     refs.shoppingList === null
   ) {
@@ -62,7 +30,6 @@ function checkIsThereElementOnPage() {
 }
 
 checkIsThereElementOnPage();
-// ==============================================================
 
 function islocalStorageEmpty() {
   const books = JSON.parse(localStorage.getItem('shoppinglist')) || [];
@@ -123,10 +90,33 @@ function markupRender(elementsMarkup) {
   refs.shoppingList.insertAdjacentHTML('beforeend', markup);
 
   addListenersToRemoveButtons();
+  generateNumbers(perPage);
+  checkQuantityElements();
+}
+
+function generateNumbers() {
+  const collectionBooks = Array.from(
+    refs.shoppingList.querySelectorAll('.shopping-item')
+  );
+
+  const totalPages = Math.ceil(collectionBooks.length / perPage);
+
+  const booksGroupByPage = [];
+
+  for (let i = 0; i < totalPages; i += 1) {
+    booksGroupByPage[i] = collectionBooks.slice(i * 3, i * 3 + (i + 3));
+  }
+}
+
+function checkQuantityElements() {
+  const books = refs.shoppingList.querySelectorAll('.shopping-item');
+
+  if (books.length > 3) {
+    createButtonsPagination();
+  }
 }
 
 function addListenersToRemoveButtons() {
-  // const removeButtons = refs.shoppingList.querySelectorAll('.shopping-trash');
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
 
   booksCollection.forEach(book => {
@@ -145,6 +135,7 @@ function removeBook(evt) {
 
     removeBookFromLocalStorage(bookId);
     currentBook.remove();
+
     isShoppingListEmpty();
   }
 }
@@ -152,7 +143,16 @@ function removeBook(evt) {
 function isShoppingListEmpty() {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
 
-  if(booksCollection.length === 0) {
-    refs.emptyPage.classList.remove('hidden')
+  console.log(booksCollection);
+
+  if (booksCollection.length === 0) {
+    refs.emptyPage.classList.remove('hidden');
+    return;
+  }
+
+  if (booksCollection.length > 3) {
+    createButtonsPagination();
+  } else {
+    refs.pagesContainer.classList.add('hidden');
   }
 }
