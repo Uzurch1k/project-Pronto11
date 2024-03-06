@@ -1,64 +1,57 @@
-// ==============================================================
+const elements = {
+  body: document.querySelector('body'),
+  authen: document.querySelector('.authentication'),
+  authenClose: document.querySelector('.authentication-close'),
 
-const body = document.querySelector('body');
-const authen = document.querySelector('.authentication');
+  headerSubmit: document.querySelector('.header-btn-submit'),
+  headerSubmitModal: document.querySelector('.header-btn-submit-modal'),
 
-const headerSubmit = document.querySelector('.header-btn-submit');
-const headerSubmitModal = document.querySelector('.header-btn-submit-modal');
-
-const authenClose = document.querySelector('.authentication-close');
-
-const signUpLink = document.querySelector('.authentication-signup');
-const signInLink = document.querySelector('.authentication-signin');
-
-// ==============================================================
+  signUpLink: document.querySelector('.authentication-signup'),
+  signInLink: document.querySelector('.authentication-signin'),
+};
 
 function toggleAuthen(open) {
-  authen.classList.toggle('is-active', open);
-  body.classList.toggle('authentication-open', open);
+  elements.authen.classList.toggle('is-active', open);
+  elements.body.classList.toggle('authentication-open', open);
 }
-
-// ==============================================================
 
 function showSignUpForm() {
   const signUpForm = document.querySelector('.authentication-form-signup');
   signUpForm.classList.remove('hide');
-  signUpLink.classList.add('active');
+  elements.signUpLink.classList.add('active');
 
   const signInForm = document.querySelector('.authentication-form-signin');
   signInForm.classList.add('hide');
-  signInLink.classList.remove('active');
+  elements.signInLink.classList.remove('active');
 }
 
 function showSignInForm() {
   const signInForm = document.querySelector('.authentication-form-signin');
   signInForm.classList.remove('hide');
-  signInLink.classList.add('active');
+  elements.signInLink.classList.add('active');
 
   const signUpForm = document.querySelector('.authentication-form-signup');
   signUpForm.classList.add('hide');
-  signUpLink.classList.remove('active');
+  elements.signUpLink.classList.remove('active');
 }
 
-if (authen) {
-  headerSubmit.addEventListener('click', () => {
+if (elements.authen) {
+  elements.headerSubmit.addEventListener('click', () => {
     toggleAuthen(true);
   });
-  headerSubmitModal.addEventListener('click', () => {
+  elements.headerSubmitModal.addEventListener('click', () => {
     toggleAuthen(true);
   });
-  authenClose.addEventListener('click', () => {
+  elements.authenClose.addEventListener('click', () => {
     toggleAuthen(false);
   });
 
-  // ===================================================
+  elements.signUpLink.classList.add('active');
 
-  signUpLink.classList.add('active');
-
-  signUpLink.addEventListener('click', () => {
+  elements.signUpLink.addEventListener('click', () => {
     showSignUpForm();
   });
-  signInLink.addEventListener('click', () => {
+  elements.signInLink.addEventListener('click', () => {
     showSignInForm();
   });
 }
