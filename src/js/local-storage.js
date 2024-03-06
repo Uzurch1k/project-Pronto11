@@ -20,3 +20,4 @@ export const removeBookFromLocalStorage = async (bookId) => {
     const filteredList = shoppinglist.filter(item => item._id !== bookId);
     localStorage.setItem('shoppinglist', JSON.stringify(filteredList));
 };  
+

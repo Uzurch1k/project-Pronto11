@@ -187,3 +187,11 @@
     max-width: 100%;
   }
 }
+
+/*---------------------------- Other Classes ----------------------------*/
+
+.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
