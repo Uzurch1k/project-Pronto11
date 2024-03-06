@@ -22,10 +22,10 @@
     />
 
     
-    <script type="module" crossorigin src="/project-Pronto11/assets/vendor-0f9dcf05.js"></script>
-    <script type="module" crossorigin src="/project-Pronto11/assets/main-0bbef7fa.js"></script>
+    <script type="module" crossorigin src="/project-Pronto11/assets/vendor-6803b046.js"></script>
+    <script type="module" crossorigin src="/project-Pronto11/assets/main-8159a86b.js"></script>
     <link rel="stylesheet" href="/project-Pronto11/assets/vendor-827d51bf.css">
-    <link rel="stylesheet" href="/project-Pronto11/assets/main-d8d206ee.css">
+    <link rel="stylesheet" href="/project-Pronto11/assets/main-c7063a79.css">
   </head>
 
   <body data-page="home">
@@ -134,14 +134,13 @@
         <use href="/project-Pronto11/assets/icons-59613547.svg#icon-header-close"></use>
       </svg>
     </button>
-    <form class="authentication-form">
+    <form class="authentication-form-signup">
       <div class="authentication-wrap">
         <label class="authentication-label" for="name">
           <input
             type="text"
             name="name"
-            id="name"
-            pattern="[A-Za-z]{3}"
+            id="name-up"
             placeholder="name"
             required
           />
@@ -150,8 +149,7 @@
           <input
             type="email"
             name="email"
-            id="email"
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            id="email-up"
             placeholder="email"
             required
           />
@@ -163,8 +161,7 @@
           <input
             type="password"
             name="password"
-            id="password"
-            pattern=".{6,}"
+            id="password-up"
             placeholder="password"
             required
           />
@@ -173,18 +170,47 @@
           </svg>
         </label>
       </div>
-
       <button type="submit" class="authentication-button">Sign up</button>
-
-      <ul class="authentication-list">
-        <li class="authentication-item">
-          <a class="authentication-signup" href="#">sign up</a>
-        </li>
-        <li class="authentication-item">
-          <a class="authentication-signin" href="#">sign in</a>
-        </li>
-      </ul>
     </form>
+
+    <form class="authentication-form-signin hide">
+      <div class="authentication-wrap">
+        <label class="authentication-label" for="email">
+          <input
+            type="email"
+            name="email"
+            id="email-in"
+            placeholder="email-in"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-email">
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-email"></use>
+          </svg>
+        </label>
+        <label class="authentication-label" for="password">
+          <input
+            type="password"
+            name="password"
+            id="password-in"
+            placeholder="password"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-lock">
+            <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-lock"></use>
+          </svg>
+        </label>
+      </div>
+      <button type="submit" class="authentication-button">Sign in</button>
+    </form>
+
+    <ul class="authentication-list">
+      <li class="authentication-item">
+        <a class="authentication-signup" href="#">sign up</a>
+      </li>
+      <li class="authentication-item">
+        <a class="authentication-signin" href="#">sign in</a>
+      </li>
+    </ul>
   </div>
   <div class="authentication-blur"></div>
 </div>
