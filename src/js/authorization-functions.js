@@ -4,6 +4,7 @@ const elements = {
   authenClose: document.querySelector('.authentication-close'),
 
   headerSubmitCont: document.querySelector('.authentication-buttons'),
+  headerSubmitContMob: document.querySelector('.authentication-buttons-mob'),
   headerSubmit: document.querySelector('.header-btn-submit'),
   headerSubmitModal: document.querySelector('.header-btn-submit-modal'),
 
@@ -43,8 +44,11 @@ if (elements.authen) {
       toggleAuthen(true);
     }
   });
-  elements.headerSubmitModal.addEventListener('click', () => {
-    toggleAuthen(true);
+  elements.headerSubmitContMob.addEventListener('click', (e) => {
+    const targetIs = e.target.classList.contains('header-btn-submit');
+    if(targetIs) {
+      toggleAuthen(true);
+    }
   });
   elements.authenClose.addEventListener('click', () => {
     toggleAuthen(false);
