@@ -6,15 +6,19 @@ import {
   updateProfile,
   onAuthStateChanged,
 } from 'firebase/auth';
+import { getDatabase, ref, get, set } from "firebase/database";
 import iziToast from 'izitoast';
 
 import { toggleAuthen } from './authorization-functions';
+import { checkIsThereElementOnPage } from './shopping';
 const headerSubmitCont = document.querySelector('.authentication-buttons');
+const headerSubmitContMob = document.querySelector('.authentication-buttons-mob');
 
 // Инициализация Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyAVC9h8-zdX_Zwfa8u_SlIxJpF4-2QNWH4',
   authDomain: 'bookshelf-pronto.firebaseapp.com',
+  databaseURL: 'https://bookshelf-pronto-default-rtdb.europe-west1.firebasedatabase.app',
   projectId: 'bookshelf-pronto',
   storageBucket: 'bookshelf-pronto.appspot.com',
   messagingSenderId: '1040567130254',
@@ -26,6 +30,20 @@ initializeApp(firebaseConfig);
 
 // Получение ссылки на экземпляр аутентификации Firebase
 const auth = getAuth();
+
+function getCurrentUser() {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe();
+      if (user) {
+        resolve(user);
+      } else {
+        resolve('');
+      }
+    });
+  });
+}
+  
 
 // Обработчик отправки формы регистрации
 const signUpForm = document.querySelector('.authentication-form-signup');
@@ -63,7 +81,8 @@ async function signUp(form, name, email, password) {
     });
 
     // Дополнительные действия при успешной регистрации
-    authState();
+    await addBooksJson();
+    await authState();
     sucessMassage('Registration');
     toggleAuthen(false);
   } catch (error) {
@@ -111,7 +130,10 @@ async function signIn(form, email, password) {
 
 
 //Logout
-headerSubmitCont.addEventListener('click', (e) => {
+headerSubmitCont.addEventListener('click', logOutFunc);
+headerSubmitContMob.addEventListener('click', logOutFunc);
+
+function logOutFunc(e) {
   const targetIs = e.target.classList.contains('log-out');
   
   if(targetIs) {
@@ -121,13 +143,14 @@ headerSubmitCont.addEventListener('click', (e) => {
       errorMassage('Unable to log out');
     });
   }
-});
+}
 
 
 async function authState() {
   try {
     onAuthStateChanged(auth, (user) => {
       renderAuthHeader(user);
+      checkIsThereElementOnPage();
     });
   } catch (error) {
     console.error('Check error:', error.code);
@@ -138,16 +161,20 @@ async function authState() {
 
 function renderAuthHeader(user) {
   const authContainer = document.querySelector('.authentication-buttons');
+  const authContainerMob = document.querySelector('.authentication-buttons-mob');
 
    if(!user) {
-    authContainer.innerHTML = `<button type="button" class="header-btn-submit">Sing up
+    const noneAuthState = `<button type="button" class="header-btn-submit">Sing up
     <svg width="20" height="20" class="header-sing-svg">
       <use href="../img/icons.svg#icon-header-vector-log-left"></use>
     </svg>
   </button>`;
+
+    authContainer.innerHTML = noneAuthState;
+    authContainerMob.innerHTML = noneAuthState;
    } else {
     const name = user.displayName;
-    authContainer.innerHTML = `<div class="authorized">
+    const AuthState = `<div class="authorized">
     <button type="button" class="authorized-btn">
       <div class="authorized-data">
         <div class="authorized-ava-wrap">
@@ -168,6 +195,9 @@ function renderAuthHeader(user) {
       </svg>
     </button>
   </div>`;
+
+    authContainer.innerHTML = AuthState;
+    authContainerMob.innerHTML = AuthState;
    }
 }
 
@@ -184,7 +214,6 @@ function removeDisableForm(form) {
 }
 
 function showError(form, errorCode) {
-  console.log(errorCode)
   let errorText = 'An unknown error has occurred. Please try again.';
   const errorCont = form.querySelector('.authentication-errorcont');
 
@@ -222,4 +251,74 @@ function errorMassage(text) {
     position: 'bottomRight',
     icon: null,
   });
+}
+
+
+
+////////////////////////////////////
+////////////////////////////////////
+////////////////////////////////////
+const database = getDatabase();
+
+function writeBooksData(userId, dataJson) {
+  set(ref(database, 'users/' + userId), {
+    'shippinglist' : dataJson
+  });
+}
+
+async function getBooksData(userId) {
+  const shippingListRef = ref(database, 'users/' + userId + '/shippinglist');
+  
+  try {
+    const snapshot = await get(shippingListRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting data:", error);
+    return null;
+  }
+}
+
+export async function addBooksJson(shoppingList) {
+  if(!shoppingList) {
+    shoppingList = localStorage.getItem('shoppinglist') || '';
+  }
+  const user = await getCurrentUser()
+  .then(user => {
+    return user;
+  })
+  .catch(error => {
+    return '';
+  });
+
+  if(!user) {
+    localStorage.setItem('shoppinglist', shoppingList);
+  } else {
+    const userId = user.uid;
+
+    if(shoppingList) {
+      writeBooksData(userId, shoppingList);
+    }
+  }
+}
+
+export const getBooksJson = async () => {
+  const user = await getCurrentUser()
+  .then(user => {
+    return user;
+  })
+  .catch(error => {
+    return '';
+  });
+
+  if(!user) {
+    return localStorage.getItem('shoppinglist');
+  } else {
+    const userId = user.uid;
+    
+    return getBooksData(userId);
+  }
 }

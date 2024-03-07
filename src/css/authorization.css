@@ -33,11 +33,11 @@ body.authentication-open {
   filter: blur(1079.5821533203125px);
 }
 .authentication-body {
-  margin: 10px 0;
+  margin: 10px 10px;
   border: 2px solid var(--main-color);
   background-color: var(--authentication-bg);
   border-radius: 18px;
-  width: 335px;
+  width: calc(100vw - 32px);
   padding: 38px 38px 38px 38px;
   position: relative;
   z-index: 2;
@@ -283,3 +283,5 @@ body.authentication-open {
     line-height: 1.33333;
   }
 }
+
+

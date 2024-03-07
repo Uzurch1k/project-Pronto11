@@ -6,6 +6,7 @@ import {
 } from './local-storage';
 
 import { createButtonsPagination } from './pagination';
+import { getBooksJson } from './authorization';
 
 const refs = {
   emptyPage: document.querySelector('.empty-page'),
@@ -17,7 +18,7 @@ const perPage = 3;
 
 // ==============================================================
 
-function checkIsThereElementOnPage() {
+export async function checkIsThereElementOnPage() {
   if (
     refs.pagesContainer === null &&
     refs.emptyPage === null &&
@@ -26,16 +27,18 @@ function checkIsThereElementOnPage() {
     return;
   }
 
-  islocalStorageEmpty();
+  await islocalStorageEmpty();
+  isShoppingListEmpty();
 }
 
-checkIsThereElementOnPage();
 
-function islocalStorageEmpty() {
-  const books = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+async function islocalStorageEmpty() {
+  const booksJson = await getBooksJson();
+  const books = JSON.parse(booksJson) || [];
 
   if (books.length === 0) {
     refs.emptyPage.classList.remove('hidden');
+    refs.shoppingList.innerHTML = '';
     return;
   }
 
@@ -87,7 +90,7 @@ function createMarkup(books) {
 
 function markupRender(elementsMarkup) {
   const markup = elementsMarkup.join('');
-  refs.shoppingList.insertAdjacentHTML('beforeend', markup);
+  refs.shoppingList.innerHTML = markup;
 
   addListenersToRemoveButtons();
   generateNumbers(perPage);
@@ -140,19 +143,25 @@ function removeBook(evt) {
   }
 }
 
-function isShoppingListEmpty() {
+export async function isShoppingListEmpty() {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
 
-  console.log(booksCollection);
+  if(booksCollection) {
+    console.log(booksCollection);
 
-  if (booksCollection.length === 0) {
-    refs.emptyPage.classList.remove('hidden');
-    return;
-  }
+    if (booksCollection.length === 0) {
+      refs.emptyPage.classList.remove('hidden');
+      refs.pagesContainer.classList.add('hidden');
+      return;
+    }
 
-  if (booksCollection.length > 3) {
-    createButtonsPagination();
-  } else {
-    refs.pagesContainer.classList.add('hidden');
+    console.log(booksCollection.length)
+  
+    if (booksCollection.length > 3) {
+      createButtonsPagination();
+      refs.pagesContainer.classList.remove('hidden');
+    } else {
+      refs.pagesContainer.classList.add('hidden');
+    }
   }
 }

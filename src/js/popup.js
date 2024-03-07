@@ -3,6 +3,8 @@ import { removeBookFromLocalStorage } from './local-storage';
 import iconClose from '../img/icons.svg';
 import amazonImg from '../img/shopping/amazon.png';
 import apple from '../img/shopping/book-apple.png';
+import { getBooksJson, addBooksJson } from './authorization';
+
 
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
@@ -90,14 +92,14 @@ async function openModal(bookData) {
 // логіка перевірки LocalStorage та відпрацювання кнопки ADD TO SHOPPING LIST
 // ==============================================================
 
-function checkLocalStorage() {
+async function checkLocalStorage() {
   const addToShoppingListBtn = document.querySelector(
     '.popup-book-btn-add-to-shopinglist'
   );
   const bookId = addToShoppingListBtn.dataset.id;
-
-  const localStorageData =
-    JSON.parse(localStorage.getItem('shoppinglist')) || [];
+  const booksJson = await getBooksJson();
+  const localStorageData = JSON.parse(booksJson) || [];
+  
 
   const bookInLocalStorage = localStorageData
     .map(element => element._id)
@@ -111,10 +113,11 @@ function checkLocalStorage() {
   }
 }
 
-function setToLocalStorage(bookData) {
-  let shoppingList = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+async function setToLocalStorage(bookData) {
+  const booksJson = await getBooksJson();
+  const shoppingList = JSON.parse(booksJson) || [];
   shoppingList.push(bookData);
-  localStorage.setItem('shoppinglist', JSON.stringify(shoppingList));
+  await addBooksJson(JSON.stringify(shoppingList));
 }
 
 async function clickOnAddToShopingListBtn() {
@@ -126,9 +129,9 @@ async function clickOnAddToShopingListBtn() {
 
   addToShoppingListBtn.addEventListener('click', addToShoppingListBtnHandler);
 
-  function addToShoppingListBtnHandler() {
-    const localStorageData =
-      JSON.parse(localStorage.getItem('shoppinglist')) || [];
+  async function addToShoppingListBtnHandler() {
+    const booksJson = await getBooksJson();
+    const localStorageData = JSON.parse(booksJson) || [];
 
     const bookInLocalStorage = localStorageData
       .map(element => element._id)
@@ -140,7 +143,7 @@ async function clickOnAddToShopingListBtn() {
       addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
       addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
     } else {
-      removeBookFromLocalStorage(bookId);
+      await removeBookFromLocalStorage(bookId);
 
       document.querySelector('.under-btn-text').remove();
       addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
