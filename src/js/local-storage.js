@@ -1,10 +1,10 @@
 import { fetchBookById } from './fetch-api';
+import { getBooksJson, addBooksJson } from './authorization';
 
 export const saveBookToLocalStorage = async bookId => {
   try {
     const bookData = await fetchBookById(bookId);
-
-    let shoppingList = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+    const shoppingList = JSON.parse(getBooksJson()) || [];
 
     shoppingList.push(bookData);
 
@@ -15,7 +15,8 @@ export const saveBookToLocalStorage = async bookId => {
 };
 
 export const removeBookFromLocalStorage = async bookId => {
-  const shoppinglist = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+  const booksJson = await getBooksJson();
+  const shoppinglist = JSON.parse(booksJson) || [];
   const filteredList = shoppinglist.filter(item => item._id !== bookId);
-  localStorage.setItem('shoppinglist', JSON.stringify(filteredList));
+  await addBooksJson(JSON.stringify(filteredList));
 };
