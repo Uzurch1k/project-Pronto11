@@ -6,6 +6,7 @@
       </svg>
     </button>
     <form class="authentication-form-signup">
+      <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
         <label class="authentication-label" for="name">
           <input
@@ -41,10 +42,11 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign up</button>
+      <button type="submit" class="authentication-button">Sign up <div class="btnloader"></div></button>
     </form>
 
     <form class="authentication-form-signin hide">
+      <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
         <label class="authentication-label" for="email">
           <input
@@ -71,7 +73,7 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign in</button>
+      <button type="submit" class="authentication-button">Sign in <div class="btnloader"></div></button>
     </form>
 
     <ul class="authentication-list">

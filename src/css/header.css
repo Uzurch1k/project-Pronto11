@@ -196,6 +196,15 @@ body.lock {
 .header-sing-svg {
 }
 
+.authorized {
+  position: relative;
+}
+
+.authorized:hover .log-out {
+  opacity: 1;
+  visibility: visible;
+}
+
 .authorized-data {
   display: flex;
   align-items: center;
@@ -243,6 +252,11 @@ body.lock {
   fill: #fff;
 }
 .log-out {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
   cursor: pointer;
   padding: 0 12px;
   font-weight: 500;
@@ -258,6 +272,9 @@ body.lock {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s opacity;
 }
 
 /* ==================================================== */
@@ -341,6 +358,12 @@ body.lock {
     fill: #111;
   }
 
+  .authentication-buttons {
+    margin-left: 25px;
+    min-width: 184px;
+    min-height: 45px;
+  }
+
   .header-btn-submit {
     display: block;
     background-color: #4f2ee8;
@@ -358,7 +381,6 @@ body.lock {
     justify-content: center;
     gap: 90px;
     padding: 0;
-    margin-left: 25px;
     transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
   .header-menu {

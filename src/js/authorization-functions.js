@@ -3,6 +3,7 @@ const elements = {
   authen: document.querySelector('.authentication'),
   authenClose: document.querySelector('.authentication-close'),
 
+  headerSubmitCont: document.querySelector('.authentication-buttons'),
   headerSubmit: document.querySelector('.header-btn-submit'),
   headerSubmitModal: document.querySelector('.header-btn-submit-modal'),
 
@@ -10,7 +11,7 @@ const elements = {
   signInLink: document.querySelector('.authentication-signin'),
 };
 
-function toggleAuthen(open) {
+export function toggleAuthen(open) {
   elements.authen.classList.toggle('is-active', open);
   elements.body.classList.toggle('authentication-open', open);
 }
@@ -36,8 +37,11 @@ function showSignInForm() {
 }
 
 if (elements.authen) {
-  elements.headerSubmit.addEventListener('click', () => {
-    toggleAuthen(true);
+  elements.headerSubmitCont.addEventListener('click', (e) => {
+    const targetIs = e.target.classList.contains('header-btn-submit');
+    if(targetIs) {
+      toggleAuthen(true);
+    }
   });
   elements.headerSubmitModal.addEventListener('click', () => {
     toggleAuthen(true);
