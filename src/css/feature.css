@@ -152,6 +152,7 @@
 }
 .scroll-up.show {
   opacity: 1;
+  cursor: pointer;
 }
 .scroll-up-icon {
   transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1);

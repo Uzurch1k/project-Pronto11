@@ -5,10 +5,15 @@ import {
   removeBookFromLocalStorage,
 } from './local-storage';
 
+import icon from '../img/icons.svg';
+import amazon from '../img/shopping/amazon.png';
+import apple from '../img/shopping/book-apple.png';
 
-import { createButtonsPagination,
+import {
+  createButtonsPagination,
   checkPageNumberOfBooks,
-  checkFirstPage, } from './pagination';
+  checkFirstPage,
+} from './pagination';
 import { getBooksJson } from './authorization';
 
 const refs = {
@@ -34,7 +39,6 @@ export async function checkIsThereElementOnPage() {
   isShoppingListEmpty();
 }
 
-
 async function islocalStorageEmpty() {
   const booksJson = await getBooksJson();
   const books = JSON.parse(booksJson) || [];
@@ -57,7 +61,7 @@ function createMarkup(books) {
         </div>
         <div class="shopping-content">
           <div>
-            <p class="shopping-subtitle">${book.title}</p>
+            <h4 class="shopping-subtitle">${book.title}</h4>
             <p class="genre">${book.list_name}</p>
             <p class="book-desc">${book.description}</p>
           </div>
@@ -65,21 +69,21 @@ function createMarkup(books) {
         </div>
         <button type="button" class="shopping-trash">
           <svg width="18" height="18" class="trash-icon">
-            <use href="./img/icons.svg#icon-shopp-trash"></use>
+            <use href="${icon}#icon-shopp-trash"></use>
           </svg>
         </button>
   
         <div class="shop-buttons">
           <a href="#" target="_blank" class="shop-amazon">
             <img
-              src="./img/shopping/amazon.png"
+              src="${amazon}"
               alt="Logo of shop"
               width="62"
             />
           </a>
           <a href="#" target="_blank" class="shop-apple">
             <img
-              src="./img/shopping/book-apple.png"
+              src="${apple}"
               alt="Logo of shop"
               width="33"
             />
@@ -199,7 +203,7 @@ export async function isShoppingListEmpty() {
       refs.pagesContainer.classList.add('hidden');
       return;
     }
-  
+
     if (booksCollection.length > 3) {
       let selectedPage = document.querySelector('.tui-is-selected').innerText;
       const booksCount = booksCollection.length % 3;
