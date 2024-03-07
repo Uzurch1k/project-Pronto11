@@ -6,7 +6,7 @@ import { toggle } from './js/feature';
 // import { localStorage } from './js/local-storage';
 
 import * as header from './js/header';
-// import * as authorization from './js/authorization';
+import * as authorization from './js/authorization';
 import * as authorizationFunctions from './js/authorization-functions';
 
 // import { categories } from './js/categories';

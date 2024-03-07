@@ -5,14 +5,14 @@
         <use href="./img/icons.svg#icon-header-close"></use>
       </svg>
     </button>
-    <form class="authentication-form">
+    <form class="authentication-form-signup">
+      <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
         <label class="authentication-label" for="name">
           <input
             type="text"
             name="name"
-            id="name"
-            pattern="[A-Za-z]{3}"
+            id="name-up"
             placeholder="name"
             required
           />
@@ -21,8 +21,7 @@
           <input
             type="email"
             name="email"
-            id="email"
-            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            id="email-up"
             placeholder="email"
             required
           />
@@ -34,8 +33,7 @@
           <input
             type="password"
             name="password"
-            id="password"
-            pattern=".{6,}"
+            id="password-up"
             placeholder="password"
             required
           />
@@ -44,18 +42,48 @@
           </svg>
         </label>
       </div>
-
-      <button type="submit" class="authentication-button">Sign up</button>
-
-      <ul class="authentication-list">
-        <li class="authentication-item">
-          <a class="authentication-signup" href="#">sign up</a>
-        </li>
-        <li class="authentication-item">
-          <a class="authentication-signin" href="#">sign in</a>
-        </li>
-      </ul>
+      <button type="submit" class="authentication-button">Sign up <div class="btnloader"></div></button>
     </form>
+
+    <form class="authentication-form-signin hide">
+      <div class="authentication-errorcont"></div>
+      <div class="authentication-wrap">
+        <label class="authentication-label" for="email">
+          <input
+            type="email"
+            name="email"
+            id="email-in"
+            placeholder="email"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-email">
+            <use href="./img/icons.svg#icon-authorization-email"></use>
+          </svg>
+        </label>
+        <label class="authentication-label" for="password">
+          <input
+            type="password"
+            name="password"
+            id="password-in"
+            placeholder="password"
+            required
+          />
+          <svg width="28" height="28" class="authorization-icon-lock">
+            <use href="./img/icons.svg#icon-authorization-lock"></use>
+          </svg>
+        </label>
+      </div>
+      <button type="submit" class="authentication-button">Sign in <div class="btnloader"></div></button>
+    </form>
+
+    <ul class="authentication-list">
+      <li class="authentication-item">
+        <a class="authentication-signup" href="#">sign up</a>
+      </li>
+      <li class="authentication-item">
+        <a class="authentication-signin" href="#">sign in</a>
+      </li>
+    </ul>
   </div>
   <div class="authentication-blur"></div>
 </div>

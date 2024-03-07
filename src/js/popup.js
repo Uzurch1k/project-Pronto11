@@ -1,8 +1,5 @@
 import { fetchBookById } from './fetch-api';
-import {
-  removeBookFromLocalStorage,
-  saveBookToLocalStorage,
-} from './local-storage';
+import { removeBookFromLocalStorage } from './local-storage';
 import iconClose from '../img/icons.svg';
 import amazonImg from '../img/shopping/amazon.png';
 import apple from '../img/shopping/book-apple.png';
@@ -43,7 +40,7 @@ async function openModal(bookData) {
   const closeBtn = document.querySelector('.popup-close-btn');
   showModal();
   checkLocalStorage();
-  clickOnAddToShopingListBtn();
+  await clickOnAddToShopingListBtn();
 
   backdrop.addEventListener('click', onBackdropClick);
   document.addEventListener('keydown', onEscClick);
@@ -86,6 +83,68 @@ async function openModal(bookData) {
   function hideModal() {
     backdrop.classList.remove('is-active');
     document.body.classList.remove('modal-open');
+  }
+}
+
+// ==============================================================
+// логіка перевірки LocalStorage та відпрацювання кнопки ADD TO SHOPPING LIST
+// ==============================================================
+
+function checkLocalStorage() {
+  const addToShoppingListBtn = document.querySelector(
+    '.popup-book-btn-add-to-shopinglist'
+  );
+  const bookId = addToShoppingListBtn.dataset.id;
+
+  const localStorageData =
+    JSON.parse(localStorage.getItem('shoppinglist')) || [];
+
+  const bookInLocalStorage = localStorageData
+    .map(element => element._id)
+    .includes(bookId);
+
+  if (bookInLocalStorage) {
+    addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
+    addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
+  } else {
+    addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
+  }
+}
+
+function setToLocalStorage(bookData) {
+  let shoppingList = JSON.parse(localStorage.getItem('shoppinglist')) || [];
+  shoppingList.push(bookData);
+  localStorage.setItem('shoppinglist', JSON.stringify(shoppingList));
+}
+
+async function clickOnAddToShopingListBtn() {
+  const addToShoppingListBtn = document.querySelector(
+    '.popup-book-btn-add-to-shopinglist'
+  );
+  const bookId = addToShoppingListBtn.dataset.id;
+  const bookData = await fetchBookById(bookId);
+
+  addToShoppingListBtn.addEventListener('click', addToShoppingListBtnHandler);
+
+  function addToShoppingListBtnHandler() {
+    const localStorageData =
+      JSON.parse(localStorage.getItem('shoppinglist')) || [];
+
+    const bookInLocalStorage = localStorageData
+      .map(element => element._id)
+      .includes(bookId);
+
+    if (!bookInLocalStorage) {
+      setToLocalStorage(bookData);
+
+      addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
+      addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
+    } else {
+      removeBookFromLocalStorage(bookId);
+
+      document.querySelector('.under-btn-text').remove();
+      addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
+    }
   }
 }
 
@@ -153,61 +212,6 @@ function template(obj) {
         aria-label="Add card to shopping list"
       ></button>
     </div>`;
-}
-
-// ==============================================================
-// логіка перевірки LocalStorage та відпрацювання кнопки ADD TO SHOPPING LIST
-// ==============================================================
-
-function checkLocalStorage() {
-  const addToShoppingListBtn = document.querySelector(
-    '.popup-book-btn-add-to-shopinglist'
-  );
-  const bookId = addToShoppingListBtn.dataset.id;
-
-  const localStorageData =
-    JSON.parse(localStorage.getItem('shoppinglist')) || [];
-
-  const bookInLocalStorage = localStorageData
-    .map(element => element._id)
-    .includes(bookId);
-
-  if (bookInLocalStorage) {
-    addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
-    addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
-  } else {
-    addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
-  }
-}
-
-function clickOnAddToShopingListBtn() {
-  const addToShoppingListBtn = document.querySelector(
-    '.popup-book-btn-add-to-shopinglist'
-  );
-  const bookId = addToShoppingListBtn.dataset.id;
-
-  addToShoppingListBtn.addEventListener('click', addToShoppingListBtnHandler);
-
-  function addToShoppingListBtnHandler() {
-    const localStorageData =
-      JSON.parse(localStorage.getItem('shoppinglist')) || [];
-
-    const bookInLocalStorage = localStorageData
-      .map(element => element._id)
-      .includes(bookId);
-
-    if (!bookInLocalStorage) {
-      saveBookToLocalStorage(bookId);
-
-      addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
-      addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
-    } else {
-      removeBookFromLocalStorage(bookId);
-
-      document.querySelector('.under-btn-text').remove();
-      addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
-    }
-  }
 }
 
 function templateForBtn() {

@@ -17,11 +17,6 @@
   pointer-events: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.authentication.is-active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
 
 body.authentication-open {
   overflow: hidden;
@@ -47,6 +42,9 @@ body.authentication-open {
   position: relative;
   z-index: 2;
 }
+.authentication-body form.disable button .btnloader {
+  display: block;
+}
 .authentication-close {
   width: 20px;
   height: 20px;
@@ -68,7 +66,8 @@ body.authentication-open {
 .authentication-icon-close:hover {
   stroke: #4f2ee8;
 }
-.authentication-form {
+.authentication-form-signup,
+.authentication-form-signin {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -108,11 +107,13 @@ body.authentication-open {
 .authentication-label {
   position: relative;
 }
+
 .authorization-icon-email,
 .authorization-icon-lock {
   width: 18px;
   height: 18px;
   position: absolute;
+  z-index: -1;
   top: 50%;
   right: 22px;
   transform: translateY(-50%);
@@ -128,6 +129,7 @@ body.authentication-open {
 .authentication-wrap input:focus + .authorization-icon-lock {
   stroke: #4f2ee8;
 }
+
 .authentication-button {
   padding: 0;
   font-size: 16px;
@@ -143,6 +145,13 @@ body.authentication-open {
   text-transform: uppercase;
   color: var(--authentication-btn-color);
   transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.authentication-button .btnloader {
+  display: none;
 }
 .authentication-button:hover {
   background-color: #4f2ee8;
@@ -151,10 +160,13 @@ body.authentication-open {
 .authentication-list {
   margin-top: 14px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 .authentication-item {
 }
+
 .authentication-signup,
 .authentication-signin {
   font-weight: 700;
@@ -171,6 +183,54 @@ body.authentication-open {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
+.authentication-signup.active,
+.authentication-signin.active {
+  color: #4f2ee8;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.hide {
+  display: none;
+}
+.authentication.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+.btnloader {
+  width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    border: 3px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+
+.authentication-errorcont {
+  width: 100%;
+}
+.auth-error {
+  margin-bottom: 16px;
+  font-size: 1.2em;
+  color: red;
+  padding: 12px;
+  border: 2px solid red;
+  width: 100%;
+  }
 
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/
 
