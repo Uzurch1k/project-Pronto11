@@ -1,7 +1,4 @@
 // ==============================================================
-import amazonImg from '../img/shopping/amazon.png';
-import apple from '../img/shopping/book-apple.png';
-import icon from '../img/icons.svg';
 
 import {
   saveBookToLocalStorage,
@@ -9,11 +6,9 @@ import {
 } from './local-storage';
 
 import {
-  instance,
+  createButtonsPagination,
   checkPageNumberOfBooks,
   checkFirstPage,
-  options,
-  // isCurrentPageEmpty,
 } from './pagination';
 
 const refs = {
@@ -25,12 +20,6 @@ const refs = {
 export const perPage = 3;
 
 // ==============================================================
-export function getTotalItems() {
-  const books = JSON.parse(localStorage.getItem('shoppinglist')) || [];
-  return books.length;
-}
-
-getTotalItems();
 
 function checkIsThereElementOnPage() {
   if (
@@ -38,7 +27,6 @@ function checkIsThereElementOnPage() {
     refs.emptyPage === null &&
     refs.shoppingList === null
   ) {
-    console.log('hello');
     return;
   }
 
@@ -59,73 +47,61 @@ function islocalStorageEmpty() {
   createMarkup(books);
 }
 
-function checkQuantityElements() {
-  const books = Array.from(
+function createMarkup(books) {
+  const elementsMarkup = books.map(book => {
+    return `<li class="shopping-item hidden" data-book-id="${book._id}">
+        <div class="shopping-photo">
+          <img src="${book.book_image}" alt="book cover" />
+        </div>
+        <div class="shopping-content">
+          <div>
+            <p class="shopping-subtitle">${book.title}</p>
+            <p class="genre">${book.list_name}</p>
+            <p class="book-desc">${book.description}</p>
+          </div>
+          <p class="shopping-author">${book.author}</p>
+        </div>
+        <button type="button" class="shopping-trash">
+          <svg width="18" height="18" class="trash-icon">
+            <use href="./img/icons.svg#icon-shopp-trash"></use>
+          </svg>
+        </button>
+  
+        <div class="shop-buttons">
+          <a href="#" target="_blank" class="shop-amazon">
+            <img
+              src="./img/shopping/amazon.png"
+              alt="Logo of shop"
+              width="62"
+            />
+          </a>
+          <a href="#" target="_blank" class="shop-apple">
+            <img
+              src="./img/shopping/book-apple.png"
+              alt="Logo of shop"
+              width="33"
+            />
+          </a>
+        </div>
+      </li>`;
+  });
+
+  markupRender(elementsMarkup);
+}
+
+function markupRender(elementsMarkup) {
+  const markup = elementsMarkup.join('');
+  refs.shoppingList.insertAdjacentHTML('beforeend', markup);
+
+  const bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
 
-  if (books.length === 0) {
-    refs.emptyPage.classList.remove('hidden');
-    return;
-  }
-
-  if (books.length > 3) {
-    chunkArray(books, perPage);
-  }
-}
-
-function createMarkup(books) {
-  const elementsMarkup = books.map(book => {
-    return `<li class="shopping-item hidden" data-book-id="${book._id}" data-page-number="">
-      <div class="shopping-photo">
-        <img src="${book.book_image}" alt="book cover" />
-      </div>
-      <div class="shopping-content">
-        <div>
-          <h4 class="shopping-subtitle">${book.title}</h4>
-          <p class="genre">${book.list_name}</p>
-          <p class="book-desc">${book.description}</p>
-        </div>
-        <p class="shopping-author">${book.author}</p>
-      </div>
-      <button type="button" class="shopping-trash">
-        <svg width="18" height="18" class="trash-icon">
-          <use href="${icon}#icon-shopp-trash"></use>
-        </svg>
-      </button>
-
-      <div class="shop-buttons">
-        <a href="#" target="_blank" class="shop-amazon">
-          <img
-            src="${amazonImg}"
-            alt="Logo of shop"
-            width="62"
-          />
-        </a>
-        <a href="#" target="_blank" class="shop-apple">
-          <img
-            src="${apple}"
-            alt="Logo of shop"
-            width="33"
-          />
-        </a>
-      </div>
-    </li>`;
-  });
-
-  const markup = elementsMarkup.join('');
-  markupRender(markup);
-}
-
-function markupRender(markup) {
-  refs.shoppingList.insertAdjacentHTML('beforeend', markup);
-
   addListenersToRemoveButtons();
-  checkQuantityElements();
   checkFirstPage();
+  chunkArray(bookCollection, perPage);
+  checkQuantityElements();
 }
-
-// const totalPages = Math.ceil(collectionBooks.length / 3);
 
 function chunkArray(myArray, chunk_size) {
   console.log(2);
@@ -147,8 +123,6 @@ function chunkArray(myArray, chunk_size) {
   }
 
   const result = pageBooks.flat();
-  console.log(result);
-  checkPageNumberOfBooks(result);
 }
 
 function addPageNumber(booksGroup, pageNumber) {
@@ -160,6 +134,14 @@ function addPageNumber(booksGroup, pageNumber) {
   });
 
   return booksCollection;
+}
+
+function checkQuantityElements() {
+  const books = refs.shoppingList.querySelectorAll('.shopping-item');
+
+  if (books.length > 3) {
+    createButtonsPagination();
+  }
 }
 
 function addListenersToRemoveButtons() {
@@ -182,10 +164,23 @@ function removeBook(evt) {
     removeBookFromLocalStorage(bookId);
     currentBook.remove();
 
-    checkQuantityElements();
-    // isCurrentPageEmpty(Number(currentBook.dataset.pageNumber));
-    // console.log(currentBook.dataset.pageNumber);
+    isShoppingListEmpty();
   }
 }
 
-// function isCurrentPageEmpty() {}
+function isShoppingListEmpty() {
+  const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
+
+  console.log(booksCollection);
+
+  if (booksCollection.length === 0) {
+    refs.emptyPage.classList.remove('hidden');
+    return;
+  }
+
+  if (booksCollection.length > 3) {
+    createButtonsPagination();
+  } else {
+    refs.pagesContainer.classList.add('hidden');
+  }
+}
