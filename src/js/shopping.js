@@ -5,7 +5,10 @@ import {
   removeBookFromLocalStorage,
 } from './local-storage';
 
-import { createButtonsPagination } from './pagination';
+
+import { createButtonsPagination,
+  checkPageNumberOfBooks,
+  checkFirstPage, } from './pagination';
 import { getBooksJson } from './authorization';
 
 const refs = {
@@ -14,7 +17,7 @@ const refs = {
   pagesContainer: document.querySelector('#pagination-wrapper'),
 };
 
-const perPage = 3;
+export const perPage = 3;
 
 // ==============================================================
 
@@ -48,41 +51,41 @@ async function islocalStorageEmpty() {
 
 function createMarkup(books) {
   const elementsMarkup = books.map(book => {
-    return `<li class="shopping-item" data-book-id="${book._id}">
-      <div class="shopping-photo">
-        <img src="${book.book_image}" alt="book cover" />
-      </div>
-      <div class="shopping-content">
-        <div>
-          <p class="shopping-subtitle">${book.title}</p>
-          <p class="genre">${book.list_name}</p>
-          <p class="book-desc">${book.description}</p>
+    return `<li class="shopping-item hidden" data-book-id="${book._id}">
+        <div class="shopping-photo">
+          <img src="${book.book_image}" alt="book cover" />
         </div>
-        <p class="shopping-author">${book.author}</p>
-      </div>
-      <button type="button" class="shopping-trash">
-        <svg width="18" height="18" class="trash-icon">
-          <use href="./img/icons.svg#icon-shopp-trash"></use>
-        </svg>
-      </button>
-
-      <div class="shop-buttons">
-        <a href="#" target="_blank" class="shop-amazon">
-          <img
-            src="./img/shopping/amazon.png"
-            alt="Logo of shop"
-            width="62"
-          />
-        </a>
-        <a href="#" target="_blank" class="shop-apple">
-          <img
-            src="./img/shopping/book-apple.png"
-            alt="Logo of shop"
-            width="33"
-          />
-        </a>
-      </div>
-    </li>`;
+        <div class="shopping-content">
+          <div>
+            <p class="shopping-subtitle">${book.title}</p>
+            <p class="genre">${book.list_name}</p>
+            <p class="book-desc">${book.description}</p>
+          </div>
+          <p class="shopping-author">${book.author}</p>
+        </div>
+        <button type="button" class="shopping-trash">
+          <svg width="18" height="18" class="trash-icon">
+            <use href="./img/icons.svg#icon-shopp-trash"></use>
+          </svg>
+        </button>
+  
+        <div class="shop-buttons">
+          <a href="#" target="_blank" class="shop-amazon">
+            <img
+              src="./img/shopping/amazon.png"
+              alt="Logo of shop"
+              width="62"
+            />
+          </a>
+          <a href="#" target="_blank" class="shop-apple">
+            <img
+              src="./img/shopping/book-apple.png"
+              alt="Logo of shop"
+              width="33"
+            />
+          </a>
+        </div>
+      </li>`;
   });
 
   markupRender(elementsMarkup);
@@ -92,23 +95,47 @@ function markupRender(elementsMarkup) {
   const markup = elementsMarkup.join('');
   refs.shoppingList.innerHTML = markup;
 
-  addListenersToRemoveButtons();
-  generateNumbers(perPage);
-  checkQuantityElements();
-}
-
-function generateNumbers() {
-  const collectionBooks = Array.from(
+  const bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
 
-  const totalPages = Math.ceil(collectionBooks.length / perPage);
+  addListenersToRemoveButtons();
+  checkFirstPage();
+  chunkArray(bookCollection, perPage);
+  checkQuantityElements();
+}
 
-  const booksGroupByPage = [];
+function chunkArray(myArray, chunk_size) {
+  console.log(2);
+  let index = 0;
+  let tempArray = [];
 
-  for (let i = 0; i < totalPages; i += 1) {
-    booksGroupByPage[i] = collectionBooks.slice(i * 3, i * 3 + (i + 3));
+  for (index = 0; index < myArray.length; index += chunk_size) {
+    let myChunk = myArray.slice(index, index + chunk_size);
+
+    tempArray.push(myChunk);
   }
+
+  let pageNumber = 0;
+  let pageBooks = [];
+
+  for (let i = 0; i < tempArray.length; i += 1) {
+    pageNumber += 1;
+    pageBooks.push(addPageNumber(tempArray[i], pageNumber));
+  }
+
+  const result = pageBooks.flat();
+}
+
+function addPageNumber(booksGroup, pageNumber) {
+  let booksCollection = [];
+
+  booksGroup.forEach(book => {
+    book.dataset.pageNumber = pageNumber;
+    booksCollection.push(book);
+  });
+
+  return booksCollection;
 }
 
 function checkQuantityElements() {

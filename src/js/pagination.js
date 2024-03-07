@@ -1,5 +1,6 @@
 // ==============================================================
 
+import { perPage } from './shopping';
 import Pagination from 'tui-pagination';
 import '../css/pagination.css';
 
@@ -53,9 +54,37 @@ export function createButtonsPagination() {
   const instance = new Pagination(refs.pagesContainer, options);
 
   instance.on('afterMove', function (eventData) {
-    console.log(eventData);
     options.page = eventData.page;
+    checkFirstPage()
+    checkPageNumberOfBooks(eventData.page);
   });
+}
+
+export function checkFirstPage() {
+  const bookCollection = Array.from(
+    refs.shoppingList.querySelectorAll('.shopping-item')
+  );
+
+  const firstPageBook = bookCollection.slice(0, 3);
+
+  firstPageBook.forEach(book => book.classList.remove('hidden'));
+}
+
+export function checkPageNumberOfBooks(currentPage) {
+  const bookCollection = Array.from(
+    refs.shoppingList.querySelectorAll('.shopping-item')
+  );
+
+  const currentBooks = bookCollection.filter(book => {
+    return Number(book.dataset.pageNumber) === currentPage;
+  });
+
+  const notCurrentBook = bookCollection.filter(book => {
+    return Number(book.dataset.pageNumber) !== currentPage;
+  });
+
+  currentBooks.forEach(book => book.classList.remove('hidden'));
+  notCurrentBook.forEach(book => book.classList.add('hidden'));
 }
 
 // ==============================================================
