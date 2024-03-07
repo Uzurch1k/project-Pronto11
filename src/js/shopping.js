@@ -91,11 +91,12 @@ function createMarkup(books) {
   markupRender(elementsMarkup);
 }
 
+let bookCollection;
 function markupRender(elementsMarkup) {
   const markup = elementsMarkup.join('');
   refs.shoppingList.innerHTML = markup;
 
-  const bookCollection = Array.from(
+  bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
 
@@ -106,7 +107,6 @@ function markupRender(elementsMarkup) {
 }
 
 function chunkArray(myArray, chunk_size) {
-  console.log(2);
   let index = 0;
   let tempArray = [];
 
@@ -142,7 +142,7 @@ function checkQuantityElements() {
   const books = refs.shoppingList.querySelectorAll('.shopping-item');
 
   if (books.length > 3) {
-    createButtonsPagination();
+    createButtonsPagination(1);
   }
 }
 
@@ -170,24 +170,49 @@ function removeBook(evt) {
   }
 }
 
+function paginationChange(selectedPage) {
+  const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
+
+  let counter = 0;
+  let number = 1;
+  booksCollection.forEach(el => {
+    el.classList.remove('hidden');
+    el.dataset.pageNumber = number;
+    if(number !== selectedPage) {
+      el.classList.add('hidden');
+    }
+
+    counter++;
+    if(counter === 3) {
+      counter = 0;
+      number++;
+    }
+  });
+}
+
 export async function isShoppingListEmpty() {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
 
   if(booksCollection) {
-    console.log(booksCollection);
-
     if (booksCollection.length === 0) {
       refs.emptyPage.classList.remove('hidden');
       refs.pagesContainer.classList.add('hidden');
       return;
     }
-
-    console.log(booksCollection.length)
   
     if (booksCollection.length > 3) {
-      createButtonsPagination();
+      let selectedPage = document.querySelector('.tui-is-selected').innerText;
+      const booksCount = booksCollection.length % 3;
+      const booksDivid = booksCollection.length / 3;
+      if(+booksCount === 0 && +booksDivid === (selectedPage - 1)) {
+        selectedPage = selectedPage - 1;
+      }
+      selectedPage = (!selectedPage) ? 1 : selectedPage;
+      paginationChange(+selectedPage);
+      createButtonsPagination(selectedPage);
       refs.pagesContainer.classList.remove('hidden');
     } else {
+      paginationChange(1);
       refs.pagesContainer.classList.add('hidden');
     }
   }
