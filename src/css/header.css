@@ -198,20 +198,24 @@ body.lock {
 
 .authorized {
   position: relative;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .authorized:hover .log-out {
   opacity: 1;
-  visibility: visible;
+  transform: translateY(0);
 }
-
+.authorized:hover .authorized-vector {
+  transform: rotate(0);
+}
 .authorized-data {
   display: flex;
   align-items: center;
   gap: 9px;
 }
 .authorized-btn {
-  cursor: pointer;
+  position: relative;
+  z-index: 1;
   border: none;
   padding: 0 12px;
   border-radius: 36px;
@@ -249,14 +253,14 @@ body.lock {
   align-items: center;
 }
 .authorized-vector {
+  transform: rotate(-90deg);
   fill: #fff;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .log-out {
   position: absolute;
   top: 100%;
   left: 0;
-  right: 0;
-  opacity: 0;
   cursor: pointer;
   padding: 0 12px;
   font-weight: 500;
@@ -272,11 +276,14 @@ body.lock {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: translateY(-100%);
   opacity: 0;
-  visibility: hidden;
-  transition: .3s opacity;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+.log-out:hover {
+  background-color: #785bf7;
+  color: #fff;
+}
 /* ==================================================== */
 
 @media screen and (min-width: 768px) {
@@ -360,8 +367,8 @@ body.lock {
 
   .authentication-buttons {
     margin-left: 25px;
-    min-width: 184px;
-    min-height: 45px;
+    width: 184px;
+    height: 45px;
   }
 
   .header-btn-submit {

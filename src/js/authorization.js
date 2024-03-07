@@ -200,7 +200,7 @@ function showError(form, errorCode) {
     errorText = 'Your password is too weak';
   }
 
-  errorCont.innerHTML = `<div class="auth-error">${errorText}</div>`;
+  errorCont.innerHTML = `<p class="auth-error">${errorText}</p>`;
 }
 
 function emptyError(form) {
