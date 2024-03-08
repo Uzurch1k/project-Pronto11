@@ -20,9 +20,7 @@ const swiper = new Swiper('.swiper', {
     onlyInViewport: true,
   },
   shortSwipes: false,
-  // Вимкнути прокрутку за допомогою клавіші LKM
   preventClicks: true,
-  // Вимкнути події миші
   disableMouseEvents: true,
 });
 swiper.allowTouchMove = false;

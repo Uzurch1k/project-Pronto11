@@ -30,7 +30,6 @@
 .toggle-container > .toggle-checkbox:checked + .toggle-track {
   background-image: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
 }
-
 .toggle-thumb {
   position: relative;
   display: flex;
@@ -164,7 +163,6 @@
 .scroll-up:hover .scroll-up-icon {
   fill: #4f2ee8;
 }
-
 @keyframes pulse {
   0% {
     box-shadow: var(--scroll-up);

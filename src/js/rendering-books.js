@@ -2,12 +2,10 @@ import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import icon from '../img/icons.svg';
 
-//Render top books
 export const renderTop = (data, booksPerRow) => {
   if (!data || data.length === 0) {
     const emptyCategoryHtml = `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>
     </div>${getEmtyCategoryHtml()}`;
-
     return emptyCategoryHtml;
   } else {
     const categoriesTop = data
@@ -23,12 +21,10 @@ export const renderTop = (data, booksPerRow) => {
       </div>`;
       })
       .join('');
-
     return `<h2 class="books-title">Best Sellers Books</h2>${categoriesTop}`;
   }
 };
 
-//Render categories
 export const renderCategories = data => {
   const categoriesItems = data
     .sort((a, b) => {
@@ -46,7 +42,6 @@ export const renderCategories = data => {
     </li>`;
     })
     .join('');
-
   return `<li class="categories-list">
   <a href="#" data-catname="" class="categories-nav active">All categories</a>
   </li>${categoriesItems}`;
@@ -58,7 +53,6 @@ function getEmtyCategoryHtml() {
     position: 'topRight',
     icon: null,
   });
-
   return `</div>
   <div class="empty-category">
   <svg class="icon-shopp-stub">
@@ -68,13 +62,11 @@ function getEmtyCategoryHtml() {
   </div>`;
 }
 
-//Render category books
 export const renderCategory = (data, categoryName) => {
   if (!data || data.length === 0) {
     const emptyCategoryHtml = `<div class="books-container">
         <h2 class="books-title">${categoryName}</h2>
         </div>${getEmtyCategoryHtml()}`;
-
     return emptyCategoryHtml;
   } else {
     const books = renderOneBook(data);
@@ -82,12 +74,10 @@ export const renderCategory = (data, categoryName) => {
     <div class="books-category-container">
       <ul class="books-list">${books}</ul>
     </div>`;
-
     return categoryHtml;
   }
 };
 
-//Render one book
 function renderOneBook(books) {
   const booksRendered = books
     .map(el => {
@@ -110,6 +100,5 @@ function renderOneBook(books) {
       </li>`;
     })
     .join('');
-
   return booksRendered;
 }

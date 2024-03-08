@@ -19,7 +19,6 @@ function handleHeaderLinkClick() {
   refs.headerNav.classList.toggle('active');
   refs.body.classList.toggle('lock');
 }
-
 refs.burger.addEventListener('click', handleHeaderLinkClick);
 
 // =========================== Home and Shopping ===========================

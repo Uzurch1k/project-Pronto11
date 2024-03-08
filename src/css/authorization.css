@@ -17,11 +17,9 @@
   pointer-events: none;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 body.authentication-open {
   overflow: hidden;
 }
-
 .authentication-blur {
   position: absolute;
   top: -1080px;
@@ -107,7 +105,6 @@ body.authentication-open {
 .authentication-label {
   position: relative;
 }
-
 .authorization-icon-email,
 .authorization-icon-lock {
   width: 18px;
@@ -129,7 +126,6 @@ body.authentication-open {
 .authentication-wrap input:focus + .authorization-icon-lock {
   stroke: #4f2ee8;
 }
-
 .authentication-button {
   padding: 0;
   font-size: 16px;
@@ -164,9 +160,6 @@ body.authentication-open {
   align-items: center;
   gap: 20px;
 }
-.authentication-item {
-}
-
 .authentication-signup,
 .authentication-signin {
   font-weight: 700;
@@ -189,7 +182,6 @@ body.authentication-open {
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
-
 .hide {
   display: none;
 }
@@ -198,7 +190,6 @@ body.authentication-open {
   visibility: visible;
   pointer-events: auto;
 }
-
 .btnloader {
   width: 24px;
   height: 24px;
@@ -218,7 +209,6 @@ body.authentication-open {
     transform: rotate(360deg);
   }
 }
-
 .authentication-errorcont {
   width: 100%;
 }

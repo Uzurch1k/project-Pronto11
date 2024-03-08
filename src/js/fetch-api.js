@@ -3,13 +3,11 @@ import { renderTop, renderCategories, renderCategory } from './rendering-books';
 
 const BASEURL = 'https://books-backend.p.goit.global';
 
-//Fatch for top books
 let savedFetch = JSON.parse(sessionStorage.getItem('savedfetch')) || '';
 export const fetchGeneral = async booksPerRow => {
   if (!savedFetch) {
     const endpoint = '/books/top-books/';
     const fetchUrl = BASEURL + endpoint;
-
     try {
       const response = await axios.get(fetchUrl);
       sessionStorage.setItem('savedfetch', JSON.stringify(response.data));
@@ -23,13 +21,11 @@ export const fetchGeneral = async booksPerRow => {
   }
 };
 
-//Fatch for categories
 let savedCatsFetch =
   JSON.parse(sessionStorage.getItem('savedcategoriesfetch')) || '';
 export const fetchCategories = async () => {
   const endpoint = '/books/category-list/';
   const fetchUrl = BASEURL + endpoint;
-
   if (!savedCatsFetch) {
     try {
       const response = await axios.get(fetchUrl);
@@ -47,14 +43,12 @@ export const fetchCategories = async () => {
   }
 };
 
-//Fatch for categories books
 export const fetchCategory = async categoryName => {
   const endpoint = '/books/category/';
   const fetchUrl = BASEURL + endpoint;
   const params = {
     category: categoryName,
   };
-
   try {
     const response = await axios.get(fetchUrl, { params });
     return renderCategory(response.data, categoryName);
@@ -63,11 +57,9 @@ export const fetchCategory = async categoryName => {
   }
 };
 
-// повертає дані однієї книги по id
 export const fetchBookById = async id => {
   const endpoint = `/books/${id}`;
   const fetchUrl = BASEURL + endpoint;
-
   try {
     const response = await axios.get(fetchUrl);
     return response.data;

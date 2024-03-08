@@ -2,12 +2,10 @@ const elements = {
   body: document.querySelector('body'),
   authen: document.querySelector('.authentication'),
   authenClose: document.querySelector('.authentication-close'),
-
   headerSubmitCont: document.querySelector('.authentication-buttons'),
   headerSubmitContMob: document.querySelector('.authentication-buttons-mob'),
   headerSubmit: document.querySelector('.header-btn-submit'),
   headerSubmitModal: document.querySelector('.header-btn-submit-modal'),
-
   signUpLink: document.querySelector('.authentication-signup'),
   signInLink: document.querySelector('.authentication-signin'),
 };

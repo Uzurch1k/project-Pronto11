@@ -1,6 +1,12 @@
 // ==============================================================
 
 import {
+  createButtonsPagination,
+  checkPageNumberOfBooks,
+  checkFirstPage,
+} from './pagination';
+import { getBooksJson } from './authorization';
+import {
   saveBookToLocalStorage,
   removeBookFromLocalStorage,
 } from './local-storage';
@@ -8,13 +14,6 @@ import {
 import icon from '../img/icons.svg';
 import amazon from '../img/shopping/amazon.png';
 import apple from '../img/shopping/book-apple.png';
-
-import {
-  createButtonsPagination,
-  checkPageNumberOfBooks,
-  checkFirstPage,
-} from './pagination';
-import { getBooksJson } from './authorization';
 
 const refs = {
   emptyPage: document.querySelector('.empty-page'),
@@ -27,8 +26,6 @@ export const perPage = 3;
 // ==============================================================
 
 export async function checkIsThereElementOnPage() {
-  // refs.shoppingList.innerHTML = '<li class="loader-container"><span class="loader"></span></li>';
-
   if (
     refs.pagesContainer === null &&
     refs.emptyPage === null &&
@@ -36,7 +33,6 @@ export async function checkIsThereElementOnPage() {
   ) {
     return;
   }
-
   await islocalStorageEmpty();
   isShoppingListEmpty();
 }
@@ -44,13 +40,11 @@ export async function checkIsThereElementOnPage() {
 async function islocalStorageEmpty() {
   const booksJson = await getBooksJson();
   const books = JSON.parse(booksJson) || [];
-
   if (books.length === 0) {
     refs.emptyPage.classList.remove('hidden');
     refs.shoppingList.innerHTML = '';
     return;
   }
-
   refs.emptyPage.classList.add('hidden');
   createMarkup(books);
 }
@@ -74,7 +68,6 @@ function createMarkup(books) {
             <use href="${icon}#icon-shopp-trash"></use>
           </svg>
         </button>
-  
         <div class="shop-buttons">
           <a href="#" target="_blank" class="shop-amazon">
             <img
@@ -93,7 +86,6 @@ function createMarkup(books) {
         </div>
       </li>`;
   });
-
   markupRender(elementsMarkup);
 }
 
@@ -101,11 +93,9 @@ let bookCollection;
 function markupRender(elementsMarkup) {
   const markup = elementsMarkup.join('');
   refs.shoppingList.innerHTML = markup;
-
   bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
-
   addListenersToRemoveButtons();
   checkFirstPage();
   chunkArray(bookCollection, perPage);
@@ -115,38 +105,30 @@ function markupRender(elementsMarkup) {
 function chunkArray(myArray, chunk_size) {
   let index = 0;
   let tempArray = [];
-
   for (index = 0; index < myArray.length; index += chunk_size) {
     let myChunk = myArray.slice(index, index + chunk_size);
-
     tempArray.push(myChunk);
   }
-
   let pageNumber = 0;
   let pageBooks = [];
-
   for (let i = 0; i < tempArray.length; i += 1) {
     pageNumber += 1;
     pageBooks.push(addPageNumber(tempArray[i], pageNumber));
   }
-
   const result = pageBooks.flat();
 }
 
 function addPageNumber(booksGroup, pageNumber) {
   let booksCollection = [];
-
   booksGroup.forEach(book => {
     book.dataset.pageNumber = pageNumber;
     booksCollection.push(book);
   });
-
   return booksCollection;
 }
 
 function checkQuantityElements() {
   const books = refs.shoppingList.querySelectorAll('.shopping-item');
-
   if (books.length > 3) {
     createButtonsPagination(1);
   }
@@ -154,7 +136,6 @@ function checkQuantityElements() {
 
 function addListenersToRemoveButtons() {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
-
   booksCollection.forEach(book => {
     book.addEventListener('click', removeBook);
   });
@@ -168,17 +149,14 @@ function removeBook(evt) {
   ) {
     const currentBook = evt.currentTarget;
     const bookId = evt.currentTarget.dataset.bookId;
-
     removeBookFromLocalStorage(bookId);
     currentBook.remove();
-
     isShoppingListEmpty();
   }
 }
 
 function paginationChange(selectedPage) {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
-
   let counter = 0;
   let number = 1;
   booksCollection.forEach(el => {
@@ -187,7 +165,6 @@ function paginationChange(selectedPage) {
     if (number !== selectedPage) {
       el.classList.add('hidden');
     }
-
     counter++;
     if (counter === 3) {
       counter = 0;
@@ -198,14 +175,12 @@ function paginationChange(selectedPage) {
 
 export async function isShoppingListEmpty() {
   const booksCollection = refs.shoppingList.querySelectorAll('.shopping-item');
-
   if (booksCollection) {
     if (booksCollection.length === 0) {
       refs.emptyPage.classList.remove('hidden');
       refs.pagesContainer.classList.add('hidden');
       return;
     }
-
     if (booksCollection.length > 3) {
       let selectedPage = document.querySelector('.tui-is-selected').innerText;
       const booksCount = booksCollection.length % 3;

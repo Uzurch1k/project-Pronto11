@@ -45,7 +45,6 @@ main {
 .shopping {
   width: 100%;
 }
-
 [data-page='shopping'] .sidebar {
   display: none;
 }
@@ -94,11 +93,9 @@ main {
   }
   .shopping {
   }
-
   [data-page='shopping'] .sidebar {
     display: block;
   }
-
   [data-page='shopping'] .categories {
     display: none;
   }

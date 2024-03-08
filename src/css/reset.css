@@ -7,7 +7,6 @@ a:hover {
 a {
   color: inherit;
 }
-
 body,
 h1,
 h2,
@@ -26,25 +25,21 @@ dl,
 dd {
   margin: 0;
 }
-
 ul,
 ol {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 input,
 button,
 textarea,
 select {
   font-family: inherit;
 }
-
 input {
   font-family: inherit;
 }
-
 img {
   display: block;
   max-width: 100%;

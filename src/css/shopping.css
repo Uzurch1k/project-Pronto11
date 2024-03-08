@@ -4,7 +4,6 @@
   line-height: 1.08333;
   letter-spacing: -0.04em;
 }
-
 .shopping-title span {
   color: #4f2ee8;
 }
@@ -40,7 +39,6 @@
   margin-bottom: 4px;
   margin-right: 18px;
 }
-
 .genre {
   width: 160px;
   overflow: hidden;
@@ -50,7 +48,6 @@
   font-size: 12px;
   margin-bottom: 8px;
 }
-
 .book-desc {
   font-size: 14px;
   line-height: 18px;
@@ -69,7 +66,6 @@
   margin-right: 56px;
   font-style: italic;
 }
-
 .shop-buttons {
   position: absolute;
   width: 56px;
@@ -79,18 +75,15 @@
   align-items: end;
   justify-content: space-between;
 }
-
 .shop-amazon {
   width: 32px;
   filter: var(--icon-amazon);
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .shop-amazon:hover,
 .shop-amazon:focus {
   filter: var(--icons-hover);
 }
-
 .shop-apple {
   width: 16px;
   filter: var(--icon-book-apple);
@@ -100,7 +93,6 @@
 .shop-apple:focus {
   filter: var(--icons-hover);
 }
-
 .empty-page {
   display: flex;
   flex-direction: column;
@@ -139,7 +131,6 @@
   stroke: #fff;
   fill: transparent;
 }
-
 .shopping-photo {
   height: 100%;
   width: 100px;

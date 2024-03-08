@@ -13,12 +13,10 @@
   );
   padding: 24px 40px 0px 40px;
 }
-
 html .swiper {
   margin: 0;
   height: 292px;
 }
-
 .support-header {
   font-size: 22px;
   line-height: 1.09091;
@@ -31,7 +29,6 @@ html .swiper {
   margin-bottom: 40px;
   gap: 12px;
 }
-
 .supp-number {
   font-size: 14px;
   line-height: 1.28571;
@@ -52,7 +49,6 @@ html .swiper {
   height: 100%;
   filter: brightness(0) invert(1);
 }
-
 .swiper-button {
   width: 32px;
   height: 32px;
@@ -86,7 +82,6 @@ html .swiper {
     height: 38px;
     margin-top: 24px;
   }
-
   .swiper-button-icon {
     width: 22px;
     height: 22px;

@@ -7,21 +7,18 @@
   width: 100%;
   max-width: inherit;
 }
-
 .tui-pagination * {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
-
 .tui-pagination {
   display: flex;
   max-width: 323px;
   margin: 20px auto 40px;
   justify-content: center;
 }
-
 .tui-page-btn {
   display: flex;
   align-items: center;
@@ -38,27 +35,22 @@
   color: var(--header-icon-color);
   transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
 .tui-pagination .tui-is-selected,
 .tui-pagination strong {
   color: var(--shop-bg-color);
   background: var(--header-icon-color);
 }
-
 .tui-pagination .tui-prev {
   margin-right: 14px;
 }
-
 .tui-pagination .tui-next {
   margin-left: 14px;
 }
-
 .tui-first {
   margin-right: 5px;
   background-color: #eac645;
   position: relative;
 }
-
 .tui-first::after,
 .tui-prev::after {
   content: '';
@@ -71,66 +63,53 @@
   background-repeat: no-repeat;
   background-position: center center;
 }
-
 .tui-prev {
   margin-right: 5px;
   background-color: #eac645;
   background-image: var(--icon-img-bg-prev);
   position: relative;
 }
-
 .tui-first::after {
   background-image: var(--icon-img-bg-first);
 }
-
 .tui-prev::after {
   background-image: var(--icon-img-bg-prev);
 }
-
 .tui-next {
   margin-right: 5px;
   background-color: #eac645;
   background-image: url(/img/shopping/vectors/vector-right1.png);
 }
-
 .tui-last {
   background-color: #eac645;
   background-image: url(/img/shopping/vectors/vector-right2.png);
 }
-
 .tui-first:hover,
 .tui-prev:hover {
   background-color: #f3dd8f;
 }
-
 .tui-next:hover,
 .tui-last:hover {
   background-color: #f3dd8f;
 }
-
 .tui-is-disabled {
   display: none;
 }
-
 .tui-page-btn:hover .number-text,
 .tui-page-btn:hover .tui-ico-ellip {
   color: var(--header-bg-color);
 }
-
 .tui-page-btn:not(.tui-first, .tui-prev, .tui-next, .tui-last) {
   border-color: var(--header-icon-color);
 }
-
 .tui-page-btn:hover:not(.tui-first, .tui-prev, .tui-next, .tui-last) {
   background-color: var(--header-icon-color);
 }
-
 .tui-last,
 .tui-last-child,
 .tui-next-is-ellip {
   margin-right: 0;
 }
-
 .tui-first,
 .tui-prev,
 .tui-next,
@@ -139,7 +118,6 @@
   background-position: center;
   transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
-
 .tui-ico-ellip {
   font-family: DM Sans;
   font-size: 20px;
@@ -154,32 +132,25 @@
     max-width: 446px;
     margin: 40px auto 40px;
   }
-
   .tui-page-btn {
     width: 44px;
     height: 44px;
   }
-
   .tui-page-btn:not(.tui-last-child, .tui-last) {
     margin-right: 10px;
   }
-
   .tui-pagination .tui-prev {
     margin-right: 24px;
   }
-
   .tui-pagination .tui-next {
     margin-left: 24px;
   }
-
   .tui-first {
     margin-right: 8px;
   }
-
   .tui-prev {
     margin-right: 5px;
   }
-
   .tui-next {
     margin-right: 8px;
   }

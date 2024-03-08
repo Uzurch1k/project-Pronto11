@@ -6,28 +6,21 @@ import apple from '../img/shopping/book-apple.png';
 import { getBooksJson, addBooksJson } from './authorization';
 
 // ==============================================================
-// функція спрацьовує при кліку на QUICK VIEW
-// ==============================================================
 
 export async function popup() {
   const booksList = document.querySelector('.books-container');
-
   if (booksList) {
     booksList.addEventListener('click', onBookLinkClick);
   }
-
   async function onBookLinkClick(event) {
     if (event.target.classList.contains('books-overlay')) {
       const bookId = event.target.dataset.id;
       const bookData = await fetchBookById(bookId);
-
       openModal(bookData);
     }
   }
 }
 
-// ==============================================================
-// логіка відкриття та закриття модалки
 // ==============================================================
 
 async function openModal(bookData) {
@@ -88,8 +81,6 @@ async function openModal(bookData) {
 }
 
 // ==============================================================
-// логіка перевірки LocalStorage та відпрацювання кнопки ADD TO SHOPPING LIST
-// ==============================================================
 
 async function checkLocalStorage() {
   const addToShoppingListBtn = document.querySelector(
@@ -98,11 +89,9 @@ async function checkLocalStorage() {
   const bookId = addToShoppingListBtn.dataset.id;
   const booksJson = await getBooksJson();
   const localStorageData = JSON.parse(booksJson) || [];
-
   const bookInLocalStorage = localStorageData
     .map(element => element._id)
     .includes(bookId);
-
   if (bookInLocalStorage) {
     addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
     addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
@@ -130,19 +119,15 @@ async function clickOnAddToShopingListBtn() {
   async function addToShoppingListBtnHandler() {
     const booksJson = await getBooksJson();
     const localStorageData = JSON.parse(booksJson) || [];
-
     const bookInLocalStorage = localStorageData
       .map(element => element._id)
       .includes(bookId);
-
     if (!bookInLocalStorage) {
       setToLocalStorage(bookData);
-
       addToShoppingListBtn.textContent = 'REMOVE FROM THE SHOPPING LIST';
       addToShoppingListBtn.insertAdjacentHTML('afterend', templateForBtn());
     } else {
       await removeBookFromLocalStorage(bookId);
-
       document.querySelector('.under-btn-text').remove();
       addToShoppingListBtn.textContent = 'ADD TO SHOPPING LIST';
     }
@@ -150,12 +135,10 @@ async function clickOnAddToShopingListBtn() {
 }
 
 // ==============================================================
-// шаблон динамічної частини модалки
-// ==============================================================
+
 function template(obj) {
   const { _id, author, title, book_image, buy_links, description = '' } = obj;
   const [amazon, appleBook] = buy_links;
-
   return `<button class="popup-close-btn">
       <svg class="popup-close-btn-icon" width="28" height="28">
         <use href="${iconClose}#icon-header-close"></use>

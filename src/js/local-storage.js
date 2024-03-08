@@ -5,9 +5,7 @@ export const saveBookToLocalStorage = async bookId => {
   try {
     const bookData = await fetchBookById(bookId);
     const shoppingList = JSON.parse(getBooksJson()) || [];
-
     shoppingList.push(bookData);
-
     localStorage.setItem('shoppinglist', JSON.stringify(shoppingList));
   } catch (error) {
     console.error(error);

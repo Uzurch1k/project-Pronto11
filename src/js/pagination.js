@@ -16,13 +16,11 @@ function getVisiblePagesNumber() {
   if (matchMedia('(min-width: 768px)').matches) {
     return 3;
   }
-
   return 2;
 }
 
 export function createButtonsPagination(selectedPage) {
   const books = refs.shoppingList.querySelectorAll('.shopping-item');
-
   const visiblePageNumber = getVisiblePagesNumber();
   selectedPage = selectedPage ? selectedPage : 1;
   const options = {
@@ -51,7 +49,6 @@ export function createButtonsPagination(selectedPage) {
   };
 
   const totalPages = Math.ceil(books.length / options.itemsPerPage);
-
   const instance = new Pagination(refs.pagesContainer, options);
 
   instance.on('afterMove', function (eventData) {
@@ -65,9 +62,7 @@ export function checkFirstPage() {
   const bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
-
   const firstPageBook = bookCollection.slice(0, 3);
-
   firstPageBook.forEach(book => book.classList.remove('hidden'));
 }
 
@@ -75,15 +70,12 @@ export function checkPageNumberOfBooks(currentPage) {
   const bookCollection = Array.from(
     refs.shoppingList.querySelectorAll('.shopping-item')
   );
-
   const currentBooks = bookCollection.filter(book => {
     return Number(book.dataset.pageNumber) === currentPage;
   });
-
   const notCurrentBook = bookCollection.filter(book => {
     return Number(book.dataset.pageNumber) !== currentPage;
   });
-
   currentBooks.forEach(book => book.classList.remove('hidden'));
   notCurrentBook.forEach(book => book.classList.add('hidden'));
 }
