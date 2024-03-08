@@ -199,26 +199,25 @@ body.authentication-open {
   pointer-events: auto;
 }
 
-
 .btnloader {
   width: 24px;
-    height: 24px;
-    margin-left: 12px;
-    border: 3px solid #FFF;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+  height: 24px;
+  margin-left: 12px;
+  border: 3px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 @keyframes rotation {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  } 
+}
 
 .authentication-errorcont {
   width: 100%;
@@ -230,7 +229,7 @@ body.authentication-open {
   padding: 12px;
   border: 2px solid red;
   width: 100%;
-  }
+}
 
 /*---------------------------- Adaptive tablet (768px) ----------------------------*/
 
@@ -283,5 +282,3 @@ body.authentication-open {
     line-height: 1.33333;
   }
 }
-
-

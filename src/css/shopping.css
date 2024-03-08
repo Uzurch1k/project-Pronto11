@@ -80,26 +80,6 @@
   justify-content: space-between;
 }
 
-/* .shop-amazon {
-  flex-shrink: 0;
-  width: 32px;
-  filter: var(--icon-amazon);
-}
-.shop-amazon:hover,
-.shop-amazon:focus {
-  filter: grayscale(100%) invert(30%);
-}
-
-.shop-apple {
-  flex-shrink: 0;
-  width: 16px;
-  filter: grayscale(100%);
-}
-.shop-apple:hover,
-.shop-apple:focus {
-  filter: grayscale(100%) invert(15%);
-} */
-
 .shop-amazon {
   width: 32px;
   filter: var(--icon-amazon);

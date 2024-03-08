@@ -59,8 +59,9 @@
   position: relative;
 }
 
-.tui-first::after, .tui-prev::after {
-  content: "";
+.tui-first::after,
+.tui-prev::after {
+  content: '';
   position: absolute;
   left: 0;
   right: 0;

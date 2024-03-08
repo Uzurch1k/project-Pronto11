@@ -1,167 +1,164 @@
 import { fetchGeneral, fetchCategories, fetchCategory } from './fetch-api';
 import { popup } from './popup';
-import scrollToElement  from 'scroll-to-element';
-
+import scrollToElement from 'scroll-to-element';
 
 //Containers
 const booksContainer = document.querySelector('.books-container');
 const catsContainer = document.querySelector('.categories-menu');
 
-
 // ==============================================================
 //Function for display books
 let popupIsStarted;
 async function displayTop() {
-    addingLoader();
-    const windowWidth = window.innerWidth;
-    const booksPerRowForDisplay = booksPerRowFunc(windowWidth);
-    const renderedTop = await fetchGeneral(booksPerRowForDisplay);
-   
-    booksContainer.innerHTML = renderedTop;
-    if(!popupIsStarted) {
-        popup();
-        popupIsStarted = true;
-    }
+  addingLoader();
+  const windowWidth = window.innerWidth;
+  const booksPerRowForDisplay = booksPerRowFunc(windowWidth);
+  const renderedTop = await fetchGeneral(booksPerRowForDisplay);
 
-    wrapLastWord();
-};
+  booksContainer.innerHTML = renderedTop;
+  if (!popupIsStarted) {
+    popup();
+    popupIsStarted = true;
+  }
 
+  wrapLastWord();
+}
 
 // ==============================================================
 //Function for display categories
 async function displayCategories() {
-    const renderedCats = await fetchCategories();
+  const renderedCats = await fetchCategories();
 
-    catsContainer.innerHTML = renderedCats;
-};
-
+  catsContainer.innerHTML = renderedCats;
+}
 
 // ==============================================================
 //Function for display category books
 async function displayCategory(catName) {
-    addingLoader();
+  addingLoader();
 
-    const renderedCat = await fetchCategory(catName);
+  const renderedCat = await fetchCategory(catName);
 
-     booksContainer.innerHTML = renderedCat;
-     wrapLastWord();
+  booksContainer.innerHTML = renderedCat;
+  wrapLastWord();
 }
 
 // ==============================================================
 //Function for wrapp last title word
 async function wrapLastWord() {
-    const title = document.querySelector('.books-title');
-    const textContent = title.textContent.split(" ");
-    const lastWord = textContent.pop();
+  const title = document.querySelector('.books-title');
+  const textContent = title.textContent.split(' ');
+  const lastWord = textContent.pop();
 
-    const updatedContent = textContent.join(" ") + (textContent.length > 0 ? ` <span  class="books-title-color">${lastWord}</span>` : lastWord);
+  const updatedContent =
+    textContent.join(' ') +
+    (textContent.length > 0
+      ? ` <span  class="books-title-color">${lastWord}</span>`
+      : lastWord);
 
-    title.innerHTML = updatedContent;
+  title.innerHTML = updatedContent;
 }
-
 
 //Fontiono for detectiong books per row
 function booksPerRowFunc(windowWith) {
-    let booksCount = 5;
+  let booksCount = 5;
 
-    if(windowWith >= 1440) {
-        booksCount = 5;
-    } 
+  if (windowWith >= 1440) {
+    booksCount = 5;
+  }
 
-    if(windowWith >= 768 && windowWith < 1440) {
-        booksCount = 3;
-    } 
-    
-    if(windowWith < 768) {
-        booksCount = 1;
-    }
+  if (windowWith >= 768 && windowWith < 1440) {
+    booksCount = 3;
+  }
 
-    return booksCount;
+  if (windowWith < 768) {
+    booksCount = 1;
+  }
+
+  return booksCount;
 }
-
 
 //function for change books display
 const windowWidthStart = window.innerWidth;
 let ctrlBreikpoint = booksPerRowFunc(windowWidthStart);
 
 async function changeTopDisplay() {
-    const AllCats = document.querySelector('.categories-nav.active');
+  const AllCats = document.querySelector('.categories-nav.active');
 
-    if(AllCats) {
-        const isAllCats = AllCats.dataset.catname;
+  if (AllCats) {
+    const isAllCats = AllCats.dataset.catname;
 
-        if(!isAllCats) {
-            const windowWidth = window.innerWidth;
-            const booksPerRow = booksPerRowFunc(windowWidth);
-    
-            if(ctrlBreikpoint !== booksPerRow) {
-                ctrlBreikpoint = booksPerRow;
-    
-                addingLoader();
-                await displayTop();
-                wrapLastWord();
-            }
-        }
+    if (!isAllCats) {
+      const windowWidth = window.innerWidth;
+      const booksPerRow = booksPerRowFunc(windowWidth);
+
+      if (ctrlBreikpoint !== booksPerRow) {
+        ctrlBreikpoint = booksPerRow;
+
+        addingLoader();
+        await displayTop();
+        wrapLastWord();
+      }
     }
+  }
 }
-
-
 
 // ==============================================================
-if(booksContainer) {
-    displayTop();
-    displayCategories();
+if (booksContainer) {
+  displayTop();
+  displayCategories();
 
-    catsContainer.addEventListener('click', e => {
-        e.preventDefault();
-    
-        const target = e.target;
-    
-        if(target.tagName === 'A') {
-            const catName = target.dataset.catname;
-    
-            catsContainer.querySelector('.active').classList.remove('active');
-            target.classList.add('active');
-            
-            scrollToElement(booksContainer, {
-                offset: -24,
-                duration: 500
-            });
+  catsContainer.addEventListener('click', e => {
+    e.preventDefault();
 
-            if(catName) {
-                displayCategory(catName);
-            } else {
-                displayTop();
-            }
-        }
-    });
-    
-    booksContainer.addEventListener('click', e => {
-        e.preventDefault();
-    
-        const target = e.target;
-    
-        if(target.classList.contains('books-btn')) {
-            const catName = target.dataset.catname;
-    
-            catsContainer.querySelector('.active').classList.remove('active');
-            catsContainer.querySelector('[data-catname="'+catName+'"]').classList.add('active');
-            
-            scrollToElement(booksContainer, {
-                offset: -24,
-                duration: 700
-            }).on('end', () => {
-                displayCategory(catName);
-            });
-        }
-    });
+    const target = e.target;
 
+    if (target.tagName === 'A') {
+      const catName = target.dataset.catname;
 
-    window.addEventListener("resize", changeTopDisplay);
+      catsContainer.querySelector('.active').classList.remove('active');
+      target.classList.add('active');
+
+      scrollToElement(booksContainer, {
+        offset: -24,
+        duration: 500,
+      });
+
+      if (catName) {
+        displayCategory(catName);
+      } else {
+        displayTop();
+      }
+    }
+  });
+
+  booksContainer.addEventListener('click', e => {
+    e.preventDefault();
+
+    const target = e.target;
+
+    if (target.classList.contains('books-btn')) {
+      const catName = target.dataset.catname;
+
+      catsContainer.querySelector('.active').classList.remove('active');
+      catsContainer
+        .querySelector('[data-catname="' + catName + '"]')
+        .classList.add('active');
+
+      scrollToElement(booksContainer, {
+        offset: -24,
+        duration: 700,
+      }).on('end', () => {
+        displayCategory(catName);
+      });
+    }
+  });
+
+  window.addEventListener('resize', changeTopDisplay);
 }
-
 
 //Loader function
 function addingLoader() {
-    booksContainer.innerHTML = '<li class="loader-container"><span class="loader"></span></li>';
+  booksContainer.innerHTML =
+    '<li class="loader-container"><span class="loader"></span></li>';
 }

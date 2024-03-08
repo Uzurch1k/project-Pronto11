@@ -4,16 +4,16 @@ import icon from '../img/icons.svg';
 
 //Render top books
 export const renderTop = (data, booksPerRow) => {
-  if (!data || data.length === 0){
+  if (!data || data.length === 0) {
     const emptyCategoryHtml = `<div class="books-container"><h2 class="books-title">Best Sellers Books</h2>
-    </div>${getEmtyCategoryHtml()}`; 
+    </div>${getEmtyCategoryHtml()}`;
 
     return emptyCategoryHtml;
-  }
-  else{
-    const categoriesTop = data.map(el => {
+  } else {
+    const categoriesTop = data
+      .map(el => {
         const catName = el.list_name;
-        const books = renderOneBook(el.books.slice(0, booksPerRow))
+        const books = renderOneBook(el.books.slice(0, booksPerRow));
         return `<div class="books-category-container">
         <h3 class="books-category-title">${catName}</h3>
         <ul class="books-list">${books}</ul>
@@ -21,38 +21,40 @@ export const renderTop = (data, booksPerRow) => {
           <button data-catname="${catName}" type="button" class="books-btn">see more</button>
         </div>
       </div>`;
-    }).join('');
+      })
+      .join('');
 
     return `<h2 class="books-title">Best Sellers Books</h2>${categoriesTop}`;
   }
-}
+};
 
 //Render categories
-export const renderCategories = (data) => {
-  const categoriesItems = data.sort((a, b) => {
-    if (a.list_name < b.list_name) {
-      return -1;
-    }
-    if (a.list_name > b.list_name) {
-      return 1;
-    }
-    return 0;
-  })
-  .map(el => {
-    return `<li class="categories-list">
+export const renderCategories = data => {
+  const categoriesItems = data
+    .sort((a, b) => {
+      if (a.list_name < b.list_name) {
+        return -1;
+      }
+      if (a.list_name > b.list_name) {
+        return 1;
+      }
+      return 0;
+    })
+    .map(el => {
+      return `<li class="categories-list">
       <a href="#" data-catname="${el.list_name}" class="categories-nav">${el.list_name}</a>
     </li>`;
-  }).join('');
+    })
+    .join('');
 
   return `<li class="categories-list">
   <a href="#" data-catname="" class="categories-nav active">All categories</a>
   </li>${categoriesItems}`;
-}
+};
 
-function getEmtyCategoryHtml(){
+function getEmtyCategoryHtml() {
   iziToast.error({
-    message:
-      'Sorry, no books found.',
+    message: 'Sorry, no books found.',
     position: 'topRight',
     icon: null,
   });
@@ -68,29 +70,29 @@ function getEmtyCategoryHtml(){
 
 //Render category books
 export const renderCategory = (data, categoryName) => {
-    if (!data || data.length === 0){
-        const emptyCategoryHtml = `<div class="books-container">
+  if (!data || data.length === 0) {
+    const emptyCategoryHtml = `<div class="books-container">
         <h2 class="books-title">${categoryName}</h2>
-        </div>${getEmtyCategoryHtml()}`; 
+        </div>${getEmtyCategoryHtml()}`;
 
-        return emptyCategoryHtml;
-    }  
-    else{
-      const books = renderOneBook(data)
+    return emptyCategoryHtml;
+  } else {
+    const books = renderOneBook(data);
     const categoryHtml = `<h2 class="books-title">${categoryName}</h2>
     <div class="books-category-container">
       <ul class="books-list">${books}</ul>
     </div>`;
-  
-      return categoryHtml;
-    }
-}
+
+    return categoryHtml;
+  }
+};
 
 //Render one book
 function renderOneBook(books) {
-    const booksRendered = books.map(el => {
-        const {_id, book_image, title, author} = el;
-        return `<li class="books-item">
+  const booksRendered = books
+    .map(el => {
+      const { _id, book_image, title, author } = el;
+      return `<li class="books-item">
         <div class="books-wrapper">
           <img
             class="books-img"
@@ -106,7 +108,8 @@ function renderOneBook(books) {
           <p class="books-info-author">${author}</p>
         </div>
       </li>`;
-    }).join('');
+    })
+    .join('');
 
-    return booksRendered;
-} 
+  return booksRendered;
+}

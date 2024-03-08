@@ -38,15 +38,15 @@ function showSignInForm() {
 }
 
 if (elements.authen) {
-  elements.headerSubmitCont.addEventListener('click', (e) => {
+  elements.headerSubmitCont.addEventListener('click', e => {
     const targetIs = e.target.classList.contains('header-btn-submit');
-    if(targetIs) {
+    if (targetIs) {
       toggleAuthen(true);
     }
   });
-  elements.headerSubmitContMob.addEventListener('click', (e) => {
+  elements.headerSubmitContMob.addEventListener('click', e => {
     const targetIs = e.target.classList.contains('header-btn-submit');
-    if(targetIs) {
+    if (targetIs) {
       toggleAuthen(true);
     }
   });
@@ -57,10 +57,11 @@ if (elements.authen) {
   elements.signUpLink.classList.add('active');
 
   elements.signUpLink.addEventListener('click', () => {
+    event.preventDefault();
     showSignUpForm();
   });
   elements.signInLink.addEventListener('click', () => {
+    event.preventDefault();
     showSignInForm();
   });
 }
-

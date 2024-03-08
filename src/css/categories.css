@@ -40,7 +40,7 @@
   border-radius: 12px;
 }
 
-.empty-category{
+.empty-category {
   display: flex;
   padding-top: 48px;
   width: 100%;
@@ -49,13 +49,13 @@
   align-items: center;
 }
 
-.empty-category svg{
+.empty-category svg {
   fill: var(--categor-color-hover);
   width: 70px;
   height: 64px;
 }
 
-.empty-category span{
+.empty-category span {
   font-size: 22px;
   color: var(--categor-color);
 }

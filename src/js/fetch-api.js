@@ -6,11 +6,10 @@ const BASEURL = 'https://books-backend.p.goit.global';
 //Fatch for top books
 let savedFetch = JSON.parse(sessionStorage.getItem('savedfetch')) || '';
 export const fetchGeneral = async booksPerRow => {
-
-  if(!savedFetch) {
+  if (!savedFetch) {
     const endpoint = '/books/top-books/';
     const fetchUrl = BASEURL + endpoint;
-  
+
     try {
       const response = await axios.get(fetchUrl);
       sessionStorage.setItem('savedfetch', JSON.stringify(response.data));
@@ -22,19 +21,22 @@ export const fetchGeneral = async booksPerRow => {
   } else {
     return renderTop(savedFetch, booksPerRow);
   }
-  
 };
 
 //Fatch for categories
-let savedCatsFetch = JSON.parse(sessionStorage.getItem('savedcategoriesfetch')) || '';
+let savedCatsFetch =
+  JSON.parse(sessionStorage.getItem('savedcategoriesfetch')) || '';
 export const fetchCategories = async () => {
   const endpoint = '/books/category-list/';
   const fetchUrl = BASEURL + endpoint;
 
-  if(!savedCatsFetch) {
+  if (!savedCatsFetch) {
     try {
       const response = await axios.get(fetchUrl);
-      sessionStorage.setItem('savedcategoriesfetch', JSON.stringify(response.data));
+      sessionStorage.setItem(
+        'savedcategoriesfetch',
+        JSON.stringify(response.data)
+      );
       savedCatsFetch = response.data;
       return renderCategories(response.data);
     } catch (error) {
@@ -43,7 +45,6 @@ export const fetchCategories = async () => {
   } else {
     return renderCategories(savedCatsFetch);
   }
-  
 };
 
 //Fatch for categories books

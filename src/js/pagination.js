@@ -56,7 +56,7 @@ export function createButtonsPagination(selectedPage) {
 
   instance.on('afterMove', function (eventData) {
     options.page = eventData.page;
-    checkFirstPage()
+    checkFirstPage();
     checkPageNumberOfBooks(eventData.page);
   });
 }

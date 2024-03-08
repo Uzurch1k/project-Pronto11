@@ -5,7 +5,6 @@ import amazonImg from '../img/shopping/amazon.png';
 import apple from '../img/shopping/book-apple.png';
 import { getBooksJson, addBooksJson } from './authorization';
 
-
 // ==============================================================
 // функція спрацьовує при кліку на QUICK VIEW
 // ==============================================================
@@ -99,7 +98,6 @@ async function checkLocalStorage() {
   const bookId = addToShoppingListBtn.dataset.id;
   const booksJson = await getBooksJson();
   const localStorageData = JSON.parse(booksJson) || [];
-  
 
   const bookInLocalStorage = localStorageData
     .map(element => element._id)
