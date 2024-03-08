@@ -1,4 +1,11 @@
 /*==================== Styles for page numbers ====================*/
+#pagination-wrapper {
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 5px;
+  width: 100%;
+  max-width: inherit;
+}
 
 .tui-pagination * {
   -moz-user-select: none;
@@ -47,13 +54,34 @@
 
 .tui-first {
   margin-right: 5px;
-  background-image: var(--icon-img-bg-first);
-  background-color: #111111;
+  background-color: #eac645;
+  position: relative;
+}
+
+.tui-first::after, .tui-prev::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  filter: brightness(0);
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .tui-prev {
   margin-right: 5px;
-  background-color: #111111;
+  background-color: #eac645;
+  background-image: var(--icon-img-bg-prev);
+  position: relative;
+}
+
+.tui-first::after {
+  background-image: var(--icon-img-bg-first);
+}
+
+.tui-prev::after {
   background-image: var(--icon-img-bg-prev);
 }
 
@@ -70,12 +98,16 @@
 
 .tui-first:hover,
 .tui-prev:hover {
-  background-color: #282727;
+  background-color: #f3dd8f;
 }
 
 .tui-next:hover,
 .tui-last:hover {
   background-color: #f3dd8f;
+}
+
+.tui-is-disabled {
+  display: none;
 }
 
 .tui-page-btn:hover .number-text,

@@ -13,6 +13,9 @@
   flex-direction: column;
   gap: 20px;
 }
+.shopping-list .loader-container {
+  height: 382px !important;
+}
 .shopping-item {
   background-color: var(--header-bg-color);
   display: flex;

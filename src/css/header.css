@@ -171,6 +171,22 @@ body.lock {
   justify-content: center;
   align-items: center;
   gap: 4px;
+  position: relative;
+}
+.header-shopping span span, .header-shopping-modal span span {
+  position: absolute;
+  font-size: 10px;
+  width: 16px;
+  height: 16px;
+  right: 8px;
+  top: 3px;
+  border-radius: 50%;
+  background-color: #4f2ee8;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 .header-shopping-modal.active {
   background-color: #eac645;
@@ -353,6 +369,7 @@ body.lock {
     align-items: center;
     gap: 4px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
   }
   .header-shopping.active {
     background-color: #eac645;
