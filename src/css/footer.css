@@ -1,0 +1,10 @@
+.footer {
+    padding: 16px 0;
+    background-color: #4f2ee8;
+}
+
+.copyright {
+    font-size: 0.875em;
+    color: #fff;
+    opacity: 0.75;
+}

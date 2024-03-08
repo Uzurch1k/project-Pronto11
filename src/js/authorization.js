@@ -155,6 +155,7 @@ async function authState() {
     onAuthStateChanged(auth, user => {
       renderAuthHeader(user);
       checkIsThereElementOnPage();
+      booksCount();
     });
   } catch (error) {
     console.error('Check error:', error.code);
@@ -289,6 +290,9 @@ export async function addBooksJson(shoppingList) {
   if (!shoppingList) {
     shoppingList = localStorage.getItem('shoppinglist') || '';
   }
+
+  booksCount(shoppingList);
+
   const user = await getCurrentUser()
     .then(user => {
       return user;
@@ -325,3 +329,29 @@ export const getBooksJson = async () => {
     return getBooksData(userId);
   }
 };
+
+
+async function booksCount(books) {
+  if(!books) {
+    books = await getBooksJson()
+    .then(user => {
+      return user;
+    })
+    .catch(error => {
+      return '';
+    });
+  }
+  console.log(books)
+  const booksParsed = JSON.parse(books).length;
+  const headerShip = document.querySelector('.header-shopping span');
+  const headerShipModal = document.querySelector('.header-shopping-modal span');
+  
+  if(booksParsed > 0) {
+    headerShip.innerHTML = `<span>${booksParsed}</span>`;
+    headerShipModal.innerHTML = `<span>${booksParsed}</span>`;
+  } else {
+    headerShip.innerHTML = '';
+    headerShipModal.innerHTML = '';
+  }
+}
+

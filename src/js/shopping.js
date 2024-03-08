@@ -27,6 +27,8 @@ export const perPage = 3;
 // ==============================================================
 
 export async function checkIsThereElementOnPage() {
+  // refs.shoppingList.innerHTML = '<li class="loader-container"><span class="loader"></span></li>';
+
   if (
     refs.pagesContainer === null &&
     refs.emptyPage === null &&
