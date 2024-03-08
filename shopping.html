@@ -23,15 +23,15 @@
 
     
     <script type="module" crossorigin src="/project-Pronto11/assets/vendor-dc6e18bd.js"></script>
-    <script type="module" crossorigin src="/project-Pronto11/assets/main-f8b026a6.js"></script>
-    <link rel="stylesheet" href="/project-Pronto11/assets/main-ea3d51b9.css">
+    <script type="module" crossorigin src="/project-Pronto11/assets/main-de1fed81.js"></script>
+    <link rel="stylesheet" href="/project-Pronto11/assets/main-e64d46f9.css">
     <link rel="stylesheet" href="/project-Pronto11/assets/vendor-1fb87061.css">
   </head>
 
   <body data-page="shopping">
     <div class="wrapper">
       <!-- ViktoriiaYakaba -->
-      <section class="header">
+      <header class="header">
   <div class="container">
     <div class="header-conteiner">
       <nav class="header-navigation">
@@ -83,7 +83,7 @@
 
   <div class="header-menu">
     <div class="container">
-      <div class="header-menu-content"> 
+      <div class="header-menu-content">
         <div class="authentication-buttons-mob"></div>
 
         <ul class="header-nav-list-modal">
@@ -115,7 +115,7 @@
       />
     </picture>
   </div>
-</section>
+</header>
 
 
       <!-- Uzurch1k, DmytrivDev -->
@@ -129,7 +129,7 @@
     <form class="authentication-form-signup">
       <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
-        <label class="authentication-label" for="name">
+        <label class="authentication-label" for="name-up">
           <input
             type="text"
             name="name"
@@ -138,7 +138,7 @@
             required
           />
         </label>
-        <label class="authentication-label" for="email">
+        <label class="authentication-label" for="email-up">
           <input
             type="email"
             name="email"
@@ -150,7 +150,7 @@
             <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-email"></use>
           </svg>
         </label>
-        <label class="authentication-label" for="password">
+        <label class="authentication-label" for="password-up">
           <input
             type="password"
             name="password"
@@ -163,13 +163,16 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign up <div class="btnloader"></div></button>
+      <button type="submit" class="authentication-button">
+        Sign up
+        <span class="btnloader"></span>
+      </button>
     </form>
 
     <form class="authentication-form-signin hide">
       <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
-        <label class="authentication-label" for="email">
+        <label class="authentication-label" for="email-in">
           <input
             type="email"
             name="email"
@@ -181,7 +184,7 @@
             <use href="/project-Pronto11/assets/icons-59613547.svg#icon-authorization-email"></use>
           </svg>
         </label>
-        <label class="authentication-label" for="password">
+        <label class="authentication-label" for="password-in">
           <input
             type="password"
             name="password"
@@ -194,7 +197,10 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign in <div class="btnloader"></div></button>
+      <button type="submit" class="authentication-button">
+        Sign in
+        <div class="btnloader"></div>
+      </button>
     </form>
 
     <ul class="authentication-list">
