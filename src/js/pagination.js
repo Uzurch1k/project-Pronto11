@@ -20,14 +20,15 @@ function getVisiblePagesNumber() {
   return 2;
 }
 
-export function createButtonsPagination() {
+export function createButtonsPagination(selectedPage) {
   const books = refs.shoppingList.querySelectorAll('.shopping-item');
 
   const visiblePageNumber = getVisiblePagesNumber();
+  selectedPage = selectedPage ? selectedPage : 1;
   const options = {
     totalItems: books.length,
     itemsPerPage: 3,
-    page: 1,
+    page: +selectedPage,
     visiblePages: visiblePageNumber,
     centerAlign: false,
     template: {
