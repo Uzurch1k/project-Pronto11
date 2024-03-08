@@ -130,6 +130,7 @@
 /*--------------------------- Scroll-up -----------------------------*/
 
 .scroll-up {
+  padding: 0;
   position: fixed;
   z-index: 5;
   border: none;
@@ -138,8 +139,8 @@
   align-items: center;
   right: 30px;
   bottom: 30px;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background-color: #4f2ee8;
   opacity: 0;
