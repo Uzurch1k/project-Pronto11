@@ -330,23 +330,21 @@ export const getBooksJson = async () => {
   }
 };
 
-
 async function booksCount(books) {
-  if(!books) {
+  if (!books) {
     books = await getBooksJson()
-    .then(user => {
-      return user;
-    })
-    .catch(error => {
-      return '';
-    });
+      .then(user => {
+        return user;
+      })
+      .catch(error => {
+        return '';
+      });
   }
-  console.log(books)
   const booksParsed = JSON.parse(books).length;
   const headerShip = document.querySelector('.header-shopping span');
   const headerShipModal = document.querySelector('.header-shopping-modal span');
-  
-  if(booksParsed > 0) {
+
+  if (booksParsed > 0) {
     headerShip.innerHTML = `<span>${booksParsed}</span>`;
     headerShipModal.innerHTML = `<span>${booksParsed}</span>`;
   } else {
@@ -354,4 +352,3 @@ async function booksCount(books) {
     headerShipModal.innerHTML = '';
   }
 }
-

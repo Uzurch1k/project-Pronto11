@@ -172,7 +172,8 @@ body.lock {
   gap: 4px;
   position: relative;
 }
-.header-shopping span span, .header-shopping-modal span span {
+.header-shopping span span,
+.header-shopping-modal span span {
   position: absolute;
   font-size: 10px;
   width: 16px;
