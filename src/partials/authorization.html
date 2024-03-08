@@ -8,7 +8,7 @@
     <form class="authentication-form-signup">
       <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
-        <label class="authentication-label" for="name">
+        <label class="authentication-label" for="name-up">
           <input
             type="text"
             name="name"
@@ -17,7 +17,7 @@
             required
           />
         </label>
-        <label class="authentication-label" for="email">
+        <label class="authentication-label" for="email-up">
           <input
             type="email"
             name="email"
@@ -29,7 +29,7 @@
             <use href="./img/icons.svg#icon-authorization-email"></use>
           </svg>
         </label>
-        <label class="authentication-label" for="password">
+        <label class="authentication-label" for="password-up">
           <input
             type="password"
             name="password"
@@ -42,13 +42,16 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign up <div class="btnloader"></div></button>
+      <button type="submit" class="authentication-button">
+        Sign up
+        <span class="btnloader"></span>
+      </button>
     </form>
 
     <form class="authentication-form-signin hide">
       <div class="authentication-errorcont"></div>
       <div class="authentication-wrap">
-        <label class="authentication-label" for="email">
+        <label class="authentication-label" for="email-in">
           <input
             type="email"
             name="email"
@@ -60,7 +63,7 @@
             <use href="./img/icons.svg#icon-authorization-email"></use>
           </svg>
         </label>
-        <label class="authentication-label" for="password">
+        <label class="authentication-label" for="password-in">
           <input
             type="password"
             name="password"
@@ -73,7 +76,10 @@
           </svg>
         </label>
       </div>
-      <button type="submit" class="authentication-button">Sign in <div class="btnloader"></div></button>
+      <button type="submit" class="authentication-button">
+        Sign in
+        <div class="btnloader"></div>
+      </button>
     </form>
 
     <ul class="authentication-list">
