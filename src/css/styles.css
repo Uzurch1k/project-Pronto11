@@ -12,9 +12,10 @@
 @import url('./support.css');
 
 @import url('./books.css');
-@import url('./footer.css');
 @import url('./shopping.css');
 @import url('./pagination.css');
 @import url('./popup.css');
+
+@import url('./footer.css');
 
 /* ----------------------------------- */
