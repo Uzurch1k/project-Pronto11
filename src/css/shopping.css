@@ -40,6 +40,7 @@
   margin-bottom: 4px;
   margin-right: 18px;
 }
+
 .genre {
   width: 160px;
   overflow: hidden;
@@ -49,6 +50,7 @@
   font-size: 12px;
   margin-bottom: 8px;
 }
+
 .book-desc {
   font-size: 14px;
   line-height: 18px;
@@ -60,6 +62,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .shopping-author {
   color: #b4afaf;
   font-size: 12px;
@@ -76,6 +79,7 @@
   align-items: end;
   justify-content: space-between;
 }
+
 .shop-amazon {
   width: 32px;
   filter: var(--icon-amazon);
