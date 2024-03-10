@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   updateProfile,
   onAuthStateChanged,
+  fetchSignInMethodsForEmail,
+  validatePassword,
 } from 'firebase/auth';
 import { getDatabase, ref, get, set } from 'firebase/database';
 import iziToast from 'izitoast';
@@ -63,22 +65,33 @@ async function signUpEvent(e) {
 }
 
 async function signUp(form, name, email, password) {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    await updateProfile(userCredential.user, {
-      displayName: name,
-    });
-    await addBooksJson();
-    await authState();
-    sucessMassage('Registration');
-    toggleAuthen(false);
-  } catch (error) {
-    showError(form, error.code);
+  const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+  const validPass = await validatePassword(auth, password);
+  if(signInMethods.length === 0 && validPass.isValid) {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: name,
+      });
+      await addBooksJson();
+      await authState();
+      sucessMassage('Registration');
+      toggleAuthen(false);
+    } catch (error) {
+      showError(form, error.code);
+    }
+  } else {
+    let errorT = 'auth/weak-password';
+    if(signInMethods.length !== 0) {
+      errorT = 'auth/email-already-in-use';
+    }
+    showError(form, errorT);
   }
+  
 }
 
 const signInForm = document.querySelector('.authentication-form-signin');
@@ -99,16 +112,23 @@ async function signInEvent(e) {
 }
 
 async function signIn(form, email, password) {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    sucessMassage('Authorization');
-    toggleAuthen(false);
-  } catch (error) {
-    showError(form, error.code);
+  const signInMethods = await fetchSignInMethodsForEmail(auth, email);
+  if(signInMethods.length > 0) {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      sucessMassage('Authorization');
+      toggleAuthen(false);
+    } catch (error) {
+      console.log(error.code)
+      showError(form, error.code);
+    }
+  } else {
+    const errorT = 'auth/user-not-found';
+    showError(form, errorT);
   }
 }
 
@@ -204,6 +224,12 @@ function showError(form, errorCode) {
   }
   if (errorCode === 'auth/weak-password') {
     errorText = 'Your password is too weak';
+  }
+  if (errorCode === 'auth/user-not-found') {
+    errorText = 'User with this email is not found';
+  }
+  if (errorCode === 'auth/wrong-password') {
+    errorText = 'Your password is wrong';
   }
   errorCont.innerHTML = `<p class="auth-error">${errorText}</p>`;
 }
@@ -301,12 +327,12 @@ async function booksCount(books) {
         return '';
       });
   }
-  const booksParsed = JSON.parse(books).length;
+  const booksParsed = JSON.parse(books);
   const headerShip = document.querySelector('.header-shopping span');
   const headerShipModal = document.querySelector('.header-shopping-modal span');
-  if (booksParsed > 0) {
-    headerShip.innerHTML = `<span>${booksParsed}</span>`;
-    headerShipModal.innerHTML = `<span>${booksParsed}</span>`;
+  if (booksParsed && booksParsed.length > 0) {
+    headerShip.innerHTML = `<span>${booksParsed.length}</span>`;
+    headerShipModal.innerHTML = `<span>${booksParsed.length}</span>`;
   } else {
     headerShip.innerHTML = '';
     headerShipModal.innerHTML = '';
