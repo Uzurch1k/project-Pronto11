@@ -14,7 +14,7 @@ This project was developed in a team.
 
 ---
 
-Vlad Halchenko (@Uzurch1k) (!Team lead)
+Vlad Halchenko (@Uzurch1k) (!Team lead) 
 
 Anna Hryshaieva (@AnnaHryshaieva) (!Scrum master)
 
@@ -22,16 +22,16 @@ Anna Hryshaieva (@AnnaHryshaieva) (!Scrum master)
 
 2. Viktoriia Yakaba (@ViktoriiaYakaba) - Header
 
-4. Андрій Дмитрів (@DmytrivDev) - Backend request, Books, Home, Loader, Authorization
+3. Андрій Дмитрів (@DmytrivDev) - Backend request, Books, Home, Loader, Authorization
 
-5. Marina Belaya (@Maribelaya) - Categories, Books
+4. Marina Belaya (@Maribelaya) - Categories, Books
 
-6. Diana Kiriienko (@DianaKiriienko) - Books, Home
+5. Diana Kiriienko (@DianaKiriienko) - Books, Home
 
-7. Anna Hryshaieva (@AnnaHryshaieva) (!Scrum master) - Pop up, Trello
+6. Anna Hryshaieva (@AnnaHryshaieva) (!Scrum master) - Pop up, Trello
 
-8. Svitlana Kostiuk (@Svitlana923) - Support
+7. Svitlana Kostiuk (@Svitlana923) - Support
 
-9. Nikita Redka (@N1XTEN) - Shopping list
+8. Nikita Redka (@N1XTEN) - Shopping list
 
-10. Oleksiy Krymarenko (@Marensfc) - Pagination
+9. Oleksiy Krymarenko (@Marensfc) - Pagination
