@@ -7,7 +7,7 @@ HTML5, CSS3, JavaScript, Vite compiler,
 ### Libraries: 
 Axios, Firebase, Izitoast, Scroll-to-element, Swiper, Tui-pagination.
 
-###Features: 
+### Features: 
 adaptive for phones, tablets and computers, burger menu, pagination, slider, fetch, modal window, authorization system, local storage.
 
 This project was developed in a team.
